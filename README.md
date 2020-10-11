@@ -11,8 +11,7 @@ Two models are developed:
 
   - A multilinear model that aims to give insight into the housing market
     represented by the data set
-  - A (to-be-determined, probably tree-based) model that aims for predictive
-    accuracy
+  - A tree-based model that aims for predictive accuracy
 
 The script *preprocess.R* is used to repair some inconsistencies in the data,
 and the resulting log file *data_repair.log* is included in the repo.

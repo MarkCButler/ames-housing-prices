@@ -20,20 +20,25 @@ header = document.getElementById('header');
 header.innerHTML = banner_html + header.innerHTML;
 ```
 
-```{r setup, message=FALSE, include=FALSE}
+```{r, setup, message=FALSE, include=FALSE}
 knitr::opts_chunk$set(
     echo = TRUE,
     fig.align = 'center',
     comment = NA
 )
 
+library(car)
+library(caret)
 library(dplyr)
 library(DT)
+library(glmnet)
 library(ggplot2)
 library(latex2exp)
 library(purrr)
+library(randomForest)
 library(rlang)
 library(scales)
+library(stringr)
 library(tidyr)
 
 source('descriptions.R')
@@ -46,8 +51,45 @@ The work develops two models for predicting the sale price of houses in the
 [Ames Housing Dataset](http://www.amstat.org/publications/jse/v19n3/decock.pdf):
 
   - A multilinear model that aims to give insight into the housing market
-  - A (to-be-determined, probably tree-based) model that aims for predictive
-    accuracy
+  - A tree-based model that aims for predictive accuracy
+
+## Primary variables of the multilinear model
+
+The most important variables for the multilinear model are GrLivArea,
+Functional, Condition1, MSZoning, and SaleCondition.
+
+<div class="tab-display">
+
+<div class="code-block">
+
+```{r, summary, cache=FALSE, echo=FALSE}
+report_summary <- function(importance_vec) {
+    for (variable_name in names(importance_vec)) {
+        cat(variable_descriptions[[variable_name]],
+            '\n\nRelative importance: ',
+            round(importance_vec[variable_name] * 100, digits = 1),
+            '%',
+            sep = '')
+        if (!is.null(comments[[variable_name]])) {
+           cat('\nComment: ', comments[[variable_name]],
+               sep = '')
+        }
+        cat('\n\n\n')
+    }
+}
+first_importance <- c(
+    GrLivArea = 1.0000000,
+    Functional = 0.7190126,
+    Condition1 = 0.5192792,
+    MSZoning = 0.3797086,
+    SaleCondition = 0.3682316
+)
+report_summary(first_importance)
+```
+
+</div>
+
+</div>
 
 # Exploratory data analysis / feature engineering
 
@@ -152,8 +194,8 @@ The distribution of each variable is plotted.
   - The variable descriptions from *data_description.txt* are included with the
     plots.
 
-Transformation of the target variable and the predictor variable GrLivArea
-decreased skew.
+Transformation of the target variable and the predictor variables GrLivArea,
+LotArea decreased skew.
 
 Several variables have a distribution concentrated into a single value or a
 small subset of the values.
@@ -187,7 +229,7 @@ fig <- ggplot(select(to_plot, SalePrice),
     scale_x_continuous(name = 'log(SalePrice)') +
     ggtitle('log(SalePrice)')
 print(fig)
-cat('transformation:  ', 'price -> log(price)', '\n\n')
+cat('transformation:  price -> log(price)\n\n')
 ```
 
 </div>
@@ -319,7 +361,7 @@ for (variable_name in to_plot_categorical) {
 
 <div class="code-block">
 
-```{r transform, cache=FALSE, echo=FALSE}
+```{r, transform, cache=FALSE, echo=FALSE}
 # From the consistency checks done by preprocess.R, there are no missing
 # values for GarageYrBlt in eiether the training data or the test data.  The
 # preprocessing script set this variable to zero for houses without a garage.
@@ -333,6 +375,7 @@ transform_year <- function(x) {
     return((x - 1900)^3 / 1e6)
 }
 transform_year_formula <- 'year -> (year - 1900)^3 / 1e6'
+transform_area_formula <- 'area -> log(area)'
 
 # The information associated with transforming variables is entered as a list
 # of lists.  In order to avoid awkward syntax in accessing elements of nested
@@ -342,13 +385,16 @@ transform_year_formula <- 'year -> (year - 1900)^3 / 1e6'
 transformations <- list(
     GrLivArea = list(func = log,
                      label = 'log(GrLivArea)',
-                     formula = 'area -> log(area)'),
+                     formula = transform_area_formula),
     YearBuilt = list(func = transform_year,
                      label = 'transformed YearBuilt',
                      formula = transform_year_formula),
     GarageYrBlt = list(func = transform_year,
                        label = 'transformed GarageYrBlt',
-                       formula = transform_year_formula)
+                       formula = transform_year_formula),
+    LotArea = list(func = log,
+                   label = 'log(LotArea)',
+                   formula = transform_area_formula)
 )
 transformed_variables <- names(transformations)
 transformed_variable_labels <- map_chr(transformations, ~ (.)$label)
@@ -397,7 +443,7 @@ for (variable_name in continuous_predictors) {
             ggtitle(variable_label)
         print(fig)
 
-        cat('transformation:  ', formula, '\n\n')
+        cat('transformation: ', formula, '\n\n')
     }
 
     cat(description)
@@ -432,12 +478,21 @@ variance, the value of $\eta^2$ or $R^2$ was increased by the transformations.
 # Apply transformations to variables in the training data.  The R chunks that
 # generate large plots are cached, and so transformations in those chunks
 # were done to temporary plotting data frames.
-train_data <- mutate(train_data, SalePrice = log(SalePrice))
-for (variable_name in transformed_variables) {
-    # Apply the transformation to the variable.
-    func <- transformation_functions[[variable_name]]
-    train_data[[variable_name]] <- func(train_data[[variable_name]])
+apply_transformations <- function(data) {
+    if ('SalePrice' %in% colnames(data)) {
+        data <- mutate(data, SalePrice = log(SalePrice))
+    }
+
+    for (variable_name in transformed_variables) {
+        # Apply the transformation to the variable.
+        func <- transformation_functions[[variable_name]]
+        data[[variable_name]] <- func(data[[variable_name]])
+    }
+
+    return(data)
 }
+
+train_data <- apply_transformations(train_data)
 
 get_linear_model <- function(variable_name,
                              dummy_filter = '',
@@ -492,14 +547,14 @@ get_datatable(eta_squared_df) %>%
 <div class="code-block">
 
 ```{r, r-squared, cache=FALSE}
-r_squared_variables <- reorder_names(
+numeric_predictors <- reorder_names(
     c(continuous_predictors, discrete_numeric)
 )
 
-linear_models <- map(r_squared_variables, get_linear_model)
-names(linear_models) <- r_squared_variables
+linear_models <- map(numeric_predictors, get_linear_model)
+names(linear_models) <- numeric_predictors
 r_squared_vec <- map_dbl(linear_models, ~ summary(.)$r.squared)
-r_squared_df <- data.frame(name = r_squared_variables,
+r_squared_df <- data.frame(name = numeric_predictors,
                            r.squared = r_squared_vec,
                            stringsAsFactors = FALSE) %>%
     arrange(desc(r.squared)) %>%
@@ -539,24 +594,29 @@ the transformations.
 ```{r, large-eta, cache=FALSE, echo=FALSE}
 large_eta_squared <- filter(eta_squared_df, `eta squared` >= 0.085)
 
-generate_box_plot <- function(variable_name, eta_squared,
+generate_box_plot <- function(data, variable_name, eta_squared = NULL,
                               show_encoding = FALSE) {
 
     description <- variable_descriptions[[variable_name]]
     if (show_encoding) {
         encoded_variable_name <- paste0(variable_name, 'Num')
         vars <- c(variable_name, encoded_variable_name)
-        to_plot <- select(train_data, SalePrice, all_of(vars)) %>%
+        to_plot <- select(data, SalePrice, all_of(vars)) %>%
             rename(encoding = .data[[encoded_variable_name]]) %>%
             drop_na()
     } else {
-        to_plot <- select(train_data, SalePrice, all_of(variable_name)) %>%
+        to_plot <- select(data, SalePrice, all_of(variable_name)) %>%
             drop_na()
     }
     to_plot[[variable_name]] <- as.factor(to_plot[[variable_name]]) %>%
         reorder(to_plot$SalePrice, median)
 
-    plot_title <- paste0(variable_name, ', ', '$\\eta^2 = ', eta_squared, '$')
+    if (!is.null(eta_squared)) {
+        plot_title <- paste0(variable_name, ', ', '$\\eta^2 = ',
+                             eta_squared, '$')
+    } else {
+        plot_title <- variable_name
+    }
     fig <- ggplot(to_plot, aes_string(x = variable_name)) +
         geom_boxplot(aes_string(y = 'SalePrice', fill = variable_name))
     if (show_encoding) {
@@ -591,7 +651,7 @@ generate_box_plot <- function(variable_name, eta_squared,
 ```{r, box-plots, cache=TRUE, echo=FALSE}
 for (variable_name in large_eta_squared$name) {
     eta_squared <- round(eta_squared_vec[variable_name], digits = 3)
-    generate_box_plot(variable_name, eta_squared)
+    generate_box_plot(train_data, variable_name, eta_squared)
 }
 ```
 
@@ -672,7 +732,7 @@ plot_simple_fit <- function(variable_name, linear_model, r_squared = 0) {
     print(fig + ggtitle(plot_title))
 
     if (variable_name %in% transformed_variables) {
-        cat('transformation:  ',
+        cat('transformation: ',
             transformation_formulas[variable_name],
             '\n\n'
         )
@@ -907,7 +967,8 @@ for (variable_name in r_squared_changes[['original model']]) {
 
 #### Summary {.unnumbered}
 
-Apply $k$-fold target encoding to each nominal variable.
+Apply $k$-fold target encoding to each nominal variable.  For example, encoding
+of the Neighborhood variable yielded a NeighborhoodNum variable.
 
 #### Discussion {.unnumbered}
 
@@ -917,17 +978,25 @@ that category.
 This method is prone to overfitting, but variants have been developed to
 minimize overfitting:
 
-  - $K$-fold target encoding randomly separates the training data into $k$ folds.
-    Samples in a given fold are encoded using data not in that fold.
+  - $K$-fold target encoding randomly separates the training data into $k$
+    folds.  Samples in a given fold are encoded using data not in that fold.
   - For categories with a small number of samples, the encoding is a mix of
     the category target mean and the global target mean.
 
 Five folds were used here, and the weighting of the global target mean was
-given by a sigmoid function that increased from $\approx 0$ to $\approx 1$ as
+given by a sigmoid function that decreased from $\approx 1$ to $\approx 0$ as
 the number of samples in the category increased from 0 to 10.
 
-For each sample in the test data, the encoding used for a given category was
-randomly selected from the five encodings obtained from the training data.
+The script *encode.R* created for this project supports two methods of encoding
+test data:
+
+  - Given an observation and the class for that observation, randomly select one
+    of the k encodings generated for the class.
+
+  - All observations of a given class receive the mean of the k encodings
+    generated for the class.  This is the natural choice for a linear model,
+    since it is equivalent to averaging the model output over many possible
+    random encodings of the predictors.
 
 Missing values were encoded using the global target mean.
 
@@ -936,7 +1005,7 @@ Missing values were encoded using the global target mean.
 
 <div class="code-block">
 
-```{r target-encode, cache=FALSE, echo=FALSE}
+```{r, target-encode, cache=FALSE, echo=FALSE}
 # Encode all categorical predictors.
 
 # Convert MSSubClass to a character vector to simplify the encoding.  Note
@@ -951,9 +1020,10 @@ Missing values were encoded using the global target mean.
 # integer value in the distribution plot.
 train_data <- mutate(train_data, MSSubClass = as.character(MSSubClass))
 
+target_mean <- mean(train_data$SalePrice)
 for (variable_name in categorical_predictors) {
     # The encode function is defined in the script encode.R.
-    train_data <- encode(train_data, variable_name)
+    train_data <- encode(train_data, variable_name, target_mean)
 }
 
 ```
@@ -961,10 +1031,11 @@ for (variable_name in categorical_predictors) {
 ```{r show-encoded, ref.label=c('target-encode', 'check-encoding'), eval=FALSE}
 ```
 
-```{r check-encoding, cache=TRUE, echo=FALSE}
+```{r, check-encoding, cache=TRUE, echo=FALSE}
 for (variable_name in large_eta_squared$name) {
     eta_squared <- round(eta_squared_vec[variable_name], digits = 3)
-    generate_box_plot(variable_name, eta_squared, show_encoding = TRUE)
+    generate_box_plot(train_data, variable_name, eta_squared,
+                      show_encoding = TRUE)
 }
 ```
 
@@ -980,8 +1051,8 @@ List the changes applied to variables in the original data set.
 
 Changes to the variables:
 
-  1. The target (SalePrice) and one predictor (GrLivArea: Above ground living
-     area) were both transformed using the logarithm.
+  1. The target (SalePrice) and two predictors (LotArea, GrLivArea) were
+     transformed using the logarithm.
   2. The predictors YearBuilt and GarageYrBlt were transformed using the
      function $f(x) = (x - 1900)^3$.
   3. Dummy variables NoBasement, NoGarage, NoFireplace, NoSecondFloor were
@@ -1065,3 +1136,547 @@ get_datatable(correlations) %>%
  </div>
 
 # Multilinear model
+
+A descriptive model that aims to give insight into the housing market.
+
+## Stepwise regression {.tabset}
+
+### Summary {.unnumbered}
+
+Use stepwise regression to select variables for the model.
+
+### Discussion {.unnumbered}
+
+An iterative process was used to tune the stepwise regression:
+
+  1. Exclude outliers after inspecting previous results with plot.lm.  Three
+     outliers were dropped in the final iteration.
+
+  2. Drop variables that contain many missing values.  In the first iteration,
+     only LotFrontage was dropped, but tests found that MasVnrArea was not an
+     important variable at any step of the regression, and so it was dropped as
+     well.   The remaining numerical and encoded categorical predictors had no
+     missing values.
+
+  3. Execute the stepwise regression using a data set that includes all
+     numerical and encoded categorical predictors, together with dummy variables
+     such as NoBasement.  Use the Bayesian information criterion in order to
+     favor model simplicity.
+
+  4. Inspect the model selected by stepwise regression, particularly checking
+     the variance inflation factors and the effects of outliers.
+
+$K$-fold target encoding introduces a random element into the training process,
+and as a result, the set of variables selected by stepwise regressions varied
+with successive iterations of the training process.
+
+  - Stepwise regression consistently yielded around 27 variables, but two or
+    three of the selected variables would typically change between iterations.
+
+After the process was tuned, a handful of repetitions of the stepwise selection
+were performed, with a log generated for each repetition.  One of the
+repetitions gave a somewhat lower variance inflation factor than the others, and
+the variables selected in this repetition were used as the starting point for
+lasso regression.
+
+### Outcome {.tab-display .unnumbered}
+
+<div class="code-block">
+
+```{r show-lm, ref.label=c('stepwise-regression'), eval=FALSE}
+```
+
+```{r, stepwise-regression, cache=FALSE, echo=FALSE}
+outliers <- c(1299, 524, 633)
+dummy_variables <- c('NoBasement', 'NoGarage', 'NoFireplace',
+                     'NoSecondFloor')
+encoded_categorical <- paste0(categorical_predictors, 'Num')
+lm_predictors <- c(continuous_predictors, discrete_numeric,
+                   encoded_categorical, dummy_variables)
+# Drop LotFrontage and MasVnrArea because of missing values.
+bool_index <- !(lm_predictors %in% c('LotFrontage', 'MasVnrArea'))
+lm_predictors <- lm_predictors[bool_index]
+
+# Boolean that determines whether stepwise regressions is run when the
+# markdown file is rendered.
+select_lm <- FALSE
+if (select_lm) {
+    # Note that if this code is executed as a single block, some of the output
+    # that should be captured by the sink() command does not get captured.  In
+    # practice, this code was executed interactively during an iterative process
+    # of model development.  When commands are executed interactively while
+    # waiting for one command to complete before executing the next, all output
+    # is captured by the sink() command.
+
+    # Because of the select command below, lm_train_data has no missing
+    # values.
+    lm_train_data <- train_data %>%
+        select(all_of(lm_predictors), SalePrice, Id) %>%
+        filter(!(Id %in% outliers))
+    trivial_model <- lm(SalePrice ~ 1, data = lm_train_data)
+    scope <- list(
+        lower = formula(trivial_model),
+        upper = as.formula(
+            paste('SalePrice ~',
+                  paste0(lm_predictors, collapse = ' + '))
+        )
+    )
+
+    sink('stepwise_search_BIC.log')
+    best_lm <- step(trivial_model, scope, direction = 'both',
+                    k = log(nrow(lm_train_data)))
+    print(summary(best_lm))
+    best_lm_predictors <- names(best_lm$coefficients)[-1]
+    cat('Predictors:\n\n')
+    print(best_lm_predictors)
+    cat('Variance inflation factors:\n\n')
+    print(vif(best_lm))
+    sink()
+} else {
+    best_lm_predictors <- c(
+        'OverallQual', 'GrLivArea', 'NeighborhoodNum', 'BsmtFinSF1',
+        'GarageArea', 'OverallCond', 'YearBuilt', 'TotalBsmtSF',
+        'MSZoningNum', 'Fireplaces', 'LotArea', 'SaleConditionNum',
+        'BldgTypeNum', 'Condition1Num', 'BsmtExposureNum', 'KitchenQualNum',
+        'FunctionalNum', 'CentralAirNum', 'NoBasement', 'SecondFlrSF',
+        'NoSecondFloor', 'ScreenPorch', 'GarageCondNum', 'WoodDeckSF',
+        'HeatingQCNum', 'BsmtQualNum', 'BsmtFullBath'
+    )
+    stepwise_formula <- as.formula(
+        paste('SalePrice ~',
+              paste0(best_lm_predictors, collapse = ' + '))
+    )
+    lm_train_data <- train_data %>%
+        select(all_of(best_lm_predictors), SalePrice, Id) %>%
+        filter(!(Id %in% outliers))
+    best_lm <- lm(stepwise_formula, lm_train_data)
+    print(summary(best_lm))
+    cat('Variance inflation factors:\n\n')
+    print(vif(best_lm))
+}
+
+plot(best_lm)
+```
+
+</div>
+
+## Lasso regression {.tabset}
+
+### Summary {.unnumbered}
+
+Fine tune the feature selection with lasso regression, and add regularization
+to the multilinear model.
+
+### Discussion {.unnumbered}
+
+Cross validation with lasso regression was used to eliminate the variables
+NoSecondFloor and SecondFlrSF, which significantly improved the variance
+inflation factors for the model.
+
+  - The command cv.glmnet was executed, and the coefficients at lambda.1se were
+    checked for zeros.   Although there was some variation in the outcome
+    between iterations, NoSecondFloor and SecondFlrSF were consistently set to
+    zero by this process.  The choice to eliminate SecondFlrSF was supported by
+    the fact it has a strong correlation with GrLivArea, probably the most
+    important variable in the model.
+
+After the feature selection was finalized, the cross validation was performed
+again to find the optimal regularization.
+
+  - During a handful of iterations of the training process, the optimal value of
+    lambda was consistently 0.0007.
+
+### Outcome {.tab-display .unnumbered}
+
+<div class="code-block">
+
+```{r show-lasso, ref.label=c('lasso'), eval=FALSE}
+```
+
+```{r, lasso, cache=FALSE, echo=FALSE}
+get_glmnet_inputs <- function(data, predictors, outliers = integer()) {
+    data <- data %>%
+        filter(!(Id %in% outliers))
+    predictor_matrix <- data %>%
+        select(all_of(predictors)) %>%
+        data.matrix()
+
+    if ('SalePrice' %in% colnames(data)) {
+        target <- data$SalePrice
+    } else {
+        target <- NULL
+    }
+
+    inputs <- list(
+        x = predictor_matrix,
+        y = target
+    )
+    return(inputs)
+}
+
+glmnet_inputs <- get_glmnet_inputs(train_data, best_lm_predictors,
+                                   outliers = outliers)
+lasso_models <- glmnet(x = glmnet_inputs$x, y = glmnet_inputs$y,
+                       alpha = 1, family = 'gaussian')
+plot(lasso_models, xvar = "lambda", label = TRUE, main = "Lasso Regression")
+cv_lasso_model <- cv.glmnet(x = glmnet_inputs$x, y = glmnet_inputs$y,
+                            alpha = 1, family = 'gaussian',
+                            nfolds = 10)
+plot(cv_lasso_model, main = "Lasso Regression\n")
+best_lambda <- cv_lasso_model$lambda.min
+
+# Boolean that determins whether a test of feature selection is performed when
+# the markdown file is rendered.
+select_lasso_predictors <- FALSE
+if (select_lasso_predictors) {
+    # With lambda set to lambda.1se, two coefficients consistently go to zero.
+    predict(lasso_models, s = cv_lasso_model$lambda.1se, type = 'coefficients')
+} else {
+    cat('Cross validation with lasso set the coefficients of SecondFlrSF and',
+        'NoSecondFloor\nto zero.  The optimal value of lambda found by glmnet',
+        'after these variables\nwere dropped was 0.0007.\n\n')
+
+    best_formula <- update.formula(
+        formula(best_lm),
+        ~ . - NoSecondFloor - SecondFlrSF
+    )
+    best_lm <- lm(best_formula, lm_train_data)
+    best_lm_predictors <- names(best_lm$coefficients)[-1]
+
+    best_lambda <- 0.0007081519
+
+    glmnet_inputs <- get_glmnet_inputs(train_data, best_lm_predictors,
+                                       outliers = outliers)
+    lasso_models <- glmnet(x = glmnet_inputs$x, y = glmnet_inputs$y,
+                           alpha = 1, family = 'gaussian')
+
+    print(summary(best_lm))
+    cat('Variance inflation factors:\n\n')
+    print(vif(best_lm))
+    plot(best_lm)
+}
+```
+
+</div>
+
+## Variable importance and visualization {.tabset}
+
+### Summary {.unnumbered}
+
+Use the coefficients obtained with standardized input data to rank variables
+by importance, and visualize the selected variables.
+
+### Variable importance {.tab-display .unnumbered}
+
+<div class="code-block">
+
+```{r, importance-lm, cache=FALSE}
+scaled_lm_train_data <- as.data.frame(cbind(
+    scale(glmnet_inputs$x),
+    SalePrice = glmnet_inputs$y
+))
+
+# Note that executing summary(scaled_lm_train_data) is a good way to check
+# whether there are large outliers in any of the selected predictors.
+
+lm_model_scaled <- lm(best_formula, lm_train_data)
+standardized_coeffs <- sort(lm_model_scaled$coefficients[-1],
+                            decreasing = TRUE)
+
+lm_predictors_by_importance <- names(standardized_coeffs)
+
+# Curly braces used to force output into a single block in the rendered
+# markdown.
+{
+    cat('Predictors in decreasing order of importance, along with the ',
+        'coefficients obtained\nusing standardized training data.\n\n')
+    print(standardized_coeffs, digits = 3)
+}
+```
+
+</div>
+
+### Visualize variables {.tab-display .unnumbered}
+
+<div class="code-block">
+
+```{r, visualize-selected, cache=TRUE}
+for (variable_name in lm_predictors_by_importance) {
+    if (str_detect(variable_name, 'Num$')) {
+        variable_name <- str_replace(variable_name, 'Num$', '')
+        generate_box_plot(train_data, variable_name, show_encoding = TRUE)
+    } else {
+        dummy_filter <- get_dummy_filter(variable_name)
+        # None of the dummy filters but NoBasement made it into the multilinear
+        # model.
+        if (dummy_filter != 'NoBasement') {
+            dummy_filter <- ''
+        }
+        linear_model <- get_linear_model(variable_name, dummy_filter, outliers)
+        plot_simple_fit(variable_name, linear_model)
+    }
+}
+```
+
+</div>
+
+
+</div>
+
+## Model metrics {.tabset}
+
+### Summary {.unnumbered}
+
+Compare error metrics for the training and test data.
+
+### Metrics {.tab-display .unnumbered}
+
+<div class="code-block">
+
+```{r, show-linear-score, ref.label=c('linear-score'), eval=FALSE}
+```
+
+```{r, linear-score, cache=FALSE, echo=FALSE}
+impute_mean <- function(vec) {
+    vec_mean <- mean(vec, na.rm = TRUE)
+    bool_index <- is.na(vec)
+    vec[bool_index] <- vec_mean
+}
+preprocess <- function(data, drop_categorical = TRUE, verbose = FALSE) {
+    # For simplicity drop MasVnrArea, since it is not used in the linear model.
+    data <- select(data, -LotFrontage, -MasVnrArea) %>%
+        mutate(MSSubClass = as.character(MSSubClass)) %>%
+        define_dummies()
+
+    # Impute missing numerical values by the mean.
+    for (variable_name in intersect(numeric_predictors, colnames(data))) {
+        missing_count <- sum(is.na(data[[variable_name]]))
+        if (missing_count > 0) {
+            if (verbose) {
+                cat('Imputing ', missing_count, ' missing value(s) in ',
+                    variable_name, '.\n', sep = '')
+            }
+            data[[variable_name]] <- impute_mean(data[[variable_name]])
+        }
+    }
+
+    # Apply transformations.
+    data <- apply_transformations(data)
+
+    for (variable_name in categorical_predictors) {
+        # The assign_encoding function is defined in the script encode.R.
+        data <- assign_encoding(data, variable_name, target_mean = target_mean,
+                                method = 'mean')
+        if (drop_categorical) {
+           data <- select(data, -all_of(variable_name))
+        }
+    }
+
+    return(data)
+}
+
+# The functions get_rmse and get_rmsle evaluate the root-mean-square error and
+# the room-mean-square logarithmic error, taking into account the fact that the
+# target was transformed by taking the log.
+check_vector_lengths <- function(predicted, actual) {
+    num_rows <- length(predicted)
+    if (num_rows != length(actual)) {
+        message <- paste0(
+            'In check_vector_lengths, there is a mismatch in the vector ',
+            'lengths.\npredicted:  ', num_rows, '\nactual:  ', length(actual),
+            '\n'
+        )
+        stop(message)
+    } else {
+        return(TRUE)
+    }
+}
+
+get_rmse <- function(predicted, actual) {
+    check_vector_lengths(predicted, actual)
+    num_rows <- length(predicted)
+    mse <- sum((exp(predicted) - exp(actual))^2) / num_rows
+    return(sqrt(mse))
+}
+
+get_rmsle <- function(predicted, actual) {
+    check_vector_lengths(predicted, actual)
+    num_rows <- length(predicted)
+    msle <- sum((log(exp(predicted) + 1) - log(exp(actual) + 1))^2) / num_rows
+    return(sqrt(msle))
+}
+
+report_metrics <- function(glmnet_inputs) {
+    predicted <- as.numeric(predict(
+        lasso_models,
+        s = best_lambda,
+        newx = glmnet_inputs$x,
+        type = 'response'
+    ))
+    rmse <- get_rmse(predicted = predicted, actual = glmnet_inputs$y)
+    rmsle <- get_rmsle(predicted = predicted, actual = glmnet_inputs$y)
+    cat('root-mean-square error:  ', round(rmse, digits = 2),
+        '\nroot-mean-square logarithmic error:  ', round(rmsle, digits = 3),
+        '\n\n', sep = '')
+}
+
+# Curly braces used to force output into a single block in the rendered
+# markdown.
+{
+    cat('Error metrics for the data used to train the model ',
+        '(3 outliers excluded):\n\n', sep = '')
+    report_metrics(
+        get_glmnet_inputs(train_data, best_lm_predictors, outliers = outliers)
+    )
+    cat('Error metrics for the full "training data set" ',
+        '(no outliers excluded):\n\n', sep = '')
+    report_metrics(
+        get_glmnet_inputs(train_data, best_lm_predictors)
+    )
+
+    cat('\nFor the test data set, the root-mean-square logarithmic ',
+        'error was 0.13544.', sep = '')
+}
+
+# Boolean that determins whether a prediction for the test data is generated
+# when the markdown file is rendered.
+predict_linear <- FALSE
+if (predict_linear) {
+    test_data <- preprocess(test_data)
+    glmnet_inputs <- get_glmnet_inputs(test_data, best_lm_predictors)
+    linear_prediction <- exp(as.numeric(predict(
+        lasso_models,
+        s = best_lambda,
+        newx = glmnet_inputs$x,
+        type = 'response'
+    )))
+    to_save <- data.frame(Id = test_data$Id, SalePrice = linear_prediction)
+    write.csv(to_save, 'data/linear_prediction.csv',
+              row.names = FALSE, quote = FALSE)
+}
+```
+
+</div>
+
+## Possible improvements {.tabset}
+
+### Summary {.unnumbered}
+
+Discuss work that could be done to improve the multilinear model.
+
+### Discussion {.unnumbered}
+
+Feature engineering for Condition1 and Condition2:
+
+  - These two variables both give information about "proximity to various
+    conditions," such as parks or feeder streets.  The variable Condition1 was
+    selected as important for the model, while condition2 was not.  From the
+    visualization of Condition1, it is clear that some of these conditions are
+    more important than others.  It is possible that for some houses with two
+    conditions, the information available in Condition1 may be less important
+    than the information in Condition2.  The model might be improved by defining
+    a predictor that assigns a single condition to each house, choosing the most
+    important when two conditions are present.
+
+Research to understand important variables.  Examples:
+
+  - Condition1 has four categories associated with nearness to railroads.
+    These distinguish between north-south railroads and east-west railroads,
+    as well as between houses that are adjacent to a railroad or within 200 ft
+    of a railroad.  Of these four categories, the only one that clearly shows a
+    price penalty is 'adjacent to east-west-railroad.'  Is there an east-west
+    railroad that is particularly active?  Or is this just a random effect
+    associated with the fact that the number of houses in these categories is
+    relatively small.
+  - Neighborhood has a relative importance of about 30%.  What are the
+    underlying reasons that some neighborhoods are preferred over others?
+
+Better handling of outliers:
+
+  - Even with three outliers excluded, the training data has a significant
+    number of observations with large residuals, and these may be distorting the
+    model predictions.  Using a loss function such as the Huber loss that is
+    robust to large residuals might give a better model by minimizing such
+    distortions.
+
+Better handling of dummy variables defined during feature engineering:
+
+  - Stepwise regression tests the improvement associated with adding or
+    subtracting individual variables.  This process ignores they way in which
+    combinations of two variables improve the model, e.g., NoGarage and
+    GarageArea.  Dummy variables such as NoGarage were defined specifically to
+    improve the fit for related numerical variables, but the stepwise regression
+    used for feature selection was "unaware" of this aspect of the dummy
+    variables.  This might be corrected by exploring different starting models
+    for the stepwise regression.
+
+## Qualitative model {.tabset}
+
+### Summary {.unnumbered}
+
+Create a simple qualitative summary of the model.
+
+### Discussion {.unnumbered}
+
+The multilinear model includes 25 predictors, some of which are much less
+important than others, and so the "take-home messages" from the model may not
+be apparent.
+
+  - Example:  With standardized inputs, the coefficient for WoodDeckSf is
+    smaller than the coefficient for GrLivArea by a factor of about 5000.
+
+Extract the most important features from the model, and group these features
+into three levels by importance.
+
+  - In reporting the results, suppress the technical distinction between the original
+    variables and the transformed or encoded variables used in the multilinear
+    model.
+  - Note the training process includes a random element, and so the relative
+    importance attached to each variable changes somewhat with each iteration
+    of the training.  As a result, the values shown in this subsection are
+    somewhat different than the hard-coded values shown in Sec 1.1.
+
+### Primary variables {.tab-display .unnumbered}
+
+<div class="code-block">
+
+```{r, primary, cache=FALSE}
+coef_relative_importance <- standardized_coeffs / standardized_coeffs[1]
+extract_by_importance <- function(lower, upper) {
+    bool_index <- (
+        (coef_relative_importance <= upper) & (coef_relative_importance > lower)
+    )
+    extracted <- coef_relative_importance[bool_index]
+    names(extracted) <- names(extracted) %>%
+        str_replace('Num', '')
+    return(extracted)
+}
+first_importance <- extract_by_importance(0.35, 1.0)
+second_importance <- extract_by_importance(0.2, 0.35)
+third_importance <- extract_by_importance(0.1, 0.2)
+
+
+report_summary(first_importance)
+```
+
+</div>
+
+### Secondary variables {.tab-display .unnumbered}
+
+<div class="code-block">
+
+```{r, secondary, cache=FALSE}
+report_summary(second_importance)
+```
+
+</div>
+
+### Minor variables {.tab-display .unnumbered}
+
+<div class="code-block">
+
+```{r, minor, cache=FALSE}
+report_summary(third_importance)
+```
+
+</div>
