@@ -1,6 +1,7 @@
 *.code-workspace
 *.csv
 *.html
+*.Rds
 *.sqlite
 .history
 .idea
@@ -15,4 +16,5 @@ __pycache__
 data/
 images/
 markdown_output/
-scratch/
+scratch*
+run_lintr.R
