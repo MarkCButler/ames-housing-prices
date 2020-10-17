@@ -245,6 +245,7 @@ all_column_names <- colnames(train_data)
 reorder_names <- function(variable_names) {
     reorder_index <- order(match(variable_names, all_column_names))
     variable_names <- variable_names[reorder_index]
+    return(variable_names)
 }
 
 # For numeric variables with only a few values (such as YrSold), it is not
@@ -316,7 +317,7 @@ own 'Hide' or 'Show' button.  Using ref.label in a chunk with eval=FALSE
 allows the code from two chunks to be displayed as one block of code.
 -->
 
-```{r, show-setup, ref.label=c('setup-distributions', 'discrete-distributions'), eval=FALSE}
+```{r, show-discrete, ref.label=c('setup-distributions', 'discrete-distributions'), eval=FALSE}
 ```
 
 ```{r, discrete-distributions, cache=TRUE, echo=FALSE}
@@ -1021,10 +1022,31 @@ Missing values were encoded using the global target mean.
 train_data <- mutate(train_data, MSSubClass = as.character(MSSubClass))
 
 target_mean <- mean(train_data$SalePrice)
-for (variable_name in categorical_predictors) {
-    # The encode function is defined in the script encode.R.
-    train_data <- encode(train_data, variable_name, target_mean)
+
+encode_predictors <- function(data, method = 'mean', drop_categorical = TRUE) {
+    # The functions encode and assign_encoding are defined in the script
+    # encode.R.
+    if ('SalePrice' %in% colnames(data)) {
+        # Encode training data.
+        for (variable_name in categorical_predictors) {
+            # The encode function is defined in the script encode.R.
+            data <- encode(data, variable_name, target_mean)
+        }
+    } else {
+        # Assign encodings to test data.
+        for (variable_name in categorical_predictors) {
+            data <- assign_encoding(data, variable_name,
+                                    target_mean = target_mean, method = method)
+            if (drop_categorical) {
+                data <- select(data, -all_of(variable_name))
+            }
+        }
+    }
+
+    return(data)
 }
+
+train_data <- encode_predictors(train_data)
 
 ```
 
@@ -1155,11 +1177,11 @@ An iterative process was used to tune the stepwise regression:
   2. Drop variables that contain many missing values.  In the first iteration,
      only LotFrontage was dropped, but tests found that MasVnrArea was not an
      important variable at any step of the regression, and so it was dropped as
-     well.   The remaining numerical and encoded categorical predictors had no
+     well.   The remaining numeric and encoded categorical predictors had no
      missing values.
 
   3. Execute the stepwise regression using a data set that includes all
-     numerical and encoded categorical predictors, together with dummy variables
+     numeric and encoded categorical predictors, together with dummy variables
      such as NoBasement.  Use the Bayesian information criterion in order to
      favor model simplicity.
 
@@ -1420,9 +1442,6 @@ for (variable_name in lm_predictors_by_importance) {
 
 </div>
 
-
-</div>
-
 ## Model metrics {.tabset}
 
 ### Summary {.unnumbered}
@@ -1437,18 +1456,36 @@ Compare error metrics for the training and test data.
 ```
 
 ```{r, linear-score, cache=FALSE, echo=FALSE}
-impute_mean <- function(vec) {
-    vec_mean <- mean(vec, na.rm = TRUE)
-    bool_index <- is.na(vec)
-    vec[bool_index] <- vec_mean
+# During the process of target encoding, missing values in categorical
+# variables are encoded with the mean of the target variable for the training
+# data.
+#
+# Missing values in numeric variables will be imputed using means
+# from the training data.  The function get_predictor_means returns a vector
+# of stored means for the training data.  Note that the means are found for
+# the 'raw' training data, rather than tranformed training data, since missing
+# values in test data will be imputed before transformations are applied.
+get_predictor_means <- function() {
+    data <- read.csv('data/train.csv')
+    means <- numeric(length(numeric_predictors))
+    names(means) <- numeric_predictors
+    for (variable_name in numeric_predictors) {
+        means[variable_name] <- mean(
+            data[[variable_name]],
+            na.rm = TRUE
+        )
+    }
+    return(means)
 }
-preprocess <- function(data, drop_categorical = TRUE, verbose = FALSE) {
-    # For simplicity drop MasVnrArea, since it is not used in the linear model.
-    data <- select(data, -LotFrontage, -MasVnrArea) %>%
-        mutate(MSSubClass = as.character(MSSubClass)) %>%
-        define_dummies()
 
-    # Impute missing numerical values by the mean.
+means <- get_predictor_means()
+impute_vector <- function(vec, variable_name) {
+    bool_index <- is.na(vec)
+    vec[bool_index] <- means[variable_name]
+    return(vec)
+}
+impute_data <- function(data, verbose = FALSE) {
+    # Impute missing numerical values by the mean from the training data.
     for (variable_name in intersect(numeric_predictors, colnames(data))) {
         missing_count <- sum(is.na(data[[variable_name]]))
         if (missing_count > 0) {
@@ -1456,28 +1493,31 @@ preprocess <- function(data, drop_categorical = TRUE, verbose = FALSE) {
                 cat('Imputing ', missing_count, ' missing value(s) in ',
                     variable_name, '.\n', sep = '')
             }
-            data[[variable_name]] <- impute_mean(data[[variable_name]])
-        }
-    }
-
-    # Apply transformations.
-    data <- apply_transformations(data)
-
-    for (variable_name in categorical_predictors) {
-        # The assign_encoding function is defined in the script encode.R.
-        data <- assign_encoding(data, variable_name, target_mean = target_mean,
-                                method = 'mean')
-        if (drop_categorical) {
-           data <- select(data, -all_of(variable_name))
+            data[[variable_name]] <- impute_vector(data[[variable_name]],
+                                                   variable_name)
         }
     }
 
     return(data)
 }
 
-# The functions get_rmse and get_rmsle evaluate the root-mean-square error and
-# the room-mean-square logarithmic error, taking into account the fact that the
-# target was transformed by taking the log.
+preprocess_lm <- function(data, drop_categorical = TRUE, verbose = FALSE) {
+    data <- select(data, -LotFrontage, -MasVnrArea) %>%
+        mutate(MSSubClass = as.character(MSSubClass)) %>%
+        define_dummies()
+
+    # Impute missing values in numeric predictors.
+    data <- impute_data(data, verbose)
+
+    data <- apply_transformations(data)
+
+    # Encode categorical variables.
+    data <- encode_predictors(data, 'mean',
+                              drop_categorical = drop_categorical)
+
+    return(data)
+}
+
 check_vector_lengths <- function(predicted, actual) {
     num_rows <- length(predicted)
     if (num_rows != length(actual)) {
@@ -1487,22 +1527,32 @@ check_vector_lengths <- function(predicted, actual) {
             '\n'
         )
         stop(message)
-    } else {
-        return(TRUE)
     }
+    return(TRUE)
 }
 
-get_rmse <- function(predicted, actual) {
+# The functions get_rmse and get_rmsle evaluate the root-mean-square error and
+# the room-mean-square logarithmic error.  The argument apply_exp should be
+# TRUE if the target was transformed by taking the log.
+get_rmse <- function(predicted, actual, apply_exp = TRUE) {
     check_vector_lengths(predicted, actual)
+    if (apply_exp) {
+        predicted <- exp(predicted)
+        actual <- exp(actual)
+    }
     num_rows <- length(predicted)
-    mse <- sum((exp(predicted) - exp(actual))^2) / num_rows
+    mse <- sum((predicted - actual)^2) / num_rows
     return(sqrt(mse))
 }
 
-get_rmsle <- function(predicted, actual) {
+get_rmsle <- function(predicted, actual, apply_exp = TRUE) {
     check_vector_lengths(predicted, actual)
+    if (apply_exp) {
+        predicted <- exp(predicted)
+        actual <- exp(actual)
+    }
     num_rows <- length(predicted)
-    msle <- sum((log(exp(predicted) + 1) - log(exp(actual) + 1))^2) / num_rows
+    msle <- sum((log(predicted + 1) - log(actual + 1))^2) / num_rows
     return(sqrt(msle))
 }
 
@@ -1524,25 +1574,28 @@ report_metrics <- function(glmnet_inputs) {
 # markdown.
 {
     cat('Error metrics for the data used to train the model ',
-        '(3 outliers excluded):\n\n', sep = '')
+        '(3 outliers excluded):\n\n',
+        sep = '')
     report_metrics(
         get_glmnet_inputs(train_data, best_lm_predictors, outliers = outliers)
     )
     cat('Error metrics for the full "training data set" ',
-        '(no outliers excluded):\n\n', sep = '')
+        '(no outliers excluded):\n\n',
+        sep = '')
     report_metrics(
         get_glmnet_inputs(train_data, best_lm_predictors)
     )
 
     cat('\nFor the test data set, the root-mean-square logarithmic ',
-        'error was 0.13544.', sep = '')
+        'error was 0.13544.',
+        sep = '')
 }
 
 # Boolean that determins whether a prediction for the test data is generated
 # when the markdown file is rendered.
 predict_linear <- FALSE
 if (predict_linear) {
-    test_data <- preprocess(test_data)
+    test_data <- preprocess_lm(test_data)
     glmnet_inputs <- get_glmnet_inputs(test_data, best_lm_predictors)
     linear_prediction <- exp(as.numeric(predict(
         lasso_models,
@@ -1628,9 +1681,9 @@ be apparent.
 Extract the most important features from the model, and group these features
 into three levels by importance.
 
-  - In reporting the results, suppress the technical distinction between the original
-    variables and the transformed or encoded variables used in the multilinear
-    model.
+  - In reporting the results, suppress the technical distinction between the
+    original variables and the transformed or encoded variables used in the
+    multilinear model.
   - Note the training process includes a random element, and so the relative
     importance attached to each variable changes somewhat with each iteration
     of the training.  As a result, the values shown in this subsection are
@@ -1680,3 +1733,307 @@ report_summary(third_importance)
 ```
 
 </div>
+
+# Random-forest model
+
+The plots for the multilinear model show large outliers.  Test whether a
+random-forest model can improve accuracy.
+
+## Feature selection {.tabset}
+
+### Summary {.unnumbered}
+
+Use a process inspired by stepwise regression to select a feature set.
+
+### Discussion {.unnumbered}
+
+Prepare data:
+
+  - Categorical variables were encoded using the method developed for the
+    multilinear model.
+
+  - The variables LotFrontage and MasVnrArea were dropped, since these
+    variables each contain a relatively large number of missing variables.
+
+  - A few numeric variables in the test data had one or two missing values,
+    and these were imputed using the mean.
+
+Before beginning the stepwise process of feature selection, determine how
+large ntree needs to be to give stable results.
+
+  - Both root-mean-square logarithmic error (RMSLE) and the feature importance
+    (evaluated by permunting predictor variables) should be stable.  
+  - A loop with different values of ntree found that for a model including all
+    predictors in the prepared data, the choice of least-important feature was
+    the same for all values of ntree $\geq 5000$.  Changes in RMSLE as ntree
+    was increased above 5000 were negligible.
+
+Starting from a random-forest model that includes the 77 predictors remaining
+after data preparation, eliminate predictors in a stepwise process:
+
+  - At each step, find the optimal value of mtry for a random forest that
+    includes all of the remaining predictors.  (In practice, the optimal value
+    from a set of 11 tested values was found.)
+  - Find the RMSLE for the model that has the optimal value of mtry.  Note
+    that the predictions used to calculate RMSLE are based on out-of-bag
+    samples.
+  - Sort the predictors based on variable importance and drop the least
+    important predictor.
+
+A plot of RMSLE vs number of features showed a nearly linear pattern of
+decreasing error as the number of features dropped from 77 to 38.  The set of
+38 features that gave the minimum was was selected for the model.
+
+  - The drop in RMSLE due to the process of feature selection was only 1.8%.
+
+### Outcome {.tab-display .unnumbered}
+
+<div class="code-block">
+
+```{r, show-rf-features, ref.label=c('setup-tree', 'rf-features'), eval=FALSE}
+```
+
+```{r, setup-tree, cache=FALSE, echo=FALSE}
+read_tree_data <- function(file) {
+    data <- read.csv(file, stringsAsFactors = FALSE,
+                     colClasses = c(MSSubClass = 'character'))
+    return(data)
+}
+
+preprocess_tree <- function(data, encoding_method = 'mean',
+                            drop_categorical = TRUE, verbose = FALSE) {
+    data <- select(data, -Id, -LotFrontage, -MasVnrArea)
+
+    # The target encoding that was explored for the linear model used
+    # log(SalePrice), with the mean of log(SalePrice) given a weight for
+    # classes with a small number of samples.  In order to use the same
+    # encoding method, apply the log to SalePrice if it is present.
+    if ('SalePrice' %in% colnames(data)) {
+        data <- mutate(data, SalePrice = log(SalePrice))
+    }
+
+    # Impute missing values in numeric predictors.
+    data <- impute_data(data, verbose)
+
+    # Encode categorical variables.  Note that encodings assigned to teeare
+    # based on log(SalePrice), although transformations are not applied to any
+    # variables of the tree model
+    data <- encode_predictors(data, method = encoding_method,
+                              drop_categorical = drop_categorical)
+
+    return(data)
+}
+
+train_data <- preprocess_tree(read_tree_data('data/train.csv'))
+test_data <- preprocess_tree(read_tree_data('data/test.csv'))
+
+all_tree_predictors <- colnames(test_data)
+
+```
+
+```{r, rf-features, cache=FALSE, echo=FALSE}
+# Function to generate a random forest model using the training data.
+run_rf <- function(predictors, ...) {
+    x_data <- select(train_data, all_of(predictors))
+    y_data <- train_data$SalePrice
+    rf_model <- randomForest(x = x_data, y = y_data, importance = TRUE, ...)
+    return(rf_model)
+}
+
+# Get a vector ordered by decreasing importance, where importance is evaluated
+# by permuting predictor variables.
+get_importance <- function(model) {
+    importance_vec <- sort(
+        importance(model)[, '%IncMSE'],
+        decreasing = TRUE
+    )
+    return(importance_vec)
+}
+
+get_rf_error <- function(model) {
+    rmsle <- get_rmsle(model$predicted, train_data$SalePrice)
+    return(rmsle)
+}
+
+# For the random-forest model that includes all tree predictors, characterize
+# the number of trees needed, based on changes
+check_ntree <- FALSE
+if (check_ntree) {
+    ntree_vec <- c(500, seq(5000, 50000, by = 5000))
+    ntree_results <- list()
+    for (index in seq_along(ntree_vec)) {
+        ntree <- ntree_vec[index]
+        model <- run_rf(all_tree_predictors, ntree = ntree)
+        importance_vec <- get_importance(model)
+        error <- get_rf_error(model)
+
+        ntree_results[[index]] <- list(
+            ntree = ntree,
+            importance_vec = importance_vec,
+            error = error
+        )
+
+        filename <- paste0('importance_', ntree, '.txt')
+        sink(filename)
+        cat('RMSLE is:  ', error, '\n\nImportance:\n\n', sep = '')
+        print(importance_vec)
+        sink()
+    }
+}
+
+# For all values of ntree >= 5000, the least important variable was the same.
+# Improvements in rmsle for larger values of ntree were insignificant.
+ntree <- 5000
+
+# Encapsulate an individual step of eliminating the least important variable
+# into a function.
+drop_rf_feature <- function(features) {
+    number_of_features <- length(features)
+    cat('\nPerforming cross validation for a set of ',
+        number_of_features,
+        ' features.\n\n',
+        sep = '')
+
+    errors <- as.numeric(rep(1e6, number_of_features))
+    importance_vectors <- list()
+
+    default_mtry <- as.integer(number_of_features / 3)
+    mtry_start <- max(2, default_mtry - 5)
+    mtry_end <- min(number_of_features, default_mtry + 5)
+    mtry_range <- seq(mtry_start, mtry_end)
+    for (mtry in mtry_range) {
+        cat('Testing mtry = ', mtry, '.\n', sep = '')
+        model <- run_rf(features, ntree = ntree, mtry = mtry)
+        errors[mtry] <- get_rf_error(model)
+        importance_vectors[[mtry]] <- get_importance(model)
+        cat('Error = ', errors[mtry], '.\n\n', sep = '')
+    }
+
+    plot(mtry_range, errors[mtry_range], type = 'l')
+
+    index <- which.min(errors)
+    error <- errors[index]
+    importance_vec <- importance_vectors[[index]]
+
+    mtry_index <- which.min(errors[mtry_range])
+    cat('Selected mtry:  ', mtry_range[mtry_index],
+        '.\n\nImportance vector:\n\n', sep = '')
+    print(importance_vec)
+    dropped_feature <- tail(names(importance_vec), 1)
+    cat('\nDropped feature:  ', dropped_feature, '.\n\n', sep = '')
+    features <- setdiff(features, dropped_feature)
+    cat('Remaining features:\n\n')
+    print(features)
+    return(list(error = error, features = features))
+}
+
+select_features_rf <- FALSE
+if (select_features_rf) {
+    # Create the variables that will be updated in a loop.
+    remaining_features <- all_tree_predictors
+    number_of_features <- length(remaining_features)
+    feature_set_errors <- as.numeric(rep(NA, number_of_features))
+    feature_sets <- list()
+    feature_sets[[number_of_features]] <- all_tree_predictors
+
+    sink('select_rf_features.log', append = TRUE)
+    number_of_iterations <- 65
+    for (iteration in seq(1, number_of_iterations)) {
+        cv_result <- drop_rf_feature(remaining_features)
+        remaining_features <- cv_result$features
+        number_of_features <- length(remaining_features)
+        feature_set_errors[number_of_features + 1] <- cv_result$error
+        feature_sets[[number_of_features]] <- remaining_features
+    }
+    selected_index <- which.min(feature_set_errors)
+    tree_features <- feature_sets[[selected_index]]
+    cat('\nAfter 65 iterations, the feature set with the lowest root-mean-',
+        'square logarithmic error\nusing out-of-bag samples for prediction ',
+        'is the following:\n\n', sep = '')
+    print(tree_features)
+    sink()
+} else {
+    feature_set_errors <- c(
+        NA, NA, NA, NA, NA, NA,
+        NA, NA, NA, NA, NA, NA,
+        0.1344358, 0.1327722, 0.1333226, 0.1336695, 0.1337583, 0.1336552,
+        0.1338953, 0.1339020, 0.1339117, 0.1343086, 0.1338769, 0.1340653,
+        0.1341761, 0.1339882, 0.1333068, 0.1335836, 0.1332799, 0.1334367,
+        0.1334917, 0.1335227, 0.1338326, 0.1338394, 0.1330482, 0.1335071,
+        0.1325262, 0.1324736, 0.1326780, 0.1327063, 0.1327826, 0.1330062,
+        0.1329979, 0.1330804, 0.1333393, 0.1332839, 0.1333281, 0.1332639,
+        0.1335952, 0.1333970, 0.1334968, 0.1334317, 0.1332154, 0.1335923,
+        0.1334465, 0.1335458, 0.1337589, 0.1336664, 0.1337066, 0.1338819,
+        0.1338450, 0.1339195, 0.1337900, 0.1341650, 0.1341732, 0.1341367,
+        0.1340504, 0.1343846, 0.1343936, 0.1345957, 0.1345700, 0.1346031,
+        0.1345559, 0.1347084, 0.1345209, 0.1348670, 0.1348595
+    )
+    tree_features <- c(
+        'LotArea', 'OverallQual', 'OverallCond', 'YearBuilt',
+        'YearRemodAdd', 'BsmtFinSF1', 'BsmtUnfSF', 'TotalBsmtSF',
+        'FirstFlrSF', 'SecondFlrSF', 'GrLivArea', 'BsmtFullBath',
+        'FullBath', 'HalfBath', 'BedroomAbvGr', 'TotRmsAbvGrd',
+        'Fireplaces', 'GarageYrBlt', 'GarageCars', 'GarageArea',
+        'OpenPorchSF', 'MSSubClassNum', 'MSZoningNum', 'NeighborhoodNum',
+        'HouseStyleNum', 'Exterior1stNum', 'Exterior2ndNum', 'ExterQualNum',
+        'BsmtQualNum', 'BsmtCondNum', 'BsmtExposureNum', 'BsmtFinType1Num',
+        'HeatingQCNum', 'CentralAirNum', 'KitchenQualNum', 'FireplaceQuNum',
+        'GarageTypeNum', 'GarageFinishNum'
+    )
+}
+
+plot(feature_set_errors,
+     col = 'navyblue',
+     pch = 19,
+     ylab = 'Error',
+     xlab = 'Number of features',
+     main = 'Root-mean-square logarithmic error\nduring stepwise feature selection')
+{
+    cat('After 65 iterations, the feature set with the lowest root-mean-',
+        'square logarithmic\nerror using out-of-bag samples for prediction ',
+        'is the following:\n\n', sep = '')
+    print(tree_features)
+}
+```
+
+</div>
+
+## Tuning the model {.tabset}
+
+### Summary {.unnumbered}
+
+place holder
+
+### Discussion {.unnumbered}
+
+place holder
+
+### Outcome {.tab-display .unnumbered}
+
+<div class="code-block">
+
+```{r, tune-rf}
+```
+
+</div>
+
+## Possible improvements {.tabset}
+
+### Summary {.unnumbered}
+
+Discuss ways in which the accuracy of the tree-based model could be improved.
+
+### Discussion {.unnumbered}
+
+Test gradient boosting as an alternative to the random forest algorithm.
+
+Modify the training and prediction methods to include an average over random
+elements of the $k$-fold target encoding.
+
+  - The random elements can include both the selection of folds and the
+    selection of encodings assigned to test data.
+
+Check whether accuracy can be improved by using unencoded categorical
+variables.
+
+Test imputation methods for missing data.

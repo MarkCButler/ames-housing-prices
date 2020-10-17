@@ -1,0 +1,4520 @@
+
+Performing cross validation for a set of 77 features.
+
+Testing mtry = 20.
+Error = 0.1353275.
+
+Testing mtry = 21.
+Error = 0.1353301.
+
+Testing mtry = 22.
+Error = 0.1353149.
+
+Testing mtry = 23.
+Error = 0.1350686.
+
+Testing mtry = 24.
+Error = 0.1351785.
+
+Testing mtry = 25.
+Error = 0.1353745.
+
+Testing mtry = 26.
+Error = 0.1349422.
+
+Testing mtry = 27.
+Error = 0.1348595.
+
+Testing mtry = 28.
+Error = 0.1350134.
+
+Testing mtry = 29.
+Error = 0.135213.
+
+Testing mtry = 30.
+Error = 0.1350181.
+
+Selected mtry:  27.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      OverallQual      TotalBsmtSF       FirstFlrSF       BsmtFinSF1 
+     123.3460354       86.5654663       81.1678564       79.6715417       75.1244262       68.1291931 
+      GarageArea      SecondFlrSF          LotArea    MSSubClassNum      OverallCond       GarageCars 
+      56.1649516       55.7082534       55.5293722       51.4840862       46.4828188       43.9673123 
+  FireplaceQuNum     ExterQualNum     YearRemodAdd    GarageTypeNum   KitchenQualNum        YearBuilt 
+      39.5527005       38.5157199       37.0539969       36.0774256       34.3752592       33.8341400 
+    TotRmsAbvGrd  BsmtFinType1Num      MSZoningNum      GarageYrBlt        BsmtUnfSF       Fireplaces 
+      29.5709384       29.4679136       28.7297968       27.9582975       27.7712484       27.7046653 
+    BsmtFullBath         FullBath  BsmtExposureNum      BsmtQualNum   Exterior1stNum      OpenPorchSF 
+      26.3661209       26.0715198       25.9943224       25.9659315       25.6793934       25.3868319 
+    BedroomAbvGr  GarageFinishNum    HouseStyleNum   Exterior2ndNum         HalfBath     HeatingQCNum 
+      23.8666304       23.8615960       23.5385931       22.4733999       20.3257389       20.0896889 
+     BsmtCondNum    CentralAirNum       WoodDeckSF    FoundationNum     KitchenAbvGr      LotShapeNum 
+      18.8736824       17.4132368       17.1566248       17.0758503       15.5261134       13.1847957 
+   GarageQualNum    MasVnrTypeNum    GarageCondNum      BldgTypeNum      ScreenPorch   LandContourNum 
+      12.7546310       11.9148270       10.7604047       10.1593239        7.7169234        6.5353741 
+   FunctionalNum    PavedDriveNum     ExterCondNum     BsmtHalfBath  BsmtFinType2Num     LandSlopeNum 
+       5.5093248        5.0864412        4.9016073        4.7295447        4.1953181        3.5303059 
+   EnclosedPorch SaleConditionNum    Condition1Num     RoofStyleNum        StreetNum       BsmtFinSF2 
+       3.1228015        3.0965615        2.9445028        2.8636293        2.3762701        2.3577962 
+   ElectricalNum        PoolQCNum    Condition2Num         AlleyNum    ThreeSsnPorch     LotConfigNum 
+       2.0043025        1.5669968        1.5624077        1.3986076        1.0648572        0.8835545 
+     RoofMatlNum           YrSold       HeatingNum   MiscFeatureNum         PoolArea          MiscVal 
+       0.6251184       -0.3245887       -1.1932754       -2.0577885       -2.2047185       -2.2606330 
+     SaleTypeNum     UtilitiesNum           MoSold     LowQualFinSF         FenceNum 
+      -2.5134446       -2.5403341       -3.2268386       -4.4880385       -5.9519196 
+
+Dropped feature:  FenceNum.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "LowQualFinSF"     "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"    
+[16] "FullBath"         "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"    
+[21] "Fireplaces"       "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"      
+[26] "OpenPorchSF"      "EnclosedPorch"    "ThreeSsnPorch"    "ScreenPorch"      "PoolArea"        
+[31] "MiscVal"          "MoSold"           "YrSold"           "MSSubClassNum"    "MSZoningNum"     
+[36] "StreetNum"        "AlleyNum"         "LotShapeNum"      "LandContourNum"   "UtilitiesNum"    
+[41] "LotConfigNum"     "LandSlopeNum"     "NeighborhoodNum"  "Condition1Num"    "Condition2Num"   
+[46] "BldgTypeNum"      "HouseStyleNum"    "RoofStyleNum"     "RoofMatlNum"      "Exterior1stNum"  
+[51] "Exterior2ndNum"   "MasVnrTypeNum"    "ExterQualNum"     "ExterCondNum"     "FoundationNum"   
+[56] "BsmtQualNum"      "BsmtCondNum"      "BsmtExposureNum"  "BsmtFinType1Num"  "BsmtFinType2Num" 
+[61] "HeatingNum"       "HeatingQCNum"     "CentralAirNum"    "ElectricalNum"    "KitchenQualNum"  
+[66] "FunctionalNum"    "FireplaceQuNum"   "GarageTypeNum"    "GarageFinishNum"  "GarageQualNum"   
+[71] "GarageCondNum"    "PavedDriveNum"    "PoolQCNum"        "MiscFeatureNum"   "SaleTypeNum"     
+[76] "SaleConditionNum"
+
+Performing cross validation for a set of 76 features.
+
+Testing mtry = 20.
+Error = 0.1352327.
+
+Testing mtry = 21.
+Error = 0.1351984.
+
+Testing mtry = 22.
+Error = 0.1350826.
+
+Testing mtry = 23.
+Error = 0.1350382.
+
+Testing mtry = 24.
+Error = 0.1349367.
+
+Testing mtry = 25.
+Error = 0.1351815.
+
+Testing mtry = 26.
+Error = 0.1349881.
+
+Testing mtry = 27.
+Error = 0.1350063.
+
+Testing mtry = 28.
+Error = 0.134867.
+
+Testing mtry = 29.
+Error = 0.1352166.
+
+Testing mtry = 30.
+Error = 0.1350199.
+
+Selected mtry:  28.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+    122.94701604      89.55746369      84.97355901      83.65543563      74.96296437      70.00025233 
+         LotArea       GarageArea      SecondFlrSF    MSSubClassNum      OverallCond       GarageCars 
+     57.66125984      56.96704925      52.63264162      52.51689120      47.89942887      46.60083882 
+  FireplaceQuNum     ExterQualNum     YearRemodAdd    GarageTypeNum        YearBuilt   KitchenQualNum 
+     40.14340268      37.04319292      36.73236912      36.35345578      35.01019909      34.02868983 
+    TotRmsAbvGrd      GarageYrBlt  BsmtFinType1Num      MSZoningNum        BsmtUnfSF       Fireplaces 
+     32.76538652      30.70204676      28.31300727      27.58146527      27.45044826      26.33157300 
+ BsmtExposureNum   Exterior1stNum         FullBath      BsmtQualNum      OpenPorchSF     BedroomAbvGr 
+     26.14300504      25.82115215      25.76004444      25.71535730      25.41485377      25.19915550 
+    BsmtFullBath  GarageFinishNum    HouseStyleNum   Exterior2ndNum         HalfBath     HeatingQCNum 
+     24.79987176      24.18654579      22.98900321      22.13870648      21.26434237      20.52278444 
+     BsmtCondNum       WoodDeckSF    CentralAirNum    FoundationNum     KitchenAbvGr      LotShapeNum 
+     19.19273318      18.71607183      18.60866339      16.79032130      16.64509858      13.33101879 
+     BldgTypeNum    MasVnrTypeNum    GarageQualNum    GarageCondNum      ScreenPorch     ExterCondNum 
+     12.50425247      11.71180675      10.94479527       9.08413572       7.49390652       6.70741747 
+  LandContourNum    FunctionalNum    PavedDriveNum    Condition1Num     RoofStyleNum  BsmtFinType2Num 
+      6.57867294       6.22137491       5.68587178       4.87100069       4.73140372       4.50005061 
+SaleConditionNum         AlleyNum     BsmtHalfBath    EnclosedPorch       BsmtFinSF2     LandSlopeNum 
+      4.36129013       3.75713568       3.46083898       3.29220341       3.24649148       2.50213398 
+    LotConfigNum        StreetNum       HeatingNum    ElectricalNum    ThreeSsnPorch    Condition2Num 
+      2.30284595       2.10715136       2.05022916       1.75809116       1.33551822       0.77603680 
+     RoofMatlNum          MiscVal        PoolQCNum           MoSold      SaleTypeNum   MiscFeatureNum 
+      0.29411315       0.18888358       0.06375417      -0.22300464      -0.31604269      -1.65132672 
+          YrSold     LowQualFinSF     UtilitiesNum         PoolArea 
+     -1.67354295      -1.77277914      -2.96698009      -2.97294993 
+
+Dropped feature:  PoolArea.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "LowQualFinSF"     "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"    
+[16] "FullBath"         "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"    
+[21] "Fireplaces"       "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"      
+[26] "OpenPorchSF"      "EnclosedPorch"    "ThreeSsnPorch"    "ScreenPorch"      "MiscVal"         
+[31] "MoSold"           "YrSold"           "MSSubClassNum"    "MSZoningNum"      "StreetNum"       
+[36] "AlleyNum"         "LotShapeNum"      "LandContourNum"   "UtilitiesNum"     "LotConfigNum"    
+[41] "LandSlopeNum"     "NeighborhoodNum"  "Condition1Num"    "Condition2Num"    "BldgTypeNum"     
+[46] "HouseStyleNum"    "RoofStyleNum"     "RoofMatlNum"      "Exterior1stNum"   "Exterior2ndNum"  
+[51] "MasVnrTypeNum"    "ExterQualNum"     "ExterCondNum"     "FoundationNum"    "BsmtQualNum"     
+[56] "BsmtCondNum"      "BsmtExposureNum"  "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingNum"      
+[61] "HeatingQCNum"     "CentralAirNum"    "ElectricalNum"    "KitchenQualNum"   "FunctionalNum"   
+[66] "FireplaceQuNum"   "GarageTypeNum"    "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"   
+[71] "PavedDriveNum"    "PoolQCNum"        "MiscFeatureNum"   "SaleTypeNum"      "SaleConditionNum"
+
+Performing cross validation for a set of 75 features.
+
+Testing mtry = 20.
+Error = 0.135177.
+
+Testing mtry = 21.
+Error = 0.134995.
+
+Testing mtry = 22.
+Error = 0.1345209.
+
+Testing mtry = 23.
+Error = 0.1349328.
+
+Testing mtry = 24.
+Error = 0.1348411.
+
+Testing mtry = 25.
+Error = 0.1347662.
+
+Testing mtry = 26.
+Error = 0.1351255.
+
+Testing mtry = 27.
+Error = 0.1350957.
+
+Testing mtry = 28.
+Error = 0.1348581.
+
+Testing mtry = 29.
+Error = 0.1348944.
+
+Testing mtry = 30.
+Error = 0.1348281.
+
+Selected mtry:  22.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+     114.4550411       82.8721338       79.9053920       75.2997199       72.9395159       66.1751053 
+         LotArea      SecondFlrSF       GarageArea    MSSubClassNum      OverallCond       GarageCars 
+      57.1348789       56.1005891       55.2472495       51.4093127       45.7792721       44.7675595 
+  FireplaceQuNum     ExterQualNum     YearRemodAdd        YearBuilt    GarageTypeNum   KitchenQualNum 
+      41.9589047       38.1184283       37.9781756       36.4936026       36.2701576       35.5267895 
+    TotRmsAbvGrd  BsmtFinType1Num      MSZoningNum       Fireplaces      GarageYrBlt  BsmtExposureNum 
+      34.1972968       30.1649926       29.5275142       28.9684249       28.6241475       28.6009774 
+        FullBath     BsmtFullBath        BsmtUnfSF      OpenPorchSF      BsmtQualNum     BedroomAbvGr 
+      27.2418473       26.8836767       26.3851663       26.2898685       25.6255025       25.5598615 
+   HouseStyleNum  GarageFinishNum         HalfBath   Exterior1stNum   Exterior2ndNum     HeatingQCNum 
+      25.4884872       24.6598326       23.1303452       22.9862196       21.3001965       19.8681198 
+     BsmtCondNum    CentralAirNum       WoodDeckSF     KitchenAbvGr    FoundationNum      LotShapeNum 
+      19.3826991       18.7252148       17.9460699       15.1855652       14.7336286       13.4000025 
+   GarageQualNum    GarageCondNum    MasVnrTypeNum      BldgTypeNum      ScreenPorch    FunctionalNum 
+      11.2178532       10.7550555       10.2874670       10.1431653        8.6715337        7.2565239 
+    ExterCondNum   LandContourNum    PavedDriveNum  BsmtFinType2Num     RoofStyleNum     BsmtHalfBath 
+       6.3375693        6.2424057        6.0782193        5.7661022        4.9930323        4.7874686 
+    LandSlopeNum    ThreeSsnPorch    EnclosedPorch    Condition1Num SaleConditionNum       BsmtFinSF2 
+       3.0711253        2.7840199        2.6292351        2.6020702        2.2135784        2.0515339 
+       StreetNum           YrSold    ElectricalNum         AlleyNum      SaleTypeNum      RoofMatlNum 
+       1.9938365        1.4531773        0.9710251        0.7580952        0.4880258        0.2177651 
+   Condition2Num     UtilitiesNum        PoolQCNum       HeatingNum     LotConfigNum   MiscFeatureNum 
+       0.1718965       -0.1117975       -0.1270152       -0.9854413       -1.0905313       -1.4034680 
+         MiscVal           MoSold     LowQualFinSF 
+      -1.6788663       -2.1072722       -4.5563159 
+
+Dropped feature:  LowQualFinSF.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"        
+[16] "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"      
+[21] "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"     
+[26] "EnclosedPorch"    "ThreeSsnPorch"    "ScreenPorch"      "MiscVal"          "MoSold"          
+[31] "YrSold"           "MSSubClassNum"    "MSZoningNum"      "StreetNum"        "AlleyNum"        
+[36] "LotShapeNum"      "LandContourNum"   "UtilitiesNum"     "LotConfigNum"     "LandSlopeNum"    
+[41] "NeighborhoodNum"  "Condition1Num"    "Condition2Num"    "BldgTypeNum"      "HouseStyleNum"   
+[46] "RoofStyleNum"     "RoofMatlNum"      "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"   
+[51] "ExterQualNum"     "ExterCondNum"     "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"     
+[56] "BsmtExposureNum"  "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingNum"       "HeatingQCNum"    
+[61] "CentralAirNum"    "ElectricalNum"    "KitchenQualNum"   "FunctionalNum"    "FireplaceQuNum"  
+[66] "GarageTypeNum"    "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"    "PavedDriveNum"   
+[71] "PoolQCNum"        "MiscFeatureNum"   "SaleTypeNum"      "SaleConditionNum"
+
+Performing cross validation for a set of 74 features.
+
+Testing mtry = 19.
+Error = 0.135152.
+
+Testing mtry = 20.
+Error = 0.1349753.
+
+Testing mtry = 21.
+Error = 0.1351431.
+
+Testing mtry = 22.
+Error = 0.1350404.
+
+Testing mtry = 23.
+Error = 0.1350989.
+
+Testing mtry = 24.
+Error = 0.1350153.
+
+Testing mtry = 25.
+Error = 0.1347307.
+
+Testing mtry = 26.
+Error = 0.1347646.
+
+Testing mtry = 27.
+Error = 0.1349296.
+
+Testing mtry = 28.
+Error = 0.1350252.
+
+Testing mtry = 29.
+Error = 0.1347084.
+
+Selected mtry:  29.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+     125.2582166       88.8106864       84.3675476       83.9875742       72.6730605       71.9310887 
+      GarageArea      SecondFlrSF          LotArea    MSSubClassNum       GarageCars      OverallCond 
+      56.4959349       54.7315336       54.2297486       51.0587794       47.8841412       46.8844963 
+  FireplaceQuNum     ExterQualNum    GarageTypeNum     YearRemodAdd        YearBuilt   KitchenQualNum 
+      40.4351603       37.0642181       36.4263971       35.9874972       34.6219458       32.9391497 
+     GarageYrBlt     TotRmsAbvGrd      MSZoningNum  BsmtExposureNum  BsmtFinType1Num        BsmtUnfSF 
+      31.6524763       30.7860672       27.8160605       27.6765834       26.7180248       26.7060253 
+      Fireplaces      BsmtQualNum         FullBath      OpenPorchSF     BsmtFullBath   Exterior1stNum 
+      26.4826477       26.0278061       25.6092834       25.0443288       24.6963948       24.1701512 
+ GarageFinishNum     BedroomAbvGr     HeatingQCNum    HouseStyleNum         HalfBath   Exterior2ndNum 
+      24.0127001       24.0013086       22.5810319       22.2173174       20.9136979       20.5843970 
+   CentralAirNum      BsmtCondNum       WoodDeckSF     KitchenAbvGr    FoundationNum    GarageQualNum 
+      18.8665373       17.9522413       17.6553238       16.8526194       15.3149408       12.1794638 
+     LotShapeNum    MasVnrTypeNum    GarageCondNum      BldgTypeNum      ScreenPorch     ExterCondNum 
+      11.9620376       11.0680705       10.1844315        8.8461804        7.6634586        6.2862724 
+   FunctionalNum    PavedDriveNum   LandContourNum     RoofStyleNum     BsmtHalfBath  BsmtFinType2Num 
+       5.2744311        5.1764683        5.1263083        4.6110022        4.5532574        4.0730980 
+   Condition1Num       BsmtFinSF2    EnclosedPorch        StreetNum    ThreeSsnPorch SaleConditionNum 
+       3.9812453        3.8638007        3.6804718        2.7669698        2.3806135        1.8675119 
+    LotConfigNum         AlleyNum      RoofMatlNum     LandSlopeNum    ElectricalNum      SaleTypeNum 
+       1.6648096        1.4611119        1.4537473        1.1958277        0.7555062        0.7065855 
+       PoolQCNum          MiscVal           YrSold    Condition2Num           MoSold       HeatingNum 
+       0.4908494        0.3904654        0.3704429       -0.3785020       -0.7092671       -1.4360563 
+    UtilitiesNum   MiscFeatureNum 
+      -2.4929884       -2.6470616 
+
+Dropped feature:  MiscFeatureNum.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"        
+[16] "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"      
+[21] "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"     
+[26] "EnclosedPorch"    "ThreeSsnPorch"    "ScreenPorch"      "MiscVal"          "MoSold"          
+[31] "YrSold"           "MSSubClassNum"    "MSZoningNum"      "StreetNum"        "AlleyNum"        
+[36] "LotShapeNum"      "LandContourNum"   "UtilitiesNum"     "LotConfigNum"     "LandSlopeNum"    
+[41] "NeighborhoodNum"  "Condition1Num"    "Condition2Num"    "BldgTypeNum"      "HouseStyleNum"   
+[46] "RoofStyleNum"     "RoofMatlNum"      "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"   
+[51] "ExterQualNum"     "ExterCondNum"     "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"     
+[56] "BsmtExposureNum"  "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingNum"       "HeatingQCNum"    
+[61] "CentralAirNum"    "ElectricalNum"    "KitchenQualNum"   "FunctionalNum"    "FireplaceQuNum"  
+[66] "GarageTypeNum"    "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"    "PavedDriveNum"   
+[71] "PoolQCNum"        "SaleTypeNum"      "SaleConditionNum"
+
+Performing cross validation for a set of 73 features.
+
+Testing mtry = 19.
+Error = 0.1349298.
+
+Testing mtry = 20.
+Error = 0.134694.
+
+Testing mtry = 21.
+Error = 0.1349439.
+
+Testing mtry = 22.
+Error = 0.1350134.
+
+Testing mtry = 23.
+Error = 0.1348004.
+
+Testing mtry = 24.
+Error = 0.1348983.
+
+Testing mtry = 25.
+Error = 0.1348638.
+
+Testing mtry = 26.
+Error = 0.1348953.
+
+Testing mtry = 27.
+Error = 0.1348421.
+
+Testing mtry = 28.
+Error = 0.134965.
+
+Testing mtry = 29.
+Error = 0.1345559.
+
+Selected mtry:  29.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      OverallQual      TotalBsmtSF       BsmtFinSF1       FirstFlrSF 
+    130.79833781      91.79381154      85.77714514      84.92057130      70.74215568      70.40582284 
+         LotArea       GarageArea      SecondFlrSF    MSSubClassNum       GarageCars      OverallCond 
+     56.20431275      55.01758136      53.79590688      50.82905897      46.36156701      44.55743534 
+  FireplaceQuNum    GarageTypeNum     ExterQualNum     YearRemodAdd        YearBuilt   KitchenQualNum 
+     38.70527093      38.15006968      37.34177102      35.65614219      33.56435037      33.26059721 
+     GarageYrBlt  BsmtFinType1Num     TotRmsAbvGrd        BsmtUnfSF  BsmtExposureNum      MSZoningNum 
+     31.84399646      29.81895132      28.99331100      28.57492129      27.36143865      27.34843621 
+    BsmtFullBath      OpenPorchSF      BsmtQualNum         FullBath   Exterior1stNum       Fireplaces 
+     27.19166675      26.78307275      25.84007507      25.48044193      25.46686316      25.22370774 
+ GarageFinishNum     BedroomAbvGr    HouseStyleNum   Exterior2ndNum     HeatingQCNum      BsmtCondNum 
+     24.20415982      23.87014134      22.77916618      20.97653863      20.13035600      19.07880592 
+        HalfBath     KitchenAbvGr       WoodDeckSF    CentralAirNum    FoundationNum      LotShapeNum 
+     19.01939498      18.26881561      18.15623919      18.01733070      15.68705882      12.75906483 
+   GarageQualNum    GarageCondNum    MasVnrTypeNum      ScreenPorch      BldgTypeNum    FunctionalNum 
+     11.79261872      10.08921490       9.93343654       9.72564275       9.37216175       5.62653832 
+   PavedDriveNum         AlleyNum     ExterCondNum    Condition1Num     BsmtHalfBath   LandContourNum 
+      5.17311124       4.89227347       4.79671171       4.77112114       4.70553997       4.59138674 
+   EnclosedPorch       BsmtFinSF2  BsmtFinType2Num    ElectricalNum SaleConditionNum     LotConfigNum 
+      4.31921577       4.27929784       3.88387396       3.43613195       3.31411699       3.11774579 
+    RoofStyleNum    ThreeSsnPorch        StreetNum     LandSlopeNum      RoofMatlNum           YrSold 
+      2.56596237       2.54560967       2.45567871       2.18372148       1.44715575       1.28104221 
+   Condition2Num        PoolQCNum       HeatingNum          MiscVal      SaleTypeNum           MoSold 
+      1.02831605      -0.08849029      -1.03836926      -1.12938483      -1.46689507      -2.71488711 
+    UtilitiesNum 
+     -2.81853339 
+
+Dropped feature:  UtilitiesNum.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"        
+[16] "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"      
+[21] "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"     
+[26] "EnclosedPorch"    "ThreeSsnPorch"    "ScreenPorch"      "MiscVal"          "MoSold"          
+[31] "YrSold"           "MSSubClassNum"    "MSZoningNum"      "StreetNum"        "AlleyNum"        
+[36] "LotShapeNum"      "LandContourNum"   "LotConfigNum"     "LandSlopeNum"     "NeighborhoodNum" 
+[41] "Condition1Num"    "Condition2Num"    "BldgTypeNum"      "HouseStyleNum"    "RoofStyleNum"    
+[46] "RoofMatlNum"      "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"    "ExterQualNum"    
+[51] "ExterCondNum"     "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"      "BsmtExposureNum" 
+[56] "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingNum"       "HeatingQCNum"     "CentralAirNum"   
+[61] "ElectricalNum"    "KitchenQualNum"   "FunctionalNum"    "FireplaceQuNum"   "GarageTypeNum"   
+[66] "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"    "PavedDriveNum"    "PoolQCNum"       
+[71] "SaleTypeNum"      "SaleConditionNum"
+
+Performing cross validation for a set of 72 features.
+
+Testing mtry = 19.
+Error = 0.1347798.
+
+Testing mtry = 20.
+Error = 0.1350535.
+
+Testing mtry = 21.
+Error = 0.1348975.
+
+Testing mtry = 22.
+Error = 0.1350081.
+
+Testing mtry = 23.
+Error = 0.1346031.
+
+Testing mtry = 24.
+Error = 0.1346059.
+
+Testing mtry = 25.
+Error = 0.1348644.
+
+Testing mtry = 26.
+Error = 0.1347127.
+
+Testing mtry = 27.
+Error = 0.1348234.
+
+Testing mtry = 28.
+Error = 0.1348222.
+
+Testing mtry = 29.
+Error = 0.1349031.
+
+Selected mtry:  23.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+    114.41740922      86.49269076      81.71242859      77.28389891      72.75288754      68.22647153 
+         LotArea       GarageArea      SecondFlrSF    MSSubClassNum      OverallCond       GarageCars 
+     57.43288973      55.32830296      54.44806296      52.81704391      45.73872347      43.84453048 
+  FireplaceQuNum     ExterQualNum     YearRemodAdd        YearBuilt   KitchenQualNum     TotRmsAbvGrd 
+     40.54472235      38.47145299      37.15207700      35.62440106      35.12356665      34.76778180 
+   GarageTypeNum      GarageYrBlt  BsmtFinType1Num       Fireplaces      MSZoningNum        BsmtUnfSF 
+     34.48579512      30.45256674      29.35897130      28.18922453      28.11944055      27.55179299 
+        FullBath      BsmtQualNum   Exterior1stNum     BsmtFullBath      OpenPorchSF     BedroomAbvGr 
+     26.44984295      25.72193531      25.45672204      25.40587074      25.37521739      25.14874479 
+   HouseStyleNum  GarageFinishNum  BsmtExposureNum         HalfBath     HeatingQCNum   Exterior2ndNum 
+     24.95861300      24.63532974      24.39161094      21.93917201      21.10291488      20.90595678 
+      WoodDeckSF      BsmtCondNum    CentralAirNum    FoundationNum      LotShapeNum     KitchenAbvGr 
+     18.57231484      17.74839590      17.67248705      16.52233331      15.01672308      14.77626796 
+   GarageQualNum    GarageCondNum    MasVnrTypeNum      BldgTypeNum      ScreenPorch    PavedDriveNum 
+     12.11176168      11.38903475      11.00371961      10.82416659       9.24667191       6.49583898 
+    BsmtHalfBath     ExterCondNum    FunctionalNum     RoofStyleNum    EnclosedPorch         AlleyNum 
+      5.79003759       5.55159677       5.20096404       4.25809254       4.22582963       3.66186208 
+ BsmtFinType2Num   LandContourNum    Condition1Num     LotConfigNum       BsmtFinSF2 SaleConditionNum 
+      3.48440411       3.34563378       3.29038064       3.05904520       2.85430005       2.80412050 
+       StreetNum     LandSlopeNum    ElectricalNum        PoolQCNum    ThreeSsnPorch      RoofMatlNum 
+      2.54628618       2.34504844       1.50646212       0.70696648       0.65932706       0.40977071 
+   Condition2Num           YrSold      SaleTypeNum       HeatingNum           MoSold          MiscVal 
+      0.01007321      -0.15487927      -0.43876501      -0.62216825      -0.84234792      -2.28208325 
+
+Dropped feature:  MiscVal.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"        
+[16] "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"      
+[21] "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"     
+[26] "EnclosedPorch"    "ThreeSsnPorch"    "ScreenPorch"      "MoSold"           "YrSold"          
+[31] "MSSubClassNum"    "MSZoningNum"      "StreetNum"        "AlleyNum"         "LotShapeNum"     
+[36] "LandContourNum"   "LotConfigNum"     "LandSlopeNum"     "NeighborhoodNum"  "Condition1Num"   
+[41] "Condition2Num"    "BldgTypeNum"      "HouseStyleNum"    "RoofStyleNum"     "RoofMatlNum"     
+[46] "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"    "ExterQualNum"     "ExterCondNum"    
+[51] "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"      "BsmtExposureNum"  "BsmtFinType1Num" 
+[56] "BsmtFinType2Num"  "HeatingNum"       "HeatingQCNum"     "CentralAirNum"    "ElectricalNum"   
+[61] "KitchenQualNum"   "FunctionalNum"    "FireplaceQuNum"   "GarageTypeNum"    "GarageFinishNum" 
+[66] "GarageQualNum"    "GarageCondNum"    "PavedDriveNum"    "PoolQCNum"        "SaleTypeNum"     
+[71] "SaleConditionNum"
+
+Performing cross validation for a set of 71 features.
+
+Testing mtry = 18.
+Error = 0.1351584.
+
+Testing mtry = 19.
+Error = 0.1348818.
+
+Testing mtry = 20.
+Error = 0.1350576.
+
+Testing mtry = 21.
+Error = 0.1349214.
+
+Testing mtry = 22.
+Error = 0.1346383.
+
+Testing mtry = 23.
+Error = 0.1350441.
+
+Testing mtry = 24.
+Error = 0.1347497.
+
+Testing mtry = 25.
+Error = 0.1349457.
+
+Testing mtry = 26.
+Error = 0.13457.
+
+Testing mtry = 27.
+Error = 0.134804.
+
+Testing mtry = 28.
+Error = 0.134679.
+
+Selected mtry:  26.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+     124.3646662       89.5376626       83.4502898       83.3205288       73.1609996       69.1241460 
+         LotArea       GarageArea      SecondFlrSF    MSSubClassNum       GarageCars      OverallCond 
+      56.3475741       56.0757402       55.2700427       53.4221790       47.3028288       46.1780244 
+  FireplaceQuNum    GarageTypeNum     ExterQualNum     YearRemodAdd        YearBuilt   KitchenQualNum 
+      40.2320295       37.7511956       37.6486264       35.9136093       35.0113715       34.0597348 
+    TotRmsAbvGrd      GarageYrBlt  BsmtFinType1Num        BsmtUnfSF      MSZoningNum       Fireplaces 
+      31.0520983       30.7543411       29.0697853       28.6315392       27.5555570       27.2156412 
+     OpenPorchSF      BsmtQualNum     BedroomAbvGr         FullBath  BsmtExposureNum   Exterior1stNum 
+      26.7396856       26.4755550       25.6925227       25.5024504       25.1618252       24.9226736 
+    BsmtFullBath  GarageFinishNum    HouseStyleNum         HalfBath     HeatingQCNum   Exterior2ndNum 
+      24.7914808       23.8789115       23.3549978       22.2923083       21.9450339       19.9245689 
+      WoodDeckSF      BsmtCondNum    CentralAirNum     KitchenAbvGr    FoundationNum      LotShapeNum 
+      18.8510586       18.6963570       17.7771998       15.8971968       14.5260284       12.6909618 
+   MasVnrTypeNum    GarageQualNum      BldgTypeNum    GarageCondNum      ScreenPorch     ExterCondNum 
+      12.5423993       12.1678765       10.8346260       10.2666789        9.3464355        5.4592255 
+    RoofStyleNum  BsmtFinType2Num   LandContourNum    FunctionalNum    PavedDriveNum    EnclosedPorch 
+       5.3508113        4.7891429        4.7206821        4.7048243        4.3196533        4.3158672 
+    BsmtHalfBath    Condition1Num SaleConditionNum       BsmtFinSF2         AlleyNum    Condition2Num 
+       4.2811910        4.2271560        3.3117839        2.7106440        2.1126983        1.6966779 
+   ElectricalNum     LandSlopeNum    ThreeSsnPorch        PoolQCNum     LotConfigNum        StreetNum 
+       1.5921165        1.4201107        1.4079773        1.2901420        1.0066552        0.8681949 
+      HeatingNum      SaleTypeNum      RoofMatlNum           MoSold           YrSold 
+      -0.5195336       -0.8798753       -1.2630224       -1.7881471       -2.4629122 
+
+Dropped feature:  YrSold.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"        
+[16] "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"      
+[21] "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"     
+[26] "EnclosedPorch"    "ThreeSsnPorch"    "ScreenPorch"      "MoSold"           "MSSubClassNum"   
+[31] "MSZoningNum"      "StreetNum"        "AlleyNum"         "LotShapeNum"      "LandContourNum"  
+[36] "LotConfigNum"     "LandSlopeNum"     "NeighborhoodNum"  "Condition1Num"    "Condition2Num"   
+[41] "BldgTypeNum"      "HouseStyleNum"    "RoofStyleNum"     "RoofMatlNum"      "Exterior1stNum"  
+[46] "Exterior2ndNum"   "MasVnrTypeNum"    "ExterQualNum"     "ExterCondNum"     "FoundationNum"   
+[51] "BsmtQualNum"      "BsmtCondNum"      "BsmtExposureNum"  "BsmtFinType1Num"  "BsmtFinType2Num" 
+[56] "HeatingNum"       "HeatingQCNum"     "CentralAirNum"    "ElectricalNum"    "KitchenQualNum"  
+[61] "FunctionalNum"    "FireplaceQuNum"   "GarageTypeNum"    "GarageFinishNum"  "GarageQualNum"   
+[66] "GarageCondNum"    "PavedDriveNum"    "PoolQCNum"        "SaleTypeNum"      "SaleConditionNum"
+
+Performing cross validation for a set of 70 features.
+
+Testing mtry = 18.
+Error = 0.1348227.
+
+Testing mtry = 19.
+Error = 0.1347451.
+
+Testing mtry = 20.
+Error = 0.1345957.
+
+Testing mtry = 21.
+Error = 0.134597.
+
+Testing mtry = 22.
+Error = 0.1349222.
+
+Testing mtry = 23.
+Error = 0.1349558.
+
+Testing mtry = 24.
+Error = 0.1347442.
+
+Testing mtry = 25.
+Error = 0.1348257.
+
+Testing mtry = 26.
+Error = 0.1350506.
+
+Testing mtry = 27.
+Error = 0.1347931.
+
+Testing mtry = 28.
+Error = 0.1348714.
+
+Selected mtry:  20.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF       FirstFlrSF      OverallQual       BsmtFinSF1 
+     113.1193808       82.8302867       77.9745319       75.5058812       74.8857590       66.3710048 
+         LotArea      SecondFlrSF       GarageArea    MSSubClassNum       GarageCars      OverallCond 
+      57.7571437       57.2410537       54.6382427       53.5530093       45.4917894       44.4345670 
+  FireplaceQuNum     ExterQualNum   KitchenQualNum        YearBuilt     YearRemodAdd     TotRmsAbvGrd 
+      41.5418128       39.0777640       36.1843349       35.9657844       35.6402230       34.8561505 
+   GarageTypeNum       Fireplaces  BsmtFinType1Num      MSZoningNum      GarageYrBlt  BsmtExposureNum 
+      34.7334777       29.0175389       28.0873232       27.9097446       27.8423104       27.6800228 
+     BsmtQualNum         FullBath      OpenPorchSF     BsmtFullBath        BsmtUnfSF   Exterior1stNum 
+      27.4870400       27.3108139       26.9115540       26.9008682       26.6826825       26.2536093 
+    BedroomAbvGr    HouseStyleNum  GarageFinishNum   Exterior2ndNum         HalfBath     HeatingQCNum 
+      25.2303320       25.0024365       24.4896120       22.6441383       22.5320922       19.4290555 
+     BsmtCondNum       WoodDeckSF    CentralAirNum    FoundationNum     KitchenAbvGr      LotShapeNum 
+      18.2059376       18.1688642       16.9737961       15.0495600       14.7487202       12.9578984 
+   GarageQualNum    MasVnrTypeNum    GarageCondNum      ScreenPorch      BldgTypeNum   LandContourNum 
+      12.8260485       12.3125401       10.4073066        9.0446599        7.5807680        7.3431208 
+   FunctionalNum  BsmtFinType2Num     BsmtHalfBath     RoofStyleNum    PavedDriveNum     ExterCondNum 
+       5.9106207        4.7722927        4.6640862        4.6420323        4.5543200        4.4769439 
+        AlleyNum       BsmtFinSF2    Condition1Num    EnclosedPorch    ElectricalNum SaleConditionNum 
+       4.1020270        3.8994068        3.0426783        2.9215382        2.7587130        2.7005981 
+    LandSlopeNum     LotConfigNum        PoolQCNum        StreetNum    Condition2Num      RoofMatlNum 
+       2.1267626        1.5773069        1.2517441        0.8431681        0.6650115        0.3902705 
+   ThreeSsnPorch      SaleTypeNum       HeatingNum           MoSold 
+      -0.3309106       -0.4067915       -0.4904639       -2.6367319 
+
+Dropped feature:  MoSold.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"        
+[16] "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"      
+[21] "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"     
+[26] "EnclosedPorch"    "ThreeSsnPorch"    "ScreenPorch"      "MSSubClassNum"    "MSZoningNum"     
+[31] "StreetNum"        "AlleyNum"         "LotShapeNum"      "LandContourNum"   "LotConfigNum"    
+[36] "LandSlopeNum"     "NeighborhoodNum"  "Condition1Num"    "Condition2Num"    "BldgTypeNum"     
+[41] "HouseStyleNum"    "RoofStyleNum"     "RoofMatlNum"      "Exterior1stNum"   "Exterior2ndNum"  
+[46] "MasVnrTypeNum"    "ExterQualNum"     "ExterCondNum"     "FoundationNum"    "BsmtQualNum"     
+[51] "BsmtCondNum"      "BsmtExposureNum"  "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingNum"      
+[56] "HeatingQCNum"     "CentralAirNum"    "ElectricalNum"    "KitchenQualNum"   "FunctionalNum"   
+[61] "FireplaceQuNum"   "GarageTypeNum"    "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"   
+[66] "PavedDriveNum"    "PoolQCNum"        "SaleTypeNum"      "SaleConditionNum"
+
+Performing cross validation for a set of 69 features.
+
+Testing mtry = 18.
+Error = 0.1347347.
+
+Testing mtry = 19.
+Error = 0.1348748.
+
+Testing mtry = 20.
+Error = 0.1346553.
+
+Testing mtry = 21.
+Error = 0.1347863.
+
+Testing mtry = 22.
+Error = 0.134518.
+
+Testing mtry = 23.
+Error = 0.1346038.
+
+Testing mtry = 24.
+Error = 0.134835.
+
+Testing mtry = 25.
+Error = 0.1347674.
+
+Testing mtry = 26.
+Error = 0.1343936.
+
+Testing mtry = 27.
+Error = 0.1344575.
+
+Testing mtry = 28.
+Error = 0.1345546.
+
+Selected mtry:  26.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      OverallQual      TotalBsmtSF       FirstFlrSF       BsmtFinSF1 
+     125.9891979       90.2718524       83.4048254       83.1374565       74.2589406       72.4536912 
+      GarageArea          LotArea      SecondFlrSF    MSSubClassNum      OverallCond       GarageCars 
+      56.5877958       56.0151738       55.9752491       52.8445923       47.1487844       46.5800970 
+  FireplaceQuNum    GarageTypeNum     ExterQualNum     YearRemodAdd   KitchenQualNum        YearBuilt 
+      40.4757676       38.6464728       37.8928161       36.8898282       34.4254425       33.3738285 
+ BsmtFinType1Num      GarageYrBlt     TotRmsAbvGrd        BsmtUnfSF      MSZoningNum       Fireplaces 
+      31.6054120       31.5910161       30.2670829       28.3835535       26.5464230       26.4750018 
+     OpenPorchSF  BsmtExposureNum      BsmtQualNum     BsmtFullBath    HouseStyleNum  GarageFinishNum 
+      26.1591168       25.8865153       25.5543453       25.3143278       24.8379053       24.8198399 
+  Exterior1stNum         FullBath     BedroomAbvGr         HalfBath   Exterior2ndNum     HeatingQCNum 
+      24.6063299       24.4526008       23.5686618       20.6439509       19.8034271       19.5618472 
+     BsmtCondNum       WoodDeckSF    FoundationNum    CentralAirNum     KitchenAbvGr      LotShapeNum 
+      19.2412884       18.6020861       18.1115924       18.0978835       16.0414055       13.2781201 
+   GarageQualNum    GarageCondNum      ScreenPorch      BldgTypeNum    MasVnrTypeNum   LandContourNum 
+      12.0751482       10.8890598       10.7782423       10.7768119       10.5710051        6.4978995 
+    ExterCondNum    FunctionalNum  BsmtFinType2Num    PavedDriveNum    ElectricalNum     BsmtHalfBath 
+       6.3805480        6.2268280        4.8514806        4.0823244        3.7765895        3.6863327 
+    RoofStyleNum    Condition1Num    EnclosedPorch     LotConfigNum       BsmtFinSF2         AlleyNum 
+       3.6067642        3.3879801        3.0608529        2.6587999        2.5718552        2.3551981 
+SaleConditionNum        StreetNum     LandSlopeNum    Condition2Num    ThreeSsnPorch       HeatingNum 
+       2.0417299        2.0008608        1.7168041        1.4762287        1.2306799        1.1806986 
+       PoolQCNum      SaleTypeNum      RoofMatlNum 
+       0.9258349       -1.3923700       -1.9323056 
+
+Dropped feature:  RoofMatlNum.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"        
+[16] "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"      
+[21] "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"     
+[26] "EnclosedPorch"    "ThreeSsnPorch"    "ScreenPorch"      "MSSubClassNum"    "MSZoningNum"     
+[31] "StreetNum"        "AlleyNum"         "LotShapeNum"      "LandContourNum"   "LotConfigNum"    
+[36] "LandSlopeNum"     "NeighborhoodNum"  "Condition1Num"    "Condition2Num"    "BldgTypeNum"     
+[41] "HouseStyleNum"    "RoofStyleNum"     "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"   
+[46] "ExterQualNum"     "ExterCondNum"     "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"     
+[51] "BsmtExposureNum"  "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingNum"       "HeatingQCNum"    
+[56] "CentralAirNum"    "ElectricalNum"    "KitchenQualNum"   "FunctionalNum"    "FireplaceQuNum"  
+[61] "GarageTypeNum"    "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"    "PavedDriveNum"   
+[66] "PoolQCNum"        "SaleTypeNum"      "SaleConditionNum"
+
+Performing cross validation for a set of 68 features.
+
+Testing mtry = 17.
+Error = 0.1347815.
+
+Testing mtry = 18.
+Error = 0.1347835.
+
+Testing mtry = 19.
+Error = 0.1347417.
+
+Testing mtry = 20.
+Error = 0.1344534.
+
+Testing mtry = 21.
+Error = 0.134433.
+
+Testing mtry = 22.
+Error = 0.1345887.
+
+Testing mtry = 23.
+Error = 0.134515.
+
+Testing mtry = 24.
+Error = 0.1343846.
+
+Testing mtry = 25.
+Error = 0.134496.
+
+Testing mtry = 26.
+Error = 0.134643.
+
+Testing mtry = 27.
+Error = 0.1344385.
+
+Selected mtry:  24.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+     120.6433367       87.2584289       82.8534197       82.2887455       74.9911531       67.2428483 
+         LotArea      SecondFlrSF       GarageArea    MSSubClassNum      OverallCond       GarageCars 
+      57.4080735       56.5319261       56.2175671       51.6541333       47.8854196       43.2941165 
+  FireplaceQuNum    GarageTypeNum     ExterQualNum     YearRemodAdd        YearBuilt   KitchenQualNum 
+      39.8405966       37.3382469       36.5439570       36.1094792       35.3883518       34.7218056 
+     GarageYrBlt     TotRmsAbvGrd        BsmtUnfSF  BsmtFinType1Num       Fireplaces  BsmtExposureNum 
+      31.3241568       30.6036601       28.3405424       28.1282807       27.9839157       27.9522922 
+        FullBath      OpenPorchSF      MSZoningNum   Exterior1stNum     BedroomAbvGr      BsmtQualNum 
+      26.9935980       26.9727344       26.7829017       26.3024068       25.9158796       25.8202550 
+   HouseStyleNum  GarageFinishNum     BsmtFullBath         HalfBath     HeatingQCNum      BsmtCondNum 
+      24.2553815       23.6930467       23.5258808       21.9822293       20.6343594       20.3258252 
+      WoodDeckSF   Exterior2ndNum    CentralAirNum    FoundationNum     KitchenAbvGr      LotShapeNum 
+      19.8796193       19.7919456       18.7817857       16.2313851       15.7596782       13.2091625 
+   GarageQualNum    GarageCondNum      ScreenPorch    MasVnrTypeNum      BldgTypeNum   LandContourNum 
+      12.8097254       11.1877615       10.4371835       10.2858584       10.1627840        5.8654545 
+   FunctionalNum    PavedDriveNum     ExterCondNum  BsmtFinType2Num    Condition1Num     RoofStyleNum 
+       5.7592753        5.7067842        5.4584863        4.9427881        4.4309752        4.4293368 
+    BsmtHalfBath SaleConditionNum     LandSlopeNum    EnclosedPorch    ThreeSsnPorch         AlleyNum 
+       4.0613442        3.0006067        2.9593183        2.1504042        2.0366936        1.9815272 
+    LotConfigNum        StreetNum       BsmtFinSF2        PoolQCNum       HeatingNum      SaleTypeNum 
+       1.8162247        1.5717117        1.5681164        1.2933391        0.7403300        0.4792430 
+   ElectricalNum    Condition2Num 
+       0.4363871        0.1992051 
+
+Dropped feature:  Condition2Num.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"        
+[16] "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"      
+[21] "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"     
+[26] "EnclosedPorch"    "ThreeSsnPorch"    "ScreenPorch"      "MSSubClassNum"    "MSZoningNum"     
+[31] "StreetNum"        "AlleyNum"         "LotShapeNum"      "LandContourNum"   "LotConfigNum"    
+[36] "LandSlopeNum"     "NeighborhoodNum"  "Condition1Num"    "BldgTypeNum"      "HouseStyleNum"   
+[41] "RoofStyleNum"     "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"    "ExterQualNum"    
+[46] "ExterCondNum"     "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"      "BsmtExposureNum" 
+[51] "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingNum"       "HeatingQCNum"     "CentralAirNum"   
+[56] "ElectricalNum"    "KitchenQualNum"   "FunctionalNum"    "FireplaceQuNum"   "GarageTypeNum"   
+[61] "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"    "PavedDriveNum"    "PoolQCNum"       
+[66] "SaleTypeNum"      "SaleConditionNum"
+
+Performing cross validation for a set of 67 features.
+
+Testing mtry = 17.
+Error = 0.1347756.
+
+Testing mtry = 18.
+Error = 0.1346971.
+
+Testing mtry = 19.
+Error = 0.134493.
+
+Testing mtry = 20.
+Error = 0.1343756.
+
+Testing mtry = 21.
+Error = 0.1344791.
+
+Testing mtry = 22.
+Error = 0.1345714.
+
+Testing mtry = 23.
+Error = 0.1340504.
+
+Testing mtry = 24.
+Error = 0.134223.
+
+Testing mtry = 25.
+Error = 0.1342741.
+
+Testing mtry = 26.
+Error = 0.134322.
+
+Testing mtry = 27.
+Error = 0.1343146.
+
+Selected mtry:  23.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+     120.0672421       87.2005898       82.7450828       80.1700592       75.4128924       70.1060404 
+      GarageArea          LotArea      SecondFlrSF    MSSubClassNum       GarageCars      OverallCond 
+      57.9281796       57.3804618       55.6992054       54.2087661       45.1901260       44.5949016 
+  FireplaceQuNum    GarageTypeNum     ExterQualNum        YearBuilt   KitchenQualNum     YearRemodAdd 
+      42.0095973       38.8075810       38.3024403       35.8540962       35.5037295       35.0482278 
+    TotRmsAbvGrd      GarageYrBlt  BsmtFinType1Num      MSZoningNum        BsmtUnfSF       Fireplaces 
+      32.8912013       30.6173561       29.6529999       28.5211556       27.9590573       27.3345600 
+  Exterior1stNum      BsmtQualNum         FullBath  BsmtExposureNum     BedroomAbvGr      OpenPorchSF 
+      27.1262599       26.3864997       26.1980732       26.1679918       26.0102503       25.3856977 
+ GarageFinishNum     BsmtFullBath         HalfBath    HouseStyleNum     HeatingQCNum      BsmtCondNum 
+      25.1876639       24.8899450       23.3488721       22.6776770       21.2986808       20.0831025 
+      WoodDeckSF    CentralAirNum   Exterior2ndNum     KitchenAbvGr      LotShapeNum    FoundationNum 
+      18.9495995       18.2466836       17.3252533       15.5301133       15.1446019       14.1740042 
+   MasVnrTypeNum    GarageQualNum    GarageCondNum      BldgTypeNum      ScreenPorch   LandContourNum 
+      11.5759313       10.9864552       10.2456462        9.0119591        8.8954485        6.5216566 
+    ExterCondNum    FunctionalNum     RoofStyleNum  BsmtFinType2Num     BsmtHalfBath    PavedDriveNum 
+       6.5063582        5.8620654        5.2942217        4.3958659        4.1898978        4.1009112 
+       StreetNum    EnclosedPorch    Condition1Num     LotConfigNum SaleConditionNum     LandSlopeNum 
+       3.9892508        3.6825935        2.5943222        2.4410296        2.3484689        1.8047060 
+        AlleyNum       BsmtFinSF2    ElectricalNum        PoolQCNum       HeatingNum    ThreeSsnPorch 
+       1.7921823        1.5918734        1.4669733        1.0400318        0.2801010       -0.6201592 
+     SaleTypeNum 
+      -1.8692251 
+
+Dropped feature:  SaleTypeNum.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"        
+[16] "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"      
+[21] "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"     
+[26] "EnclosedPorch"    "ThreeSsnPorch"    "ScreenPorch"      "MSSubClassNum"    "MSZoningNum"     
+[31] "StreetNum"        "AlleyNum"         "LotShapeNum"      "LandContourNum"   "LotConfigNum"    
+[36] "LandSlopeNum"     "NeighborhoodNum"  "Condition1Num"    "BldgTypeNum"      "HouseStyleNum"   
+[41] "RoofStyleNum"     "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"    "ExterQualNum"    
+[46] "ExterCondNum"     "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"      "BsmtExposureNum" 
+[51] "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingNum"       "HeatingQCNum"     "CentralAirNum"   
+[56] "ElectricalNum"    "KitchenQualNum"   "FunctionalNum"    "FireplaceQuNum"   "GarageTypeNum"   
+[61] "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"    "PavedDriveNum"    "PoolQCNum"       
+[66] "SaleConditionNum"
+
+Performing cross validation for a set of 66 features.
+
+Testing mtry = 17.
+Error = 0.134512.
+
+Testing mtry = 18.
+Error = 0.1343812.
+
+Testing mtry = 19.
+Error = 0.1343068.
+
+Testing mtry = 20.
+Error = 0.1345407.
+
+Testing mtry = 21.
+Error = 0.1343872.
+
+Testing mtry = 22.
+Error = 0.1341367.
+
+Testing mtry = 23.
+Error = 0.1344095.
+
+Testing mtry = 24.
+Error = 0.1345624.
+
+Testing mtry = 25.
+Error = 0.1344426.
+
+Testing mtry = 26.
+Error = 0.1346283.
+
+Testing mtry = 27.
+Error = 0.1344036.
+
+Selected mtry:  22.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+    117.13111529      85.34998904      80.84758298      79.18848523      74.22513066      67.92075062 
+         LotArea      SecondFlrSF       GarageArea    MSSubClassNum      OverallCond       GarageCars 
+     56.58967765      55.99951109      54.03833348      53.97263193      46.62397594      44.93960793 
+  FireplaceQuNum     ExterQualNum     YearRemodAdd        YearBuilt    GarageTypeNum   KitchenQualNum 
+     40.77867903      38.81194673      38.78961060      35.55322161      35.29768092      34.87867148 
+    TotRmsAbvGrd      GarageYrBlt  BsmtFinType1Num  BsmtExposureNum        BsmtUnfSF       Fireplaces 
+     33.38990362      30.59720835      30.58709521      28.82473859      28.38212457      28.14339593 
+     MSZoningNum         FullBath      OpenPorchSF      BsmtQualNum   Exterior1stNum     BedroomAbvGr 
+     27.98735737      26.56895401      26.17543351      25.95671711      25.58599647      25.03107569 
+    BsmtFullBath    HouseStyleNum  GarageFinishNum   Exterior2ndNum         HalfBath     HeatingQCNum 
+     24.80753139      24.38035516      23.20265736      22.90967765      22.13840943      20.52107576 
+     BsmtCondNum       WoodDeckSF    FoundationNum    CentralAirNum     KitchenAbvGr      LotShapeNum 
+     18.41644738      17.53897622      17.15862331      16.88548041      15.44568250      14.63370970 
+   MasVnrTypeNum    GarageQualNum    GarageCondNum      BldgTypeNum      ScreenPorch   LandContourNum 
+     12.36109554      12.08056985       9.98029492       9.94295035       9.09040717       7.60419951 
+    ExterCondNum    FunctionalNum  BsmtFinType2Num    PavedDriveNum         AlleyNum    Condition1Num 
+      6.26753245       5.23594497       4.68254612       4.56289779       4.38962875       4.26519945 
+SaleConditionNum        StreetNum    EnclosedPorch     BsmtHalfBath    ElectricalNum     RoofStyleNum 
+      4.08457319       3.64876150       3.55511224       3.16940387       3.14531310       2.20649372 
+    LandSlopeNum     LotConfigNum    ThreeSsnPorch       BsmtFinSF2       HeatingNum        PoolQCNum 
+      1.54696528       1.07679277       0.33817949       0.04124393      -0.82451940      -0.92637669 
+
+Dropped feature:  PoolQCNum.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"        
+[16] "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"      
+[21] "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"     
+[26] "EnclosedPorch"    "ThreeSsnPorch"    "ScreenPorch"      "MSSubClassNum"    "MSZoningNum"     
+[31] "StreetNum"        "AlleyNum"         "LotShapeNum"      "LandContourNum"   "LotConfigNum"    
+[36] "LandSlopeNum"     "NeighborhoodNum"  "Condition1Num"    "BldgTypeNum"      "HouseStyleNum"   
+[41] "RoofStyleNum"     "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"    "ExterQualNum"    
+[46] "ExterCondNum"     "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"      "BsmtExposureNum" 
+[51] "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingNum"       "HeatingQCNum"     "CentralAirNum"   
+[56] "ElectricalNum"    "KitchenQualNum"   "FunctionalNum"    "FireplaceQuNum"   "GarageTypeNum"   
+[61] "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"    "PavedDriveNum"    "SaleConditionNum"
+
+Performing cross validation for a set of 65 features.
+
+Testing mtry = 16.
+Error = 0.1346886.
+
+Testing mtry = 17.
+Error = 0.1343271.
+
+Testing mtry = 18.
+Error = 0.1345301.
+
+Testing mtry = 19.
+Error = 0.1342837.
+
+Testing mtry = 20.
+Error = 0.1345073.
+
+Testing mtry = 21.
+Error = 0.1345137.
+
+Testing mtry = 22.
+Error = 0.1343639.
+
+Testing mtry = 23.
+Error = 0.1343221.
+
+Testing mtry = 24.
+Error = 0.1342648.
+
+Testing mtry = 25.
+Error = 0.1341962.
+
+Testing mtry = 26.
+Error = 0.1341732.
+
+Selected mtry:  26.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+     129.8823755       90.3959015       87.3287838       86.0929760       72.9545457       72.8734438 
+         LotArea       GarageArea      SecondFlrSF    MSSubClassNum      OverallCond       GarageCars 
+      56.6387328       55.8589065       54.7748768       53.6803813       47.4596109       47.1119482 
+  FireplaceQuNum     ExterQualNum     YearRemodAdd    GarageTypeNum        YearBuilt   KitchenQualNum 
+      38.8134135       37.2122691       37.0525827       36.3985931       33.7853472       32.6588390 
+     GarageYrBlt  BsmtFinType1Num        BsmtUnfSF     TotRmsAbvGrd  BsmtExposureNum      MSZoningNum 
+      31.4990381       29.6357779       29.5973849       29.5840373       28.0968335       28.0935250 
+     BsmtQualNum         FullBath   Exterior1stNum      OpenPorchSF     BsmtFullBath  GarageFinishNum 
+      26.5659610       26.2613691       25.9153189       25.8384904       25.8213267       25.4005416 
+    BedroomAbvGr       Fireplaces    HouseStyleNum     HeatingQCNum         HalfBath   Exterior2ndNum 
+      24.8284277       24.6827355       22.3591753       21.5947002       20.8813834       20.7762520 
+   CentralAirNum       WoodDeckSF      BsmtCondNum     KitchenAbvGr    FoundationNum      LotShapeNum 
+      19.9390248       19.6159489       19.2897127       16.5821772       16.5237081       14.3059870 
+   GarageQualNum    MasVnrTypeNum    GarageCondNum      ScreenPorch      BldgTypeNum     ExterCondNum 
+      12.7727436       10.4972022       10.4766777        8.6514833        8.5325452        7.8872357 
+  LandContourNum     RoofStyleNum    FunctionalNum    PavedDriveNum     BsmtHalfBath    Condition1Num 
+       6.7314054        5.7524832        4.9385545        4.4674256        4.2348049        4.1473455 
+ BsmtFinType2Num    EnclosedPorch        StreetNum    ElectricalNum         AlleyNum     LandSlopeNum 
+       3.7758032        3.2816487        3.2670388        3.1866518        2.8828501        2.8719957 
+SaleConditionNum    ThreeSsnPorch       BsmtFinSF2     LotConfigNum       HeatingNum 
+       2.7389775        2.2873734        1.7948510        1.7575578       -0.9873768 
+
+Dropped feature:  HeatingNum.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"        
+[16] "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"      
+[21] "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"     
+[26] "EnclosedPorch"    "ThreeSsnPorch"    "ScreenPorch"      "MSSubClassNum"    "MSZoningNum"     
+[31] "StreetNum"        "AlleyNum"         "LotShapeNum"      "LandContourNum"   "LotConfigNum"    
+[36] "LandSlopeNum"     "NeighborhoodNum"  "Condition1Num"    "BldgTypeNum"      "HouseStyleNum"   
+[41] "RoofStyleNum"     "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"    "ExterQualNum"    
+[46] "ExterCondNum"     "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"      "BsmtExposureNum" 
+[51] "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingQCNum"     "CentralAirNum"    "ElectricalNum"   
+[56] "KitchenQualNum"   "FunctionalNum"    "FireplaceQuNum"   "GarageTypeNum"    "GarageFinishNum" 
+[61] "GarageQualNum"    "GarageCondNum"    "PavedDriveNum"    "SaleConditionNum"
+
+Performing cross validation for a set of 64 features.
+
+Testing mtry = 16.
+Error = 0.1346258.
+
+Testing mtry = 17.
+Error = 0.1344165.
+
+Testing mtry = 18.
+Error = 0.134216.
+
+Testing mtry = 19.
+Error = 0.1342276.
+
+Testing mtry = 20.
+Error = 0.134165.
+
+Testing mtry = 21.
+Error = 0.1342811.
+
+Testing mtry = 22.
+Error = 0.1343307.
+
+Testing mtry = 23.
+Error = 0.1345323.
+
+Testing mtry = 24.
+Error = 0.1345055.
+
+Testing mtry = 25.
+Error = 0.1343953.
+
+Testing mtry = 26.
+Error = 0.1343866.
+
+Selected mtry:  20.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+    117.93044887      84.77486137      81.44958940      78.09499936      75.19715660      68.80153397 
+     SecondFlrSF          LotArea       GarageArea    MSSubClassNum      OverallCond       GarageCars 
+     58.05476945      57.37942645      56.47552488      54.03561824      47.30839985      45.03192054 
+  FireplaceQuNum     ExterQualNum     YearRemodAdd    GarageTypeNum   KitchenQualNum        YearBuilt 
+     42.64587242      39.43280425      37.09396865      36.14292419      35.95254137      35.81387325 
+    TotRmsAbvGrd      GarageYrBlt  BsmtFinType1Num      MSZoningNum       Fireplaces   Exterior1stNum 
+     33.12909963      31.26185555      30.23190324      29.02401204      28.99153162      27.67894757 
+       BsmtUnfSF      OpenPorchSF         FullBath     BedroomAbvGr      BsmtQualNum  BsmtExposureNum 
+     27.54036724      27.53468859      27.31916569      26.52148623      26.18814779      26.02641860 
+    BsmtFullBath  GarageFinishNum    HouseStyleNum   Exterior2ndNum         HalfBath     HeatingQCNum 
+     25.41334731      25.09376726      25.00946137      23.19057784      21.98280599      21.30490214 
+      WoodDeckSF    CentralAirNum      BsmtCondNum    FoundationNum     KitchenAbvGr      LotShapeNum 
+     18.76874169      18.71099154      18.08121684      15.57411124      14.29097811      13.81387671 
+   MasVnrTypeNum    GarageCondNum    GarageQualNum      BldgTypeNum      ScreenPorch   LandContourNum 
+     12.11392062      11.80500834      11.44203753      10.15673896       9.60795222       7.37601414 
+    ExterCondNum    FunctionalNum    EnclosedPorch    PavedDriveNum  BsmtFinType2Num     BsmtHalfBath 
+      5.77516365       5.77048697       5.45025556       5.31297095       5.23954824       4.78124402 
+    LandSlopeNum       BsmtFinSF2    Condition1Num     RoofStyleNum         AlleyNum SaleConditionNum 
+      4.02181743       3.92244975       3.77182122       3.30004474       3.04216388       2.84793712 
+       StreetNum    ThreeSsnPorch    ElectricalNum     LotConfigNum 
+      1.65811200       1.32764595       1.22461483       0.08235419 
+
+Dropped feature:  LotConfigNum.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"        
+[16] "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"      
+[21] "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"     
+[26] "EnclosedPorch"    "ThreeSsnPorch"    "ScreenPorch"      "MSSubClassNum"    "MSZoningNum"     
+[31] "StreetNum"        "AlleyNum"         "LotShapeNum"      "LandContourNum"   "LandSlopeNum"    
+[36] "NeighborhoodNum"  "Condition1Num"    "BldgTypeNum"      "HouseStyleNum"    "RoofStyleNum"    
+[41] "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"    "ExterQualNum"     "ExterCondNum"    
+[46] "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"      "BsmtExposureNum"  "BsmtFinType1Num" 
+[51] "BsmtFinType2Num"  "HeatingQCNum"     "CentralAirNum"    "ElectricalNum"    "KitchenQualNum"  
+[56] "FunctionalNum"    "FireplaceQuNum"   "GarageTypeNum"    "GarageFinishNum"  "GarageQualNum"   
+[61] "GarageCondNum"    "PavedDriveNum"    "SaleConditionNum"
+
+Performing cross validation for a set of 63 features.
+
+Testing mtry = 16.
+Error = 0.1343838.
+
+Testing mtry = 17.
+Error = 0.1342098.
+
+Testing mtry = 18.
+Error = 0.1343758.
+
+Testing mtry = 19.
+Error = 0.1340702.
+
+Testing mtry = 20.
+Error = 0.1344353.
+
+Testing mtry = 21.
+Error = 0.13393.
+
+Testing mtry = 22.
+Error = 0.1344658.
+
+Testing mtry = 23.
+Error = 0.134476.
+
+Testing mtry = 24.
+Error = 0.13379.
+
+Testing mtry = 25.
+Error = 0.1341486.
+
+Testing mtry = 26.
+Error = 0.1342892.
+
+Selected mtry:  24.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+     127.5032501       91.5868749       85.7840985       84.3335503       75.6467371       72.6310684 
+      GarageArea      SecondFlrSF          LotArea    MSSubClassNum      OverallCond       GarageCars 
+      56.7782238       56.6347216       55.6532844       52.3052851       46.8980080       46.4834250 
+  FireplaceQuNum     ExterQualNum    GarageTypeNum   KitchenQualNum     YearRemodAdd        YearBuilt 
+      41.2252436       38.0405458       37.4510245       35.8229807       35.6298998       33.8628457 
+    TotRmsAbvGrd      GarageYrBlt  BsmtFinType1Num        BsmtUnfSF      OpenPorchSF   Exterior1stNum 
+      31.0280583       30.2190941       29.7160170       28.6695564       27.4407472       27.1906428 
+      Fireplaces      BsmtQualNum      MSZoningNum  BsmtExposureNum         FullBath     BedroomAbvGr 
+      27.1200282       26.5939816       26.3290539       26.0178758       25.5005958       24.9199736 
+    BsmtFullBath  GarageFinishNum    HouseStyleNum         HalfBath   Exterior2ndNum      BsmtCondNum 
+      24.7328494       24.4877652       23.4637617       21.9555253       21.2966470       20.0504321 
+   CentralAirNum       WoodDeckSF     HeatingQCNum    FoundationNum     KitchenAbvGr      LotShapeNum 
+      19.6496369       18.7222327       18.5789403       17.4350648       17.3985362       13.6080768 
+   GarageQualNum      ScreenPorch      BldgTypeNum    MasVnrTypeNum    GarageCondNum    PavedDriveNum 
+      12.0802012       11.8314373       10.3575425       10.0008347        9.4487030        6.0752747 
+   FunctionalNum  BsmtFinType2Num     ExterCondNum   LandContourNum    EnclosedPorch       BsmtFinSF2 
+       5.8858588        5.8332358        5.5733043        5.4742103        4.9300571        4.2246793 
+   Condition1Num SaleConditionNum     BsmtHalfBath        StreetNum    ElectricalNum     RoofStyleNum 
+       4.1861359        4.1551033        3.7980236        2.0587383        1.9946913        1.9413527 
+    LandSlopeNum         AlleyNum    ThreeSsnPorch 
+       1.8463493        0.7206674        0.7181212 
+
+Dropped feature:  ThreeSsnPorch.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"        
+[16] "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"      
+[21] "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"     
+[26] "EnclosedPorch"    "ScreenPorch"      "MSSubClassNum"    "MSZoningNum"      "StreetNum"       
+[31] "AlleyNum"         "LotShapeNum"      "LandContourNum"   "LandSlopeNum"     "NeighborhoodNum" 
+[36] "Condition1Num"    "BldgTypeNum"      "HouseStyleNum"    "RoofStyleNum"     "Exterior1stNum"  
+[41] "Exterior2ndNum"   "MasVnrTypeNum"    "ExterQualNum"     "ExterCondNum"     "FoundationNum"   
+[46] "BsmtQualNum"      "BsmtCondNum"      "BsmtExposureNum"  "BsmtFinType1Num"  "BsmtFinType2Num" 
+[51] "HeatingQCNum"     "CentralAirNum"    "ElectricalNum"    "KitchenQualNum"   "FunctionalNum"   
+[56] "FireplaceQuNum"   "GarageTypeNum"    "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"   
+[61] "PavedDriveNum"    "SaleConditionNum"
+
+Performing cross validation for a set of 62 features.
+
+Testing mtry = 15.
+Error = 0.1344771.
+
+Testing mtry = 16.
+Error = 0.1343405.
+
+Testing mtry = 17.
+Error = 0.1343288.
+
+Testing mtry = 18.
+Error = 0.1342499.
+
+Testing mtry = 19.
+Error = 0.1341538.
+
+Testing mtry = 20.
+Error = 0.1342125.
+
+Testing mtry = 21.
+Error = 0.1339195.
+
+Testing mtry = 22.
+Error = 0.1340189.
+
+Testing mtry = 23.
+Error = 0.1342593.
+
+Testing mtry = 24.
+Error = 0.134187.
+
+Testing mtry = 25.
+Error = 0.1343413.
+
+Selected mtry:  21.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+      122.860779        87.786072        80.669235        80.112148        76.413966        70.116317 
+         LotArea       GarageArea      SecondFlrSF    MSSubClassNum      OverallCond       GarageCars 
+       59.493063        58.758203        56.194009        52.637746        47.380844        44.990622 
+  FireplaceQuNum     ExterQualNum        YearBuilt    GarageTypeNum     TotRmsAbvGrd   KitchenQualNum 
+       42.351438        38.118219        35.966595        35.502089        35.355250        34.769300 
+    YearRemodAdd      GarageYrBlt        BsmtUnfSF  BsmtFinType1Num       Fireplaces      MSZoningNum 
+       34.682804        30.752863        29.073768        28.686127        27.539194        27.433434 
+        FullBath     BsmtFullBath  BsmtExposureNum   Exterior1stNum      BsmtQualNum     BedroomAbvGr 
+       27.346853        26.801343        26.605474        26.538110        26.435875        25.834953 
+     OpenPorchSF    HouseStyleNum  GarageFinishNum         HalfBath   Exterior2ndNum     HeatingQCNum 
+       25.536900        25.114430        25.082230        24.081464        23.717057        21.668016 
+     BsmtCondNum    CentralAirNum       WoodDeckSF    FoundationNum     KitchenAbvGr      LotShapeNum 
+       20.337752        19.107538        18.606951        18.139763        16.169962        15.056264 
+   GarageQualNum    MasVnrTypeNum      BldgTypeNum    GarageCondNum      ScreenPorch  BsmtFinType2Num 
+       13.308671        10.786917        10.505475         9.844557         9.694889         5.946101 
+  LandContourNum     ExterCondNum    PavedDriveNum    FunctionalNum    Condition1Num     RoofStyleNum 
+        5.555478         5.493718         5.368406         4.899855         4.793355         4.718653 
+   EnclosedPorch     BsmtHalfBath SaleConditionNum       BsmtFinSF2         AlleyNum     LandSlopeNum 
+        4.576304         3.501989         3.441290         3.120993         2.697101         2.073901 
+   ElectricalNum        StreetNum 
+        1.793087         1.485037 
+
+Dropped feature:  StreetNum.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"        
+[16] "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"      
+[21] "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"     
+[26] "EnclosedPorch"    "ScreenPorch"      "MSSubClassNum"    "MSZoningNum"      "AlleyNum"        
+[31] "LotShapeNum"      "LandContourNum"   "LandSlopeNum"     "NeighborhoodNum"  "Condition1Num"   
+[36] "BldgTypeNum"      "HouseStyleNum"    "RoofStyleNum"     "Exterior1stNum"   "Exterior2ndNum"  
+[41] "MasVnrTypeNum"    "ExterQualNum"     "ExterCondNum"     "FoundationNum"    "BsmtQualNum"     
+[46] "BsmtCondNum"      "BsmtExposureNum"  "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingQCNum"    
+[51] "CentralAirNum"    "ElectricalNum"    "KitchenQualNum"   "FunctionalNum"    "FireplaceQuNum"  
+[56] "GarageTypeNum"    "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"    "PavedDriveNum"   
+[61] "SaleConditionNum"
+
+Performing cross validation for a set of 61 features.
+
+Testing mtry = 15.
+Error = 0.1343122.
+
+Testing mtry = 16.
+Error = 0.1340853.
+
+Testing mtry = 17.
+Error = 0.1342612.
+
+Testing mtry = 18.
+Error = 0.1340049.
+
+Testing mtry = 19.
+Error = 0.1339419.
+
+Testing mtry = 20.
+Error = 0.1339607.
+
+Testing mtry = 21.
+Error = 0.1340728.
+
+Testing mtry = 22.
+Error = 0.1340201.
+
+Testing mtry = 23.
+Error = 0.1339234.
+
+Testing mtry = 24.
+Error = 0.133845.
+
+Testing mtry = 25.
+Error = 0.1343684.
+
+Selected mtry:  24.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      OverallQual      TotalBsmtSF       FirstFlrSF       BsmtFinSF1 
+      126.288250        92.502050        84.374353        83.777785        74.504140        70.995940 
+      GarageArea          LotArea      SecondFlrSF    MSSubClassNum      OverallCond       GarageCars 
+       59.070694        58.356987        54.782203        50.893174        48.250003        46.719132 
+  FireplaceQuNum     ExterQualNum     YearRemodAdd    GarageTypeNum   KitchenQualNum        YearBuilt 
+       39.799619        38.305846        37.743255        37.352799        34.611033        34.596265 
+     GarageYrBlt     TotRmsAbvGrd  BsmtFinType1Num        BsmtUnfSF  BsmtExposureNum   Exterior1stNum 
+       33.215695        31.426005        30.812268        28.140262        27.618021        27.268846 
+      Fireplaces      OpenPorchSF      MSZoningNum     BsmtFullBath      BsmtQualNum         FullBath 
+       27.183798        27.012788        26.452073        26.147254        25.573951        25.120707 
+ GarageFinishNum     BedroomAbvGr    HouseStyleNum   Exterior2ndNum     HeatingQCNum       WoodDeckSF 
+       24.858277        24.843788        23.350510        23.045027        22.229463        19.745381 
+        HalfBath      BsmtCondNum    CentralAirNum     KitchenAbvGr    FoundationNum    GarageQualNum 
+       19.685800        19.299739        17.289036        16.236487        14.002925        13.552753 
+     LotShapeNum    GarageCondNum      ScreenPorch    MasVnrTypeNum      BldgTypeNum     ExterCondNum 
+       13.100797        10.178641         9.499272         9.499219         9.019951         7.428550 
+  LandContourNum     RoofStyleNum    PavedDriveNum    FunctionalNum  BsmtFinType2Num    ElectricalNum 
+        6.656049         5.814557         5.451990         4.761683         4.621458         4.079058 
+   EnclosedPorch     BsmtHalfBath         AlleyNum    Condition1Num SaleConditionNum       BsmtFinSF2 
+        4.077080         3.962897         3.854717         3.585928         3.181208         2.839932 
+    LandSlopeNum 
+        2.362869 
+
+Dropped feature:  LandSlopeNum.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtFinSF2"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"      
+[11] "SecondFlrSF"      "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"        
+[16] "HalfBath"         "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"      
+[21] "GarageYrBlt"      "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"     
+[26] "EnclosedPorch"    "ScreenPorch"      "MSSubClassNum"    "MSZoningNum"      "AlleyNum"        
+[31] "LotShapeNum"      "LandContourNum"   "NeighborhoodNum"  "Condition1Num"    "BldgTypeNum"     
+[36] "HouseStyleNum"    "RoofStyleNum"     "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"   
+[41] "ExterQualNum"     "ExterCondNum"     "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"     
+[46] "BsmtExposureNum"  "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingQCNum"     "CentralAirNum"   
+[51] "ElectricalNum"    "KitchenQualNum"   "FunctionalNum"    "FireplaceQuNum"   "GarageTypeNum"   
+[56] "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"    "PavedDriveNum"    "SaleConditionNum"
+
+Performing cross validation for a set of 60 features.
+
+Testing mtry = 15.
+Error = 0.1341032.
+
+Testing mtry = 16.
+Error = 0.1340002.
+
+Testing mtry = 17.
+Error = 0.1339876.
+
+Testing mtry = 18.
+Error = 0.1342567.
+
+Testing mtry = 19.
+Error = 0.1339195.
+
+Testing mtry = 20.
+Error = 0.1339745.
+
+Testing mtry = 21.
+Error = 0.1340414.
+
+Testing mtry = 22.
+Error = 0.134151.
+
+Testing mtry = 23.
+Error = 0.1338819.
+
+Testing mtry = 24.
+Error = 0.1339021.
+
+Testing mtry = 25.
+Error = 0.1341933.
+
+Selected mtry:  23.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+      130.559008        90.214777        86.748692        84.402107        75.074060        71.976127 
+      GarageArea          LotArea      SecondFlrSF    MSSubClassNum       GarageCars      OverallCond 
+       58.551804        58.297427        56.649978        53.472655        47.425823        47.308199 
+  FireplaceQuNum     ExterQualNum    GarageTypeNum     YearRemodAdd        YearBuilt   KitchenQualNum 
+       39.956012        38.648057        37.724451        35.962546        35.397944        34.767614 
+     GarageYrBlt     TotRmsAbvGrd  BsmtFinType1Num      OpenPorchSF  BsmtExposureNum        BsmtUnfSF 
+       31.980664        30.732771        30.287466        28.297004        28.069712        28.027762 
+     MSZoningNum       Fireplaces      BsmtQualNum     BsmtFullBath     BedroomAbvGr         FullBath 
+       27.313968        26.609523        26.496459        26.011778        25.647870        25.603424 
+  Exterior1stNum  GarageFinishNum     HeatingQCNum    HouseStyleNum   Exterior2ndNum         HalfBath 
+       25.432689        24.103682        23.970022        23.845285        22.924946        21.999359 
+     BsmtCondNum    CentralAirNum       WoodDeckSF     KitchenAbvGr    FoundationNum      LotShapeNum 
+       20.361807        20.011501        17.654983        16.501892        15.002633        13.688645 
+   GarageQualNum    GarageCondNum    MasVnrTypeNum      ScreenPorch      BldgTypeNum     ExterCondNum 
+       11.960037        11.102592        10.706149         9.728982         9.557137         6.507989 
+  LandContourNum    Condition1Num    FunctionalNum    PavedDriveNum  BsmtFinType2Num SaleConditionNum 
+        6.198040         5.956032         5.445107         5.421646         5.236535         4.614170 
+    BsmtHalfBath    EnclosedPorch    ElectricalNum     RoofStyleNum         AlleyNum       BsmtFinSF2 
+        4.463626         3.843604         3.588782         3.358480         2.670522         1.630714 
+
+Dropped feature:  BsmtFinSF2.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"       "SecondFlrSF"     
+[11] "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"         "HalfBath"        
+[16] "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"       "GarageYrBlt"     
+[21] "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"      "EnclosedPorch"   
+[26] "ScreenPorch"      "MSSubClassNum"    "MSZoningNum"      "AlleyNum"         "LotShapeNum"     
+[31] "LandContourNum"   "NeighborhoodNum"  "Condition1Num"    "BldgTypeNum"      "HouseStyleNum"   
+[36] "RoofStyleNum"     "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"    "ExterQualNum"    
+[41] "ExterCondNum"     "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"      "BsmtExposureNum" 
+[46] "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingQCNum"     "CentralAirNum"    "ElectricalNum"   
+[51] "KitchenQualNum"   "FunctionalNum"    "FireplaceQuNum"   "GarageTypeNum"    "GarageFinishNum" 
+[56] "GarageQualNum"    "GarageCondNum"    "PavedDriveNum"    "SaleConditionNum"
+
+Performing cross validation for a set of 59 features.
+
+Testing mtry = 14.
+Error = 0.1341138.
+
+Testing mtry = 15.
+Error = 0.1341285.
+
+Testing mtry = 16.
+Error = 0.1340313.
+
+Testing mtry = 17.
+Error = 0.1339041.
+
+Testing mtry = 18.
+Error = 0.1340614.
+
+Testing mtry = 19.
+Error = 0.1339002.
+
+Testing mtry = 20.
+Error = 0.1338035.
+
+Testing mtry = 21.
+Error = 0.1337066.
+
+Testing mtry = 22.
+Error = 0.1342699.
+
+Testing mtry = 23.
+Error = 0.1342449.
+
+Testing mtry = 24.
+Error = 0.1338533.
+
+Selected mtry:  21.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+      120.282434        88.245696        82.970105        79.441232        76.236023        70.123489 
+      GarageArea          LotArea      SecondFlrSF    MSSubClassNum      OverallCond       GarageCars 
+       59.374116        59.306884        55.966401        54.316972        48.847800        47.350370 
+  FireplaceQuNum    GarageTypeNum     ExterQualNum     YearRemodAdd   KitchenQualNum        YearBuilt 
+       40.293200        39.101609        38.952740        37.192747        36.189249        35.342923 
+    TotRmsAbvGrd  BsmtFinType1Num        BsmtUnfSF      GarageYrBlt      MSZoningNum       Fireplaces 
+       31.272901        30.205682        29.910768        29.499800        28.086322        27.273870 
+    BsmtFullBath         FullBath      BsmtQualNum  BsmtExposureNum   Exterior1stNum  GarageFinishNum 
+       27.226496        27.003468        26.952400        26.556543        26.469818        26.235364 
+    BedroomAbvGr      OpenPorchSF    HouseStyleNum         HalfBath   Exterior2ndNum     HeatingQCNum 
+       25.855142        24.821769        24.000453        22.541358        22.492930        22.054450 
+      WoodDeckSF    CentralAirNum      BsmtCondNum     KitchenAbvGr    FoundationNum      LotShapeNum 
+       19.915431        19.561775        19.393919        17.460098        16.686490        14.443226 
+   GarageQualNum    GarageCondNum    MasVnrTypeNum      BldgTypeNum      ScreenPorch     RoofStyleNum 
+       12.327971        11.894424        11.654789         9.554690         8.634350         6.491085 
+  LandContourNum    PavedDriveNum    FunctionalNum     BsmtHalfBath  BsmtFinType2Num     ExterCondNum 
+        6.177799         5.609508         5.138776         4.929208         4.870461         4.191071 
+SaleConditionNum    EnclosedPorch    Condition1Num         AlleyNum    ElectricalNum 
+        3.651520         3.520154         2.868355         2.327731         1.758587 
+
+Dropped feature:  ElectricalNum.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"       "SecondFlrSF"     
+[11] "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"         "HalfBath"        
+[16] "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"       "GarageYrBlt"     
+[21] "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"      "EnclosedPorch"   
+[26] "ScreenPorch"      "MSSubClassNum"    "MSZoningNum"      "AlleyNum"         "LotShapeNum"     
+[31] "LandContourNum"   "NeighborhoodNum"  "Condition1Num"    "BldgTypeNum"      "HouseStyleNum"   
+[36] "RoofStyleNum"     "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"    "ExterQualNum"    
+[41] "ExterCondNum"     "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"      "BsmtExposureNum" 
+[46] "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingQCNum"     "CentralAirNum"    "KitchenQualNum"  
+[51] "FunctionalNum"    "FireplaceQuNum"   "GarageTypeNum"    "GarageFinishNum"  "GarageQualNum"   
+[56] "GarageCondNum"    "PavedDriveNum"    "SaleConditionNum"
+
+Performing cross validation for a set of 58 features.
+
+Testing mtry = 14.
+Error = 0.1343767.
+
+Testing mtry = 15.
+Error = 0.1341364.
+
+Testing mtry = 16.
+Error = 0.1338725.
+
+Testing mtry = 17.
+Error = 0.1338981.
+
+Testing mtry = 18.
+Error = 0.1342868.
+
+Testing mtry = 19.
+Error = 0.1336664.
+
+Testing mtry = 20.
+Error = 0.1340085.
+
+Testing mtry = 21.
+Error = 0.1337463.
+
+Testing mtry = 22.
+Error = 0.1338123.
+
+Testing mtry = 23.
+Error = 0.134174.
+
+Testing mtry = 24.
+Error = 0.1337467.
+
+Selected mtry:  19.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+      121.744131        86.572884        80.347289        77.695195        72.657947        69.132709 
+         LotArea       GarageArea      SecondFlrSF    MSSubClassNum       GarageCars      OverallCond 
+       59.461520        58.060146        55.205918        53.833522        47.045723        46.766336 
+  FireplaceQuNum     YearRemodAdd     ExterQualNum   KitchenQualNum    GarageTypeNum        YearBuilt 
+       41.869301        38.659232        38.641785        36.810586        36.208480        34.550641 
+    TotRmsAbvGrd      GarageYrBlt       Fireplaces  BsmtFinType1Num        BsmtUnfSF      MSZoningNum 
+       32.748621        31.200397        30.276063        29.908338        29.438966        29.177167 
+        FullBath  BsmtExposureNum      BsmtQualNum      OpenPorchSF     BsmtFullBath  GarageFinishNum 
+       28.349625        27.874677        27.808969        27.637464        25.837701        25.610251 
+    BedroomAbvGr    HouseStyleNum   Exterior1stNum     HeatingQCNum         HalfBath    CentralAirNum 
+       25.605253        24.260946        24.056275        23.469061        21.184886        21.151165 
+     BsmtCondNum   Exterior2ndNum       WoodDeckSF    FoundationNum     KitchenAbvGr      LotShapeNum 
+       20.649531        18.144484        17.228633        16.231597        15.527655        15.386819 
+   GarageQualNum    MasVnrTypeNum    GarageCondNum      ScreenPorch      BldgTypeNum     ExterCondNum 
+       13.245291        11.467323        11.363940        10.439127        10.314078         7.824394 
+    RoofStyleNum   LandContourNum    PavedDriveNum    FunctionalNum  BsmtFinType2Num     BsmtHalfBath 
+        7.502298         5.977789         5.681204         5.643776         4.897894         4.823928 
+        AlleyNum    Condition1Num SaleConditionNum    EnclosedPorch 
+        3.575018         3.072657         2.318177         1.987023 
+
+Dropped feature:  EnclosedPorch.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"       "SecondFlrSF"     
+[11] "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"         "HalfBath"        
+[16] "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"       "GarageYrBlt"     
+[21] "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"      "ScreenPorch"     
+[26] "MSSubClassNum"    "MSZoningNum"      "AlleyNum"         "LotShapeNum"      "LandContourNum"  
+[31] "NeighborhoodNum"  "Condition1Num"    "BldgTypeNum"      "HouseStyleNum"    "RoofStyleNum"    
+[36] "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"    "ExterQualNum"     "ExterCondNum"    
+[41] "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"      "BsmtExposureNum"  "BsmtFinType1Num" 
+[46] "BsmtFinType2Num"  "HeatingQCNum"     "CentralAirNum"    "KitchenQualNum"   "FunctionalNum"   
+[51] "FireplaceQuNum"   "GarageTypeNum"    "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"   
+[56] "PavedDriveNum"    "SaleConditionNum"
+
+Performing cross validation for a set of 57 features.
+
+Testing mtry = 14.
+Error = 0.1339523.
+
+Testing mtry = 15.
+Error = 0.1340039.
+
+Testing mtry = 16.
+Error = 0.1339725.
+
+Testing mtry = 17.
+Error = 0.1339328.
+
+Testing mtry = 18.
+Error = 0.1337869.
+
+Testing mtry = 19.
+Error = 0.1339051.
+
+Testing mtry = 20.
+Error = 0.1338899.
+
+Testing mtry = 21.
+Error = 0.1339565.
+
+Testing mtry = 22.
+Error = 0.1337589.
+
+Testing mtry = 23.
+Error = 0.1340586.
+
+Testing mtry = 24.
+Error = 0.1343574.
+
+Selected mtry:  22.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      OverallQual      TotalBsmtSF       FirstFlrSF       BsmtFinSF1 
+      127.382358        90.028562        86.772346        84.667556        75.357759        71.276903 
+         LotArea       GarageArea    MSSubClassNum      SecondFlrSF      OverallCond       GarageCars 
+       58.551016        57.511518        55.436697        54.625006        48.201553        45.557603 
+  FireplaceQuNum     YearRemodAdd     ExterQualNum    GarageTypeNum   KitchenQualNum        YearBuilt 
+       38.870854        38.667692        38.404788        36.721213        34.836924        33.652247 
+    TotRmsAbvGrd  BsmtFinType1Num      GarageYrBlt      MSZoningNum  BsmtExposureNum      OpenPorchSF 
+       31.578223        30.495638        29.356947        28.917154        28.386702        27.628225 
+      Fireplaces        BsmtUnfSF   Exterior1stNum     BedroomAbvGr      BsmtQualNum     BsmtFullBath 
+       27.620427        26.295451        25.990870        25.892785        25.881102        25.373435 
+ GarageFinishNum         FullBath   Exterior2ndNum     HeatingQCNum    HouseStyleNum         HalfBath 
+       25.147548        24.875293        23.706960        22.676373        22.593016        21.872320 
+   CentralAirNum      BsmtCondNum       WoodDeckSF     KitchenAbvGr    FoundationNum      LotShapeNum 
+       19.666498        19.525431        17.534134        17.424749        17.113843        14.933449 
+   GarageQualNum    MasVnrTypeNum      BldgTypeNum      ScreenPorch    GarageCondNum    PavedDriveNum 
+       12.696462        10.998049        10.627780         9.734192         9.460434         6.717819 
+    ExterCondNum   LandContourNum     RoofStyleNum SaleConditionNum    FunctionalNum     BsmtHalfBath 
+        6.484744         5.542401         4.989081         4.844645         4.606564         4.232182 
+   Condition1Num  BsmtFinType2Num         AlleyNum 
+        3.792419         3.744030         3.728459 
+
+Dropped feature:  AlleyNum.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"       "SecondFlrSF"     
+[11] "GrLivArea"        "BsmtFullBath"     "BsmtHalfBath"     "FullBath"         "HalfBath"        
+[16] "BedroomAbvGr"     "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"       "GarageYrBlt"     
+[21] "GarageCars"       "GarageArea"       "WoodDeckSF"       "OpenPorchSF"      "ScreenPorch"     
+[26] "MSSubClassNum"    "MSZoningNum"      "LotShapeNum"      "LandContourNum"   "NeighborhoodNum" 
+[31] "Condition1Num"    "BldgTypeNum"      "HouseStyleNum"    "RoofStyleNum"     "Exterior1stNum"  
+[36] "Exterior2ndNum"   "MasVnrTypeNum"    "ExterQualNum"     "ExterCondNum"     "FoundationNum"   
+[41] "BsmtQualNum"      "BsmtCondNum"      "BsmtExposureNum"  "BsmtFinType1Num"  "BsmtFinType2Num" 
+[46] "HeatingQCNum"     "CentralAirNum"    "KitchenQualNum"   "FunctionalNum"    "FireplaceQuNum"  
+[51] "GarageTypeNum"    "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"    "PavedDriveNum"   
+[56] "SaleConditionNum"
+
+Performing cross validation for a set of 56 features.
+
+Testing mtry = 13.
+Error = 0.1340174.
+
+Testing mtry = 14.
+Error = 0.1340006.
+
+Testing mtry = 15.
+Error = 0.1339866.
+
+Testing mtry = 16.
+Error = 0.1337423.
+
+Testing mtry = 17.
+Error = 0.1335875.
+
+Testing mtry = 18.
+Error = 0.1337469.
+
+Testing mtry = 19.
+Error = 0.1337607.
+
+Testing mtry = 20.
+Error = 0.133574.
+
+Testing mtry = 21.
+Error = 0.1335458.
+
+Testing mtry = 22.
+Error = 0.1339312.
+
+Testing mtry = 23.
+Error = 0.1339297.
+
+Selected mtry:  21.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      OverallQual      TotalBsmtSF       FirstFlrSF       BsmtFinSF1 
+      128.772186        90.241038        83.830187        83.490253        78.134160        69.719580 
+         LotArea      SecondFlrSF    MSSubClassNum       GarageArea      OverallCond       GarageCars 
+       57.689613        56.958859        54.920333        54.602384        49.364614        43.913837 
+  FireplaceQuNum     YearRemodAdd     ExterQualNum    GarageTypeNum   KitchenQualNum        YearBuilt 
+       40.485105        39.403521        38.592499        35.390321        35.009383        34.668007 
+     GarageYrBlt  BsmtFinType1Num     TotRmsAbvGrd  BsmtExposureNum       Fireplaces        BsmtUnfSF 
+       30.894345        30.234360        29.939568        28.624988        28.552998        28.458101 
+     MSZoningNum         FullBath     BsmtFullBath      BsmtQualNum   Exterior1stNum  GarageFinishNum 
+       28.411056        27.660513        26.800322        26.605724        26.539642        25.804032 
+    BedroomAbvGr      OpenPorchSF    HouseStyleNum   Exterior2ndNum     HeatingQCNum         HalfBath 
+       25.671875        24.738403        24.008342        23.685777        23.526309        22.911551 
+   CentralAirNum      BsmtCondNum       WoodDeckSF     KitchenAbvGr    FoundationNum      LotShapeNum 
+       19.786401        18.065423        17.381086        16.762719        16.443519        14.658156 
+   MasVnrTypeNum    GarageQualNum    GarageCondNum      BldgTypeNum      ScreenPorch     ExterCondNum 
+       13.268273        13.043338        11.196202        10.171222         9.524827         6.397951 
+   FunctionalNum    PavedDriveNum     RoofStyleNum   LandContourNum    Condition1Num  BsmtFinType2Num 
+        5.597153         5.548287         5.037821         4.217012         4.119504         3.049857 
+SaleConditionNum     BsmtHalfBath 
+        2.978825         2.898174 
+
+Dropped feature:  BsmtHalfBath.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"       "SecondFlrSF"     
+[11] "GrLivArea"        "BsmtFullBath"     "FullBath"         "HalfBath"         "BedroomAbvGr"    
+[16] "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"       "GarageYrBlt"      "GarageCars"      
+[21] "GarageArea"       "WoodDeckSF"       "OpenPorchSF"      "ScreenPorch"      "MSSubClassNum"   
+[26] "MSZoningNum"      "LotShapeNum"      "LandContourNum"   "NeighborhoodNum"  "Condition1Num"   
+[31] "BldgTypeNum"      "HouseStyleNum"    "RoofStyleNum"     "Exterior1stNum"   "Exterior2ndNum"  
+[36] "MasVnrTypeNum"    "ExterQualNum"     "ExterCondNum"     "FoundationNum"    "BsmtQualNum"     
+[41] "BsmtCondNum"      "BsmtExposureNum"  "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingQCNum"    
+[46] "CentralAirNum"    "KitchenQualNum"   "FunctionalNum"    "FireplaceQuNum"   "GarageTypeNum"   
+[51] "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"    "PavedDriveNum"    "SaleConditionNum"
+
+Performing cross validation for a set of 55 features.
+
+Testing mtry = 13.
+Error = 0.1339926.
+
+Testing mtry = 14.
+Error = 0.1339062.
+
+Testing mtry = 15.
+Error = 0.1338795.
+
+Testing mtry = 16.
+Error = 0.1339008.
+
+Testing mtry = 17.
+Error = 0.1336768.
+
+Testing mtry = 18.
+Error = 0.1335084.
+
+Testing mtry = 19.
+Error = 0.1340591.
+
+Testing mtry = 20.
+Error = 0.1336816.
+
+Testing mtry = 21.
+Error = 0.1334465.
+
+Testing mtry = 22.
+Error = 0.133782.
+
+Testing mtry = 23.
+Error = 0.1339769.
+
+Selected mtry:  21.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+      124.896932        90.926353        86.353246        85.718818        74.870830        69.682055 
+      GarageArea          LotArea      SecondFlrSF    MSSubClassNum      OverallCond       GarageCars 
+       59.292260        57.977671        56.354318        55.037383        49.214083        46.209426 
+  FireplaceQuNum    GarageTypeNum     ExterQualNum     YearRemodAdd   KitchenQualNum        YearBuilt 
+       39.785816        38.114665        37.656152        36.765765        35.530948        34.685232 
+     GarageYrBlt     TotRmsAbvGrd  BsmtFinType1Num  BsmtExposureNum        BsmtUnfSF      MSZoningNum 
+       33.021651        32.135319        30.401171        30.382766        30.339221        28.453824 
+  Exterior1stNum       Fireplaces  GarageFinishNum      BsmtQualNum      OpenPorchSF     BsmtFullBath 
+       28.074809        27.867695        26.591080        26.318159        25.875404        25.676364 
+        FullBath     BedroomAbvGr     HeatingQCNum    HouseStyleNum   Exterior2ndNum         HalfBath 
+       25.323848        25.072372        24.993022        24.894314        23.980216        22.853301 
+     BsmtCondNum       WoodDeckSF    CentralAirNum    FoundationNum     KitchenAbvGr    GarageQualNum 
+       20.029399        19.894495        18.493597        17.920237        17.424823        13.999060 
+     LotShapeNum    GarageCondNum      BldgTypeNum    MasVnrTypeNum      ScreenPorch     ExterCondNum 
+       13.208491        10.970013        10.922095        10.911560         9.775777         7.573354 
+   PavedDriveNum   LandContourNum     RoofStyleNum SaleConditionNum  BsmtFinType2Num    Condition1Num 
+        7.347280         6.291674         5.841398         4.846243         4.634586         3.975771 
+   FunctionalNum 
+        3.614891 
+
+Dropped feature:  FunctionalNum.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"       "SecondFlrSF"     
+[11] "GrLivArea"        "BsmtFullBath"     "FullBath"         "HalfBath"         "BedroomAbvGr"    
+[16] "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"       "GarageYrBlt"      "GarageCars"      
+[21] "GarageArea"       "WoodDeckSF"       "OpenPorchSF"      "ScreenPorch"      "MSSubClassNum"   
+[26] "MSZoningNum"      "LotShapeNum"      "LandContourNum"   "NeighborhoodNum"  "Condition1Num"   
+[31] "BldgTypeNum"      "HouseStyleNum"    "RoofStyleNum"     "Exterior1stNum"   "Exterior2ndNum"  
+[36] "MasVnrTypeNum"    "ExterQualNum"     "ExterCondNum"     "FoundationNum"    "BsmtQualNum"     
+[41] "BsmtCondNum"      "BsmtExposureNum"  "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingQCNum"    
+[46] "CentralAirNum"    "KitchenQualNum"   "FireplaceQuNum"   "GarageTypeNum"    "GarageFinishNum" 
+[51] "GarageQualNum"    "GarageCondNum"    "PavedDriveNum"    "SaleConditionNum"
+
+Performing cross validation for a set of 54 features.
+
+Testing mtry = 13.
+Error = 0.1338725.
+
+Testing mtry = 14.
+Error = 0.1338942.
+
+Testing mtry = 15.
+Error = 0.1338449.
+
+Testing mtry = 16.
+Error = 0.1338586.
+
+Testing mtry = 17.
+Error = 0.1337476.
+
+Testing mtry = 18.
+Error = 0.1336569.
+
+Testing mtry = 19.
+Error = 0.1339583.
+
+Testing mtry = 20.
+Error = 0.1335923.
+
+Testing mtry = 21.
+Error = 0.1336463.
+
+Testing mtry = 22.
+Error = 0.1336017.
+
+Testing mtry = 23.
+Error = 0.1338034.
+
+Selected mtry:  20.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+      128.899271        92.101786        84.218478        83.996449        74.673287        71.054154 
+      GarageArea          LotArea      SecondFlrSF    MSSubClassNum      OverallCond       GarageCars 
+       58.390529        56.345460        55.925855        54.838238        48.618247        45.987639 
+  FireplaceQuNum     ExterQualNum     YearRemodAdd    GarageTypeNum   KitchenQualNum        YearBuilt 
+       40.224107        38.133987        37.704032        36.228086        34.668721        33.951683 
+ BsmtFinType1Num     TotRmsAbvGrd        BsmtUnfSF      GarageYrBlt      MSZoningNum     BsmtFullBath 
+       31.315568        30.081431        29.302815        29.092360        28.631157        28.188956 
+ BsmtExposureNum       Fireplaces      OpenPorchSF      BsmtQualNum         FullBath   Exterior1stNum 
+       27.985775        27.708434        26.496925        26.262708        26.233504        26.051665 
+ GarageFinishNum     BedroomAbvGr    HouseStyleNum   Exterior2ndNum         HalfBath     HeatingQCNum 
+       25.949194        25.257931        24.142457        23.543321        23.038175        22.321392 
+   CentralAirNum      BsmtCondNum       WoodDeckSF    FoundationNum     KitchenAbvGr    GarageQualNum 
+       20.213756        19.356776        19.188161        17.499733        17.312112        14.610816 
+     LotShapeNum    GarageCondNum      BldgTypeNum    MasVnrTypeNum      ScreenPorch     ExterCondNum 
+       14.504986        10.570173         9.501867         9.466860         9.135203         8.028507 
+   PavedDriveNum   LandContourNum  BsmtFinType2Num SaleConditionNum     RoofStyleNum    Condition1Num 
+        6.914315         5.799443         5.427131         4.842623         4.032983         2.836688 
+
+Dropped feature:  Condition1Num.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"       "SecondFlrSF"     
+[11] "GrLivArea"        "BsmtFullBath"     "FullBath"         "HalfBath"         "BedroomAbvGr"    
+[16] "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"       "GarageYrBlt"      "GarageCars"      
+[21] "GarageArea"       "WoodDeckSF"       "OpenPorchSF"      "ScreenPorch"      "MSSubClassNum"   
+[26] "MSZoningNum"      "LotShapeNum"      "LandContourNum"   "NeighborhoodNum"  "BldgTypeNum"     
+[31] "HouseStyleNum"    "RoofStyleNum"     "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"   
+[36] "ExterQualNum"     "ExterCondNum"     "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"     
+[41] "BsmtExposureNum"  "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingQCNum"     "CentralAirNum"   
+[46] "KitchenQualNum"   "FireplaceQuNum"   "GarageTypeNum"    "GarageFinishNum"  "GarageQualNum"   
+[51] "GarageCondNum"    "PavedDriveNum"    "SaleConditionNum"
+
+Performing cross validation for a set of 53 features.
+
+Testing mtry = 12.
+Error = 0.1338998.
+
+Testing mtry = 13.
+Error = 0.1340118.
+
+Testing mtry = 14.
+Error = 0.1338113.
+
+Testing mtry = 15.
+Error = 0.13367.
+
+Testing mtry = 16.
+Error = 0.1337536.
+
+Testing mtry = 17.
+Error = 0.1338888.
+
+Testing mtry = 18.
+Error = 0.1332154.
+
+Testing mtry = 19.
+Error = 0.1337281.
+
+Testing mtry = 20.
+Error = 0.1336182.
+
+Testing mtry = 21.
+Error = 0.1335723.
+
+Testing mtry = 22.
+Error = 0.1339452.
+
+Selected mtry:  18.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+      126.133482        89.359473        84.390428        80.942774        76.601511        70.419952 
+      GarageArea          LotArea      SecondFlrSF    MSSubClassNum      OverallCond       GarageCars 
+       58.581904        57.660688        57.483205        54.737971        50.040259        43.632935 
+  FireplaceQuNum     ExterQualNum     YearRemodAdd    GarageTypeNum        YearBuilt   KitchenQualNum 
+       40.968410        38.009451        36.893461        35.811256        35.510660        35.262604 
+    TotRmsAbvGrd      GarageYrBlt  BsmtExposureNum  BsmtFinType1Num       Fireplaces      MSZoningNum 
+       33.931387        31.912265        31.693333        30.801115        29.826546        28.813651 
+       BsmtUnfSF   Exterior1stNum      BsmtQualNum      OpenPorchSF         FullBath     BedroomAbvGr 
+       28.480381        28.265390        27.201319        26.424517        26.280980        25.899708 
+ GarageFinishNum     BsmtFullBath    HouseStyleNum   Exterior2ndNum         HalfBath     HeatingQCNum 
+       25.645962        25.641227        25.492308        24.649644        24.078208        21.703185 
+      WoodDeckSF      BsmtCondNum    CentralAirNum     KitchenAbvGr    FoundationNum      LotShapeNum 
+       20.301575        19.224602        18.610553        16.056481        15.979491        14.163278 
+   GarageCondNum    GarageQualNum    MasVnrTypeNum      BldgTypeNum      ScreenPorch   LandContourNum 
+       12.362801        12.285688        10.293935         9.873170         9.780693         7.117085 
+    ExterCondNum    PavedDriveNum SaleConditionNum  BsmtFinType2Num     RoofStyleNum 
+        6.152369         5.955063         4.885054         4.418446         4.106748 
+
+Dropped feature:  RoofStyleNum.
+
+Remaining features:
+
+ [1] "LotArea"          "OverallQual"      "OverallCond"      "YearBuilt"        "YearRemodAdd"    
+ [6] "BsmtFinSF1"       "BsmtUnfSF"        "TotalBsmtSF"      "FirstFlrSF"       "SecondFlrSF"     
+[11] "GrLivArea"        "BsmtFullBath"     "FullBath"         "HalfBath"         "BedroomAbvGr"    
+[16] "KitchenAbvGr"     "TotRmsAbvGrd"     "Fireplaces"       "GarageYrBlt"      "GarageCars"      
+[21] "GarageArea"       "WoodDeckSF"       "OpenPorchSF"      "ScreenPorch"      "MSSubClassNum"   
+[26] "MSZoningNum"      "LotShapeNum"      "LandContourNum"   "NeighborhoodNum"  "BldgTypeNum"     
+[31] "HouseStyleNum"    "Exterior1stNum"   "Exterior2ndNum"   "MasVnrTypeNum"    "ExterQualNum"    
+[36] "ExterCondNum"     "FoundationNum"    "BsmtQualNum"      "BsmtCondNum"      "BsmtExposureNum" 
+[41] "BsmtFinType1Num"  "BsmtFinType2Num"  "HeatingQCNum"     "CentralAirNum"    "KitchenQualNum"  
+[46] "FireplaceQuNum"   "GarageTypeNum"    "GarageFinishNum"  "GarageQualNum"    "GarageCondNum"   
+[51] "PavedDriveNum"    "SaleConditionNum"
+
+Performing cross validation for a set of 52 features.
+
+Testing mtry = 12.
+Error = 0.13365.
+
+Testing mtry = 13.
+Error = 0.1335003.
+
+Testing mtry = 14.
+Error = 0.1335033.
+
+Testing mtry = 15.
+Error = 0.1334613.
+
+Testing mtry = 16.
+Error = 0.1335419.
+
+Testing mtry = 17.
+Error = 0.1334317.
+
+Testing mtry = 18.
+Error = 0.1334445.
+
+Testing mtry = 19.
+Error = 0.1334537.
+
+Testing mtry = 20.
+Error = 0.1334404.
+
+Testing mtry = 21.
+Error = 0.1337821.
+
+Testing mtry = 22.
+Error = 0.1334329.
+
+Selected mtry:  17.
+
+Importance vector:
+
+       GrLivArea  NeighborhoodNum      TotalBsmtSF      OverallQual       FirstFlrSF       BsmtFinSF1 
+      119.812986        86.475763        80.899362        77.806237        75.377887        71.464427 
+         LotArea      SecondFlrSF       GarageArea    MSSubClassNum      OverallCond       GarageCars 
+       58.593389        58.055276        57.731923        54.780299        49.488554        43.597672 
+  FireplaceQuNum     ExterQualNum     YearRemodAdd    GarageTypeNum   KitchenQualNum        YearBuilt 
+       41.376908        39.347121        38.844021        36.493764        36.232809        35.775765 
+    TotRmsAbvGrd      GarageYrBlt        BsmtUnfSF  BsmtFinType1Num      OpenPorchSF  BsmtExposureNum 
+       33.798950        33.048714        31.655108        29.605386        29.178569        28.759322 
+      Fireplaces         FullBath      MSZoningNum     BedroomAbvGr    HouseStyleNum   Exterior1stNum 
+       28.558944        28.016501        27.978889        27.740510        26.646755        26.095547 
+    BsmtFullBath  GarageFinishNum      BsmtQualNum         HalfBath   Exterior2ndNum      BsmtCondNum 
+       26.025956        25.545159        24.595219        23.364592        22.468116        20.000878 
+    HeatingQCNum    CentralAirNum       WoodDeckSF    FoundationNum     KitchenAbvGr      LotShapeNum 
+       19.789824        19.582443        18.006511        17.407057        15.804650        15.578482 
+   MasVnrTypeNum    GarageQualNum    GarageCondNum      BldgTypeNum      ScreenPorch   LandContourNum 
+       12.584966        12.369063         9.958944         9.518436         8.326882         6.284142 
+    ExterCondNum  BsmtFinType2Num    PavedDriveNum SaleConditionNum 
+        5.844532         5.058252         4.361112         2.464619 
+
+Dropped feature:  SaleConditionNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "KitchenAbvGr"    "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"     
+[21] "GarageArea"      "WoodDeckSF"      "OpenPorchSF"     "ScreenPorch"     "MSSubClassNum"  
+[26] "MSZoningNum"     "LotShapeNum"     "LandContourNum"  "NeighborhoodNum" "BldgTypeNum"    
+[31] "HouseStyleNum"   "Exterior1stNum"  "Exterior2ndNum"  "MasVnrTypeNum"   "ExterQualNum"   
+[36] "ExterCondNum"    "FoundationNum"   "BsmtQualNum"     "BsmtCondNum"     "BsmtExposureNum"
+[41] "BsmtFinType1Num" "BsmtFinType2Num" "HeatingQCNum"    "CentralAirNum"   "KitchenQualNum" 
+[46] "FireplaceQuNum"  "GarageTypeNum"   "GarageFinishNum" "GarageQualNum"   "GarageCondNum"  
+[51] "PavedDriveNum"  
+
+Performing cross validation for a set of 51 features.
+
+Testing mtry = 12.
+Error = 0.1341446.
+
+Testing mtry = 13.
+Error = 0.1335061.
+
+Testing mtry = 14.
+Error = 0.1337157.
+
+Testing mtry = 15.
+Error = 0.1338848.
+
+Testing mtry = 16.
+Error = 0.1334968.
+
+Testing mtry = 17.
+Error = 0.1336819.
+
+Testing mtry = 18.
+Error = 0.1335244.
+
+Testing mtry = 19.
+Error = 0.1337774.
+
+Testing mtry = 20.
+Error = 0.1339931.
+
+Testing mtry = 21.
+Error = 0.1338236.
+
+Testing mtry = 22.
+Error = 0.1336026.
+
+Selected mtry:  16.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+     118.280467       88.459470       81.033460       77.933114       76.731577       69.742870 
+    SecondFlrSF         LotArea   MSSubClassNum      GarageArea     OverallCond      GarageCars 
+      60.120092       59.458802       56.084545       53.346490       50.147615       44.855412 
+ FireplaceQuNum    YearRemodAdd    ExterQualNum   GarageTypeNum       YearBuilt  KitchenQualNum 
+      42.672126       41.200119       38.967361       37.582088       37.196258       36.838670 
+   TotRmsAbvGrd     GarageYrBlt       BsmtUnfSF BsmtFinType1Num      Fireplaces     MSZoningNum 
+      35.698676       32.086350       31.657110       30.649746       30.610710       29.440567 
+       FullBath  Exterior1stNum     BsmtQualNum     OpenPorchSF   HouseStyleNum    BedroomAbvGr 
+      29.320713       28.098524       27.493277       27.024021       26.954222       26.835022 
+   BsmtFullBath BsmtExposureNum  Exterior2ndNum GarageFinishNum        HalfBath      WoodDeckSF 
+      26.613402       25.045691       24.910267       24.683686       23.422778       20.414130 
+   HeatingQCNum     BsmtCondNum   CentralAirNum   FoundationNum    KitchenAbvGr     LotShapeNum 
+      20.241355       18.888705       18.731647       17.635767       15.603346       15.421795 
+  GarageQualNum   MasVnrTypeNum   GarageCondNum     BldgTypeNum     ScreenPorch BsmtFinType2Num 
+      13.533345       13.308638       12.856421       12.301113       10.100242        7.109159 
+ LandContourNum    ExterCondNum   PavedDriveNum 
+       6.116618        5.415028        4.914550 
+
+Dropped feature:  PavedDriveNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "KitchenAbvGr"    "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"     
+[21] "GarageArea"      "WoodDeckSF"      "OpenPorchSF"     "ScreenPorch"     "MSSubClassNum"  
+[26] "MSZoningNum"     "LotShapeNum"     "LandContourNum"  "NeighborhoodNum" "BldgTypeNum"    
+[31] "HouseStyleNum"   "Exterior1stNum"  "Exterior2ndNum"  "MasVnrTypeNum"   "ExterQualNum"   
+[36] "ExterCondNum"    "FoundationNum"   "BsmtQualNum"     "BsmtCondNum"     "BsmtExposureNum"
+[41] "BsmtFinType1Num" "BsmtFinType2Num" "HeatingQCNum"    "CentralAirNum"   "KitchenQualNum" 
+[46] "FireplaceQuNum"  "GarageTypeNum"   "GarageFinishNum" "GarageQualNum"   "GarageCondNum"  
+
+Performing cross validation for a set of 50 features.
+
+Testing mtry = 11.
+Error = 0.134281.
+
+Testing mtry = 12.
+Error = 0.1339373.
+
+Testing mtry = 13.
+Error = 0.1339217.
+
+Testing mtry = 14.
+Error = 0.1340898.
+
+Testing mtry = 15.
+Error = 0.1338556.
+
+Testing mtry = 16.
+Error = 0.1336667.
+
+Testing mtry = 17.
+Error = 0.133397.
+
+Testing mtry = 18.
+Error = 0.1338903.
+
+Testing mtry = 19.
+Error = 0.133935.
+
+Testing mtry = 20.
+Error = 0.1336926.
+
+Testing mtry = 21.
+Error = 0.1339382.
+
+Selected mtry:  17.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+     121.299164       89.612433       87.136199       80.145020       77.218827       73.070084 
+        LotArea      GarageArea     SecondFlrSF   MSSubClassNum     OverallCond      GarageCars 
+      58.851263       58.772106       56.804629       54.452439       48.920830       45.682451 
+ FireplaceQuNum    YearRemodAdd    ExterQualNum   GarageTypeNum  KitchenQualNum       YearBuilt 
+      43.745574       38.707549       38.476503       38.083969       36.164003       36.017816 
+   TotRmsAbvGrd     GarageYrBlt BsmtFinType1Num     MSZoningNum      Fireplaces       BsmtUnfSF 
+      33.734261       31.726563       31.308105       29.642488       29.234516       29.103107 
+    BsmtQualNum    BsmtFullBath BsmtExposureNum   HouseStyleNum    BedroomAbvGr  Exterior1stNum 
+      28.446857       28.167119       27.820854       27.416430       27.258841       27.046781 
+       FullBath GarageFinishNum     OpenPorchSF        HalfBath  Exterior2ndNum    HeatingQCNum 
+      26.402834       25.216670       25.167574       23.937610       21.979028       20.740018 
+    BsmtCondNum   CentralAirNum      WoodDeckSF   FoundationNum    KitchenAbvGr     LotShapeNum 
+      20.151984       19.536481       18.966979       17.389772       16.114788       14.955558 
+  GarageQualNum   MasVnrTypeNum   GarageCondNum     BldgTypeNum     ScreenPorch BsmtFinType2Num 
+      13.673222       12.855790       11.718221       10.237558        9.163494        5.261997 
+   ExterCondNum  LandContourNum 
+       4.956309        4.822167 
+
+Dropped feature:  LandContourNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "KitchenAbvGr"    "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"     
+[21] "GarageArea"      "WoodDeckSF"      "OpenPorchSF"     "ScreenPorch"     "MSSubClassNum"  
+[26] "MSZoningNum"     "LotShapeNum"     "NeighborhoodNum" "BldgTypeNum"     "HouseStyleNum"  
+[31] "Exterior1stNum"  "Exterior2ndNum"  "MasVnrTypeNum"   "ExterQualNum"    "ExterCondNum"   
+[36] "FoundationNum"   "BsmtQualNum"     "BsmtCondNum"     "BsmtExposureNum" "BsmtFinType1Num"
+[41] "BsmtFinType2Num" "HeatingQCNum"    "CentralAirNum"   "KitchenQualNum"  "FireplaceQuNum" 
+[46] "GarageTypeNum"   "GarageFinishNum" "GarageQualNum"   "GarageCondNum"  
+
+Performing cross validation for a set of 49 features.
+
+Testing mtry = 11.
+Error = 0.1341432.
+
+Testing mtry = 12.
+Error = 0.1339121.
+
+Testing mtry = 13.
+Error = 0.1341354.
+
+Testing mtry = 14.
+Error = 0.1340294.
+
+Testing mtry = 15.
+Error = 0.1340147.
+
+Testing mtry = 16.
+Error = 0.1337082.
+
+Testing mtry = 17.
+Error = 0.1335952.
+
+Testing mtry = 18.
+Error = 0.1338936.
+
+Testing mtry = 19.
+Error = 0.1337929.
+
+Testing mtry = 20.
+Error = 0.1341086.
+
+Testing mtry = 21.
+Error = 0.1340795.
+
+Selected mtry:  17.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+     121.508722       90.221418       85.500044       81.321850       76.331940       72.993130 
+     GarageArea         LotArea     SecondFlrSF   MSSubClassNum     OverallCond      GarageCars 
+      58.730076       58.439364       58.435072       56.256081       50.369436       45.107556 
+ FireplaceQuNum    YearRemodAdd    ExterQualNum   GarageTypeNum       YearBuilt  KitchenQualNum 
+      41.280152       39.852108       38.766445       38.244394       37.623464       35.355414 
+    GarageYrBlt BsmtFinType1Num       BsmtUnfSF    TotRmsAbvGrd BsmtExposureNum     MSZoningNum 
+      33.895109       32.517896       32.263856       32.033032       29.030933       28.809356 
+     Fireplaces    BsmtFullBath     OpenPorchSF  Exterior1stNum    BedroomAbvGr GarageFinishNum 
+      28.788386       27.819604       27.664463       27.292841       27.217680       27.103860 
+    BsmtQualNum        FullBath   HouseStyleNum        HalfBath    HeatingQCNum  Exterior2ndNum 
+      26.781503       26.406969       26.177774       24.204780       23.683415       22.666036 
+    BsmtCondNum   CentralAirNum      WoodDeckSF   FoundationNum     LotShapeNum    KitchenAbvGr 
+      19.348371       19.340233       18.890413       15.994819       15.427719       14.897024 
+  GarageQualNum   MasVnrTypeNum   GarageCondNum     ScreenPorch     BldgTypeNum    ExterCondNum 
+      12.124867       11.644482       10.759986       10.182027        9.705410        6.234091 
+BsmtFinType2Num 
+       3.811200 
+
+Dropped feature:  BsmtFinType2Num.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "KitchenAbvGr"    "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"     
+[21] "GarageArea"      "WoodDeckSF"      "OpenPorchSF"     "ScreenPorch"     "MSSubClassNum"  
+[26] "MSZoningNum"     "LotShapeNum"     "NeighborhoodNum" "BldgTypeNum"     "HouseStyleNum"  
+[31] "Exterior1stNum"  "Exterior2ndNum"  "MasVnrTypeNum"   "ExterQualNum"    "ExterCondNum"   
+[36] "FoundationNum"   "BsmtQualNum"     "BsmtCondNum"     "BsmtExposureNum" "BsmtFinType1Num"
+[41] "HeatingQCNum"    "CentralAirNum"   "KitchenQualNum"  "FireplaceQuNum"  "GarageTypeNum"  
+[46] "GarageFinishNum" "GarageQualNum"   "GarageCondNum"  
+
+Performing cross validation for a set of 48 features.
+
+Testing mtry = 11.
+Error = 0.1337862.
+
+Testing mtry = 12.
+Error = 0.1336216.
+
+Testing mtry = 13.
+Error = 0.1337681.
+
+Testing mtry = 14.
+Error = 0.1335472.
+
+Testing mtry = 15.
+Error = 0.1332639.
+
+Testing mtry = 16.
+Error = 0.1335401.
+
+Testing mtry = 17.
+Error = 0.1337241.
+
+Testing mtry = 18.
+Error = 0.1338096.
+
+Testing mtry = 19.
+Error = 0.133708.
+
+Testing mtry = 20.
+Error = 0.1335563.
+
+Testing mtry = 21.
+Error = 0.133549.
+
+Selected mtry:  15.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+     119.986977       88.751574       84.179656       77.423421       75.287318       70.106345 
+        LotArea      GarageArea     SecondFlrSF   MSSubClassNum     OverallCond      GarageCars 
+      61.141693       60.474823       57.544403       55.637061       50.123364       43.698904 
+ FireplaceQuNum    YearRemodAdd    ExterQualNum       YearBuilt  KitchenQualNum   GarageTypeNum 
+      43.091263       40.105140       39.792602       36.401699       36.390037       35.706050 
+   TotRmsAbvGrd     GarageYrBlt BsmtFinType1Num      Fireplaces       BsmtUnfSF     MSZoningNum 
+      34.200393       34.031844       31.750003       31.559026       30.139610       29.125220 
+ Exterior1stNum   HouseStyleNum     BsmtQualNum BsmtExposureNum    BedroomAbvGr        FullBath 
+      28.582173       28.345848       28.007220       27.666344       27.620723       27.354984 
+   BsmtFullBath     OpenPorchSF GarageFinishNum        HalfBath  Exterior2ndNum    HeatingQCNum 
+      26.906870       26.771539       25.592485       24.960397       24.755707       22.845085 
+    BsmtCondNum   CentralAirNum      WoodDeckSF   FoundationNum     LotShapeNum    KitchenAbvGr 
+      20.322437       19.298970       18.635938       17.931544       15.626729       15.602884 
+  GarageQualNum   MasVnrTypeNum   GarageCondNum     BldgTypeNum     ScreenPorch    ExterCondNum 
+      12.472278       12.192547       12.042777       11.552564        8.728935        5.559580 
+
+Dropped feature:  ExterCondNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "KitchenAbvGr"    "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"     
+[21] "GarageArea"      "WoodDeckSF"      "OpenPorchSF"     "ScreenPorch"     "MSSubClassNum"  
+[26] "MSZoningNum"     "LotShapeNum"     "NeighborhoodNum" "BldgTypeNum"     "HouseStyleNum"  
+[31] "Exterior1stNum"  "Exterior2ndNum"  "MasVnrTypeNum"   "ExterQualNum"    "FoundationNum"  
+[36] "BsmtQualNum"     "BsmtCondNum"     "BsmtExposureNum" "BsmtFinType1Num" "HeatingQCNum"   
+[41] "CentralAirNum"   "KitchenQualNum"  "FireplaceQuNum"  "GarageTypeNum"   "GarageFinishNum"
+[46] "GarageQualNum"   "GarageCondNum"  
+
+Performing cross validation for a set of 47 features.
+
+Testing mtry = 10.
+Error = 0.1343223.
+
+Testing mtry = 11.
+Error = 0.1341022.
+
+Testing mtry = 12.
+Error = 0.1336537.
+
+Testing mtry = 13.
+Error = 0.133581.
+
+Testing mtry = 14.
+Error = 0.1334729.
+
+Testing mtry = 15.
+Error = 0.1337647.
+
+Testing mtry = 16.
+Error = 0.1336183.
+
+Testing mtry = 17.
+Error = 0.1333281.
+
+Testing mtry = 18.
+Error = 0.1336709.
+
+Testing mtry = 19.
+Error = 0.1339166.
+
+Testing mtry = 20.
+Error = 0.1336246.
+
+Selected mtry:  17.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+     124.592038       92.375108       87.107541       82.276552       75.679628       70.892012 
+     GarageArea     SecondFlrSF         LotArea   MSSubClassNum     OverallCond      GarageCars 
+      60.138310       59.820434       59.366978       55.917601       49.381738       46.238368 
+ FireplaceQuNum    YearRemodAdd    ExterQualNum   GarageTypeNum       YearBuilt  KitchenQualNum 
+      41.685557       40.174611       39.044741       37.615656       36.448835       35.778754 
+    GarageYrBlt    TotRmsAbvGrd BsmtFinType1Num       BsmtUnfSF BsmtExposureNum      Fireplaces 
+      34.998561       32.983191       32.151384       30.746534       30.697919       30.095112 
+    MSZoningNum  Exterior1stNum    BsmtFullBath     BsmtQualNum        FullBath GarageFinishNum 
+      29.786454       29.381602       28.742520       28.469243       27.463216       26.834094 
+    OpenPorchSF    BedroomAbvGr  Exterior2ndNum   HouseStyleNum        HalfBath    HeatingQCNum 
+      26.734667       26.139497       25.108638       23.609231       23.240554       20.748605 
+     WoodDeckSF     BsmtCondNum   CentralAirNum   FoundationNum    KitchenAbvGr     LotShapeNum 
+      20.517499       20.368157       18.123782       16.851516       16.090493       14.996535 
+  GarageQualNum   MasVnrTypeNum   GarageCondNum     ScreenPorch     BldgTypeNum 
+      14.342109       12.276417       10.136732        9.274390        8.242627 
+
+Dropped feature:  BldgTypeNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "KitchenAbvGr"    "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"     
+[21] "GarageArea"      "WoodDeckSF"      "OpenPorchSF"     "ScreenPorch"     "MSSubClassNum"  
+[26] "MSZoningNum"     "LotShapeNum"     "NeighborhoodNum" "HouseStyleNum"   "Exterior1stNum" 
+[31] "Exterior2ndNum"  "MasVnrTypeNum"   "ExterQualNum"    "FoundationNum"   "BsmtQualNum"    
+[36] "BsmtCondNum"     "BsmtExposureNum" "BsmtFinType1Num" "HeatingQCNum"    "CentralAirNum"  
+[41] "KitchenQualNum"  "FireplaceQuNum"  "GarageTypeNum"   "GarageFinishNum" "GarageQualNum"  
+[46] "GarageCondNum"  
+
+Performing cross validation for a set of 46 features.
+
+Testing mtry = 10.
+Error = 0.1340425.
+
+Testing mtry = 11.
+Error = 0.1338527.
+
+Testing mtry = 12.
+Error = 0.1338236.
+
+Testing mtry = 13.
+Error = 0.1333995.
+
+Testing mtry = 14.
+Error = 0.1333803.
+
+Testing mtry = 15.
+Error = 0.1335608.
+
+Testing mtry = 16.
+Error = 0.1332964.
+
+Testing mtry = 17.
+Error = 0.1332839.
+
+Testing mtry = 18.
+Error = 0.1334714.
+
+Testing mtry = 19.
+Error = 0.1334447.
+
+Testing mtry = 20.
+Error = 0.1337673.
+
+Selected mtry:  17.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      BsmtFinSF1      FirstFlrSF 
+      126.92992        92.89615        85.50966        82.96619        73.26367        72.60886 
+     GarageArea         LotArea     SecondFlrSF   MSSubClassNum     OverallCond      GarageCars 
+       59.85515        59.44926        57.43001        56.30037        53.77576        46.63852 
+ FireplaceQuNum    ExterQualNum   GarageTypeNum    YearRemodAdd       YearBuilt     GarageYrBlt 
+       42.06724        39.26157        38.88880        38.85124        36.59766        35.35173 
+ KitchenQualNum BsmtFinType1Num    TotRmsAbvGrd       BsmtUnfSF  Exterior1stNum    BsmtFullBath 
+       34.51082        33.63610        31.81961        30.65229        30.08545        28.72895 
+     Fireplaces     MSZoningNum BsmtExposureNum        FullBath     BsmtQualNum    BedroomAbvGr 
+       28.70763        28.61998        28.12172        28.11144        27.29585        26.67559 
+    OpenPorchSF GarageFinishNum   HouseStyleNum    HeatingQCNum  Exterior2ndNum        HalfBath 
+       26.56565        26.16221        26.03569        23.81767        23.20026        22.07181 
+    BsmtCondNum   CentralAirNum   FoundationNum      WoodDeckSF    KitchenAbvGr     LotShapeNum 
+       20.95066        19.50182        18.45003        18.43617        17.57396        16.24743 
+  GarageQualNum   GarageCondNum   MasVnrTypeNum     ScreenPorch 
+       13.15259        11.59891        10.21014         9.94673 
+
+Dropped feature:  ScreenPorch.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "KitchenAbvGr"    "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"     
+[21] "GarageArea"      "WoodDeckSF"      "OpenPorchSF"     "MSSubClassNum"   "MSZoningNum"    
+[26] "LotShapeNum"     "NeighborhoodNum" "HouseStyleNum"   "Exterior1stNum"  "Exterior2ndNum" 
+[31] "MasVnrTypeNum"   "ExterQualNum"    "FoundationNum"   "BsmtQualNum"     "BsmtCondNum"    
+[36] "BsmtExposureNum" "BsmtFinType1Num" "HeatingQCNum"    "CentralAirNum"   "KitchenQualNum" 
+[41] "FireplaceQuNum"  "GarageTypeNum"   "GarageFinishNum" "GarageQualNum"   "GarageCondNum"  
+
+Performing cross validation for a set of 45 features.
+
+Testing mtry = 10.
+Error = 0.1338847.
+
+Testing mtry = 11.
+Error = 0.1335921.
+
+Testing mtry = 12.
+Error = 0.1336815.
+
+Testing mtry = 13.
+Error = 0.1334036.
+
+Testing mtry = 14.
+Error = 0.1334875.
+
+Testing mtry = 15.
+Error = 0.1333393.
+
+Testing mtry = 16.
+Error = 0.1335804.
+
+Testing mtry = 17.
+Error = 0.1336727.
+
+Testing mtry = 18.
+Error = 0.1333532.
+
+Testing mtry = 19.
+Error = 0.1335072.
+
+Testing mtry = 20.
+Error = 0.1335661.
+
+Selected mtry:  15.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+      124.05654        90.28779        84.91595        80.63411        76.07159        69.94186 
+        LotArea     SecondFlrSF      GarageArea   MSSubClassNum     OverallCond      GarageCars 
+       59.57192        59.30762        58.55260        56.35401        50.78033        44.03928 
+ FireplaceQuNum    YearRemodAdd    ExterQualNum   GarageTypeNum       YearBuilt  KitchenQualNum 
+       43.23100        39.70989        39.62854        39.55078        37.10914        36.08341 
+   TotRmsAbvGrd     GarageYrBlt BsmtFinType1Num      Fireplaces       BsmtUnfSF     MSZoningNum 
+       35.30112        32.58663        32.01982        31.38187        30.82417        29.47660 
+    BsmtQualNum BsmtExposureNum    BedroomAbvGr        FullBath    BsmtFullBath   HouseStyleNum 
+       29.22516        28.54717        27.70369        27.69499        27.62981        27.06170 
+ Exterior1stNum     OpenPorchSF        HalfBath GarageFinishNum  Exterior2ndNum    HeatingQCNum 
+       26.93323        26.18131        25.52588        25.38382        25.00054        24.29111 
+    BsmtCondNum   CentralAirNum   FoundationNum      WoodDeckSF    KitchenAbvGr     LotShapeNum 
+       20.54922        18.50353        18.20471        17.57152        15.65089        15.53232 
+  GarageCondNum   GarageQualNum   MasVnrTypeNum 
+       13.48216        12.48364        10.09834 
+
+Dropped feature:  MasVnrTypeNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "KitchenAbvGr"    "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"     
+[21] "GarageArea"      "WoodDeckSF"      "OpenPorchSF"     "MSSubClassNum"   "MSZoningNum"    
+[26] "LotShapeNum"     "NeighborhoodNum" "HouseStyleNum"   "Exterior1stNum"  "Exterior2ndNum" 
+[31] "ExterQualNum"    "FoundationNum"   "BsmtQualNum"     "BsmtCondNum"     "BsmtExposureNum"
+[36] "BsmtFinType1Num" "HeatingQCNum"    "CentralAirNum"   "KitchenQualNum"  "FireplaceQuNum" 
+[41] "GarageTypeNum"   "GarageFinishNum" "GarageQualNum"   "GarageCondNum"  
+
+Performing cross validation for a set of 44 features.
+
+Testing mtry = 9.
+Error = 0.1340569.
+
+Testing mtry = 10.
+Error = 0.1336014.
+
+Testing mtry = 11.
+Error = 0.1335929.
+
+Testing mtry = 12.
+Error = 0.1334459.
+
+Testing mtry = 13.
+Error = 0.1330804.
+
+Testing mtry = 14.
+Error = 0.1334173.
+
+Testing mtry = 15.
+Error = 0.1332818.
+
+Testing mtry = 16.
+Error = 0.1334723.
+
+Testing mtry = 17.
+Error = 0.1333776.
+
+Testing mtry = 18.
+Error = 0.133206.
+
+Testing mtry = 19.
+Error = 0.1334515.
+
+Selected mtry:  13.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF      FirstFlrSF     OverallQual      BsmtFinSF1 
+      116.65090        87.78287        82.17548        76.65901        76.54710        68.14252 
+        LotArea     SecondFlrSF   MSSubClassNum      GarageArea     OverallCond  FireplaceQuNum 
+       60.97130        59.50017        55.35539        55.10451        51.48491        44.05322 
+     GarageCars    ExterQualNum    TotRmsAbvGrd   GarageTypeNum       YearBuilt  KitchenQualNum 
+       43.76748        39.64289        38.76883        37.73283        37.02184        36.92434 
+   YearRemodAdd       BsmtUnfSF BsmtFinType1Num      Fireplaces     GarageYrBlt     MSZoningNum 
+       36.78715        31.98545        31.88075        31.87820        30.99968        30.36439 
+       FullBath  Exterior1stNum    BedroomAbvGr   HouseStyleNum    BsmtFullBath     BsmtQualNum 
+       29.57165        29.16063        28.98256        28.43316        28.24234        28.22304 
+BsmtExposureNum     OpenPorchSF GarageFinishNum  Exterior2ndNum        HalfBath     BsmtCondNum 
+       27.37482        27.24213        26.73872        25.33282        24.88664        20.21467 
+     WoodDeckSF   CentralAirNum   FoundationNum    HeatingQCNum    KitchenAbvGr     LotShapeNum 
+       20.03924        18.68001        17.48386        17.25665        16.55486        15.98161 
+  GarageCondNum   GarageQualNum 
+       13.30544        12.85302 
+
+Dropped feature:  GarageQualNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "KitchenAbvGr"    "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"     
+[21] "GarageArea"      "WoodDeckSF"      "OpenPorchSF"     "MSSubClassNum"   "MSZoningNum"    
+[26] "LotShapeNum"     "NeighborhoodNum" "HouseStyleNum"   "Exterior1stNum"  "Exterior2ndNum" 
+[31] "ExterQualNum"    "FoundationNum"   "BsmtQualNum"     "BsmtCondNum"     "BsmtExposureNum"
+[36] "BsmtFinType1Num" "HeatingQCNum"    "CentralAirNum"   "KitchenQualNum"  "FireplaceQuNum" 
+[41] "GarageTypeNum"   "GarageFinishNum" "GarageCondNum"  
+
+Performing cross validation for a set of 43 features.
+
+Testing mtry = 9.
+Error = 0.1337009.
+
+Testing mtry = 10.
+Error = 0.1333246.
+
+Testing mtry = 11.
+Error = 0.1331486.
+
+Testing mtry = 12.
+Error = 0.133004.
+
+Testing mtry = 13.
+Error = 0.1330956.
+
+Testing mtry = 14.
+Error = 0.1330492.
+
+Testing mtry = 15.
+Error = 0.1329979.
+
+Testing mtry = 16.
+Error = 0.133102.
+
+Testing mtry = 17.
+Error = 0.133028.
+
+Testing mtry = 18.
+Error = 0.1333824.
+
+Testing mtry = 19.
+Error = 0.1334655.
+
+Selected mtry:  15.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+      124.66217        90.48308        89.47577        81.08632        77.11153        72.61565 
+        LotArea      GarageArea     SecondFlrSF   MSSubClassNum     OverallCond      GarageCars 
+       60.73599        59.58714        58.93196        57.71665        53.19512        46.42210 
+ FireplaceQuNum    YearRemodAdd    ExterQualNum   GarageTypeNum       YearBuilt  KitchenQualNum 
+       42.14547        39.26973        38.85462        37.81915        36.87191        36.76570 
+    GarageYrBlt    TotRmsAbvGrd       BsmtUnfSF BsmtFinType1Num     MSZoningNum      Fireplaces 
+       35.31626        35.31237        32.41935        30.90737        30.48396        29.81324 
+   BedroomAbvGr  Exterior1stNum BsmtExposureNum    BsmtFullBath        FullBath     BsmtQualNum 
+       29.12044        28.80757        28.37914        28.08996        27.77923        27.48061 
+    OpenPorchSF   HouseStyleNum GarageFinishNum        HalfBath  Exterior2ndNum    HeatingQCNum 
+       26.86351        26.54767        25.96209        25.23049        25.00623        22.51774 
+  CentralAirNum      WoodDeckSF     BsmtCondNum    KitchenAbvGr   FoundationNum     LotShapeNum 
+       20.00043        19.79816        19.60694        18.30289        18.05978        15.50443 
+  GarageCondNum 
+       13.27833 
+
+Dropped feature:  GarageCondNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "KitchenAbvGr"    "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"     
+[21] "GarageArea"      "WoodDeckSF"      "OpenPorchSF"     "MSSubClassNum"   "MSZoningNum"    
+[26] "LotShapeNum"     "NeighborhoodNum" "HouseStyleNum"   "Exterior1stNum"  "Exterior2ndNum" 
+[31] "ExterQualNum"    "FoundationNum"   "BsmtQualNum"     "BsmtCondNum"     "BsmtExposureNum"
+[36] "BsmtFinType1Num" "HeatingQCNum"    "CentralAirNum"   "KitchenQualNum"  "FireplaceQuNum" 
+[41] "GarageTypeNum"   "GarageFinishNum"
+
+Performing cross validation for a set of 42 features.
+
+Testing mtry = 9.
+Error = 0.1335305.
+
+Testing mtry = 10.
+Error = 0.1331194.
+
+Testing mtry = 11.
+Error = 0.1330423.
+
+Testing mtry = 12.
+Error = 0.1331628.
+
+Testing mtry = 13.
+Error = 0.1332076.
+
+Testing mtry = 14.
+Error = 0.1330322.
+
+Testing mtry = 15.
+Error = 0.1330062.
+
+Testing mtry = 16.
+Error = 0.133405.
+
+Testing mtry = 17.
+Error = 0.1330594.
+
+Testing mtry = 18.
+Error = 0.1331733.
+
+Testing mtry = 19.
+Error = 0.1332061.
+
+Selected mtry:  15.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+      126.04146        91.77990        85.43076        82.82349        78.18959        72.08898 
+     GarageArea         LotArea     SecondFlrSF   MSSubClassNum     OverallCond      GarageCars 
+       61.28911        60.88600        59.18985        55.99178        53.70823        44.58603 
+ FireplaceQuNum    ExterQualNum   GarageTypeNum    YearRemodAdd       YearBuilt  KitchenQualNum 
+       42.52124        39.79578        39.31557        39.03479        37.11030        36.54901 
+BsmtFinType1Num    TotRmsAbvGrd     GarageYrBlt       BsmtUnfSF     MSZoningNum      Fireplaces 
+       33.28767        33.28202        32.77350        32.69606        30.63013        29.55902 
+BsmtExposureNum  Exterior1stNum        FullBath     BsmtQualNum    BsmtFullBath    BedroomAbvGr 
+       28.39607        28.19998        27.80175        27.77703        27.72326        26.90748 
+    OpenPorchSF   HouseStyleNum GarageFinishNum        HalfBath    HeatingQCNum  Exterior2ndNum 
+       26.75191        26.47866        25.30330        23.86576        23.83966        23.07375 
+  CentralAirNum      WoodDeckSF     BsmtCondNum    KitchenAbvGr   FoundationNum     LotShapeNum 
+       21.84375        20.53272        19.89357        18.57159        17.06162        15.59181 
+
+Dropped feature:  LotShapeNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "KitchenAbvGr"    "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"     
+[21] "GarageArea"      "WoodDeckSF"      "OpenPorchSF"     "MSSubClassNum"   "MSZoningNum"    
+[26] "NeighborhoodNum" "HouseStyleNum"   "Exterior1stNum"  "Exterior2ndNum"  "ExterQualNum"   
+[31] "FoundationNum"   "BsmtQualNum"     "BsmtCondNum"     "BsmtExposureNum" "BsmtFinType1Num"
+[36] "HeatingQCNum"    "CentralAirNum"   "KitchenQualNum"  "FireplaceQuNum"  "GarageTypeNum"  
+[41] "GarageFinishNum"
+
+Performing cross validation for a set of 41 features.
+
+Testing mtry = 8.
+Error = 0.1334774.
+
+Testing mtry = 9.
+Error = 0.1332992.
+
+Testing mtry = 10.
+Error = 0.1331296.
+
+Testing mtry = 11.
+Error = 0.1331011.
+
+Testing mtry = 12.
+Error = 0.1330889.
+
+Testing mtry = 13.
+Error = 0.1328256.
+
+Testing mtry = 14.
+Error = 0.1332499.
+
+Testing mtry = 15.
+Error = 0.1327826.
+
+Testing mtry = 16.
+Error = 0.1331171.
+
+Testing mtry = 17.
+Error = 0.1330371.
+
+Testing mtry = 18.
+Error = 0.1328468.
+
+Selected mtry:  15.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+      124.83835        93.03931        88.10368        84.59589        76.47851        71.85447 
+        LotArea     SecondFlrSF      GarageArea   MSSubClassNum     OverallCond      GarageCars 
+       59.78379        59.58841        59.25900        58.22109        55.75558        47.77354 
+ FireplaceQuNum    YearRemodAdd   GarageTypeNum    ExterQualNum       YearBuilt     GarageYrBlt 
+       44.79731        41.09139        39.79555        39.64390        36.53601        35.37965 
+ KitchenQualNum       BsmtUnfSF    TotRmsAbvGrd BsmtFinType1Num BsmtExposureNum      Fireplaces 
+       34.80243        34.51242        33.53255        32.50590        30.77156        30.56707 
+    MSZoningNum  Exterior1stNum    BsmtFullBath     BsmtQualNum    BedroomAbvGr        FullBath 
+       30.22015        30.05868        29.50037        28.78229        27.87074        27.71119 
+    OpenPorchSF   HouseStyleNum GarageFinishNum  Exterior2ndNum        HalfBath    HeatingQCNum 
+       27.34832        26.98924        25.65687        24.88183        23.58077        22.98172 
+  CentralAirNum      WoodDeckSF     BsmtCondNum    KitchenAbvGr   FoundationNum 
+       21.20017        20.15049        19.99464        18.59837        17.76016 
+
+Dropped feature:  FoundationNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "KitchenAbvGr"    "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"     
+[21] "GarageArea"      "WoodDeckSF"      "OpenPorchSF"     "MSSubClassNum"   "MSZoningNum"    
+[26] "NeighborhoodNum" "HouseStyleNum"   "Exterior1stNum"  "Exterior2ndNum"  "ExterQualNum"   
+[31] "BsmtQualNum"     "BsmtCondNum"     "BsmtExposureNum" "BsmtFinType1Num" "HeatingQCNum"   
+[36] "CentralAirNum"   "KitchenQualNum"  "FireplaceQuNum"  "GarageTypeNum"   "GarageFinishNum"
+
+Performing cross validation for a set of 40 features.
+
+Testing mtry = 8.
+Error = 0.1333857.
+
+Testing mtry = 9.
+Error = 0.1331198.
+
+Testing mtry = 10.
+Error = 0.1334985.
+
+Testing mtry = 11.
+Error = 0.1327063.
+
+Testing mtry = 12.
+Error = 0.1327966.
+
+Testing mtry = 13.
+Error = 0.1327229.
+
+Testing mtry = 14.
+Error = 0.1328561.
+
+Testing mtry = 15.
+Error = 0.1328137.
+
+Testing mtry = 16.
+Error = 0.1328915.
+
+Testing mtry = 17.
+Error = 0.1328611.
+
+Testing mtry = 18.
+Error = 0.1327664.
+
+Selected mtry:  11.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF      FirstFlrSF     OverallQual      BsmtFinSF1 
+      113.98568        86.66118        84.19710        78.44240        73.37518        68.55609 
+        LotArea      GarageArea     SecondFlrSF   MSSubClassNum     OverallCond      GarageCars 
+       62.21163        60.55560        59.65960        59.37619        53.78326        45.12207 
+ FireplaceQuNum    ExterQualNum    YearRemodAdd       YearBuilt  KitchenQualNum    TotRmsAbvGrd 
+       45.04855        40.55895        40.31210        38.82562        38.75351        36.99665 
+  GarageTypeNum BsmtFinType1Num     GarageYrBlt       BsmtUnfSF      Fireplaces     MSZoningNum 
+       36.36412        34.46487        33.97122        33.32429        32.31509        32.04949 
+ Exterior1stNum    BedroomAbvGr     BsmtQualNum        FullBath    BsmtFullBath     OpenPorchSF 
+       31.02010        29.88258        29.85323        29.43051        29.39961        28.48079 
+GarageFinishNum   HouseStyleNum BsmtExposureNum        HalfBath  Exterior2ndNum    HeatingQCNum 
+       27.67411        27.19127        26.32848        26.21292        24.55522        21.90879 
+     WoodDeckSF     BsmtCondNum   CentralAirNum    KitchenAbvGr 
+       20.23470        20.14979        19.56799        16.50560 
+
+Dropped feature:  KitchenAbvGr.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"      "GarageArea"     
+[21] "WoodDeckSF"      "OpenPorchSF"     "MSSubClassNum"   "MSZoningNum"     "NeighborhoodNum"
+[26] "HouseStyleNum"   "Exterior1stNum"  "Exterior2ndNum"  "ExterQualNum"    "BsmtQualNum"    
+[31] "BsmtCondNum"     "BsmtExposureNum" "BsmtFinType1Num" "HeatingQCNum"    "CentralAirNum"  
+[36] "KitchenQualNum"  "FireplaceQuNum"  "GarageTypeNum"   "GarageFinishNum"
+
+Performing cross validation for a set of 39 features.
+
+Testing mtry = 8.
+Error = 0.1333806.
+
+Testing mtry = 9.
+Error = 0.1329655.
+
+Testing mtry = 10.
+Error = 0.1330951.
+
+Testing mtry = 11.
+Error = 0.132678.
+
+Testing mtry = 12.
+Error = 0.1328562.
+
+Testing mtry = 13.
+Error = 0.1327482.
+
+Testing mtry = 14.
+Error = 0.1327442.
+
+Testing mtry = 15.
+Error = 0.1327814.
+
+Testing mtry = 16.
+Error = 0.1327943.
+
+Testing mtry = 17.
+Error = 0.1328202.
+
+Testing mtry = 18.
+Error = 0.1327958.
+
+Selected mtry:  11.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF      FirstFlrSF     OverallQual      BsmtFinSF1 
+      116.13170        89.56556        80.54607        76.51720        75.57170        71.65721 
+        LotArea     SecondFlrSF   MSSubClassNum      GarageArea     OverallCond  FireplaceQuNum 
+       62.09807        60.34042        58.32895        56.77926        51.72899        44.82200 
+     GarageCars    ExterQualNum       YearBuilt    YearRemodAdd  KitchenQualNum   GarageTypeNum 
+       43.28064        40.18648        39.31684        38.88869        38.49062        37.50558 
+   TotRmsAbvGrd     GarageYrBlt BsmtFinType1Num      Fireplaces       BsmtUnfSF     MSZoningNum 
+       36.29231        35.62740        33.66571        32.95829        32.22083        31.54115 
+   BedroomAbvGr     BsmtQualNum  Exterior1stNum     OpenPorchSF        FullBath    BsmtFullBath 
+       31.05802        30.24185        29.84171        29.10669        28.46588        28.43727 
+  HouseStyleNum BsmtExposureNum GarageFinishNum        HalfBath  Exterior2ndNum    HeatingQCNum 
+       28.41352        27.95399        27.28262        24.90973        24.89242        23.20825 
+  CentralAirNum     BsmtCondNum      WoodDeckSF 
+       22.10383        21.91398        20.71678 
+
+Dropped feature:  WoodDeckSF.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"      "GarageArea"     
+[21] "OpenPorchSF"     "MSSubClassNum"   "MSZoningNum"     "NeighborhoodNum" "HouseStyleNum"  
+[26] "Exterior1stNum"  "Exterior2ndNum"  "ExterQualNum"    "BsmtQualNum"     "BsmtCondNum"    
+[31] "BsmtExposureNum" "BsmtFinType1Num" "HeatingQCNum"    "CentralAirNum"   "KitchenQualNum" 
+[36] "FireplaceQuNum"  "GarageTypeNum"   "GarageFinishNum"
+
+Performing cross validation for a set of 38 features.
+
+Testing mtry = 7.
+Error = 0.1336386.
+
+Testing mtry = 8.
+Error = 0.1330924.
+
+Testing mtry = 9.
+Error = 0.1332722.
+
+Testing mtry = 10.
+Error = 0.1329341.
+
+Testing mtry = 11.
+Error = 0.1324736.
+
+Testing mtry = 12.
+Error = 0.13271.
+
+Testing mtry = 13.
+Error = 0.1327877.
+
+Testing mtry = 14.
+Error = 0.1326347.
+
+Testing mtry = 15.
+Error = 0.1325086.
+
+Testing mtry = 16.
+Error = 0.1327697.
+
+Testing mtry = 17.
+Error = 0.1331964.
+
+Selected mtry:  11.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF      FirstFlrSF     OverallQual      BsmtFinSF1 
+      117.21139        88.98700        84.09499        79.08342        76.65562        70.91936 
+        LotArea     SecondFlrSF   MSSubClassNum      GarageArea     OverallCond  FireplaceQuNum 
+       63.44840        61.20066        60.45568        58.86399        52.91843        45.40136 
+     GarageCars    YearRemodAdd    ExterQualNum       YearBuilt  KitchenQualNum   GarageTypeNum 
+       45.03503        41.39606        40.65955        38.62597        37.85322        37.66132 
+   TotRmsAbvGrd       BsmtUnfSF BsmtFinType1Num     GarageYrBlt      Fireplaces     MSZoningNum 
+       37.24407        34.24602        33.84634        32.63309        32.56035        31.36353 
+ Exterior1stNum     OpenPorchSF    BedroomAbvGr        FullBath BsmtExposureNum    BsmtFullBath 
+       30.36191        29.98608        29.65808        29.42099        29.26141        29.24688 
+    BsmtQualNum GarageFinishNum   HouseStyleNum  Exterior2ndNum        HalfBath    HeatingQCNum 
+       29.21681        28.52426        28.44726        26.85447        25.97026        24.35987 
+  CentralAirNum     BsmtCondNum 
+       21.42960        20.42929 
+
+Dropped feature:  BsmtCondNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"      "GarageArea"     
+[21] "OpenPorchSF"     "MSSubClassNum"   "MSZoningNum"     "NeighborhoodNum" "HouseStyleNum"  
+[26] "Exterior1stNum"  "Exterior2ndNum"  "ExterQualNum"    "BsmtQualNum"     "BsmtExposureNum"
+[31] "BsmtFinType1Num" "HeatingQCNum"    "CentralAirNum"   "KitchenQualNum"  "FireplaceQuNum" 
+[36] "GarageTypeNum"   "GarageFinishNum"
+
+Performing cross validation for a set of 37 features.
+
+Testing mtry = 7.
+Error = 0.1334616.
+
+Testing mtry = 8.
+Error = 0.1332698.
+
+Testing mtry = 9.
+Error = 0.132976.
+
+Testing mtry = 10.
+Error = 0.1328675.
+
+Testing mtry = 11.
+Error = 0.1325977.
+
+Testing mtry = 12.
+Error = 0.1328523.
+
+Testing mtry = 13.
+Error = 0.1327682.
+
+Testing mtry = 14.
+Error = 0.1325262.
+
+Testing mtry = 15.
+Error = 0.1327311.
+
+Testing mtry = 16.
+Error = 0.1327691.
+
+Testing mtry = 17.
+Error = 0.1329453.
+
+Selected mtry:  14.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+      127.86051        93.65605        87.67483        84.74652        78.94751        72.89044 
+        LotArea      GarageArea     SecondFlrSF   MSSubClassNum     OverallCond      GarageCars 
+       61.51539        60.23128        57.73191        57.52966        55.47356        48.93030 
+ FireplaceQuNum    YearRemodAdd   GarageTypeNum    ExterQualNum       YearBuilt  KitchenQualNum 
+       42.45231        40.73291        39.02700        38.76143        37.26513        36.56114 
+    GarageYrBlt       BsmtUnfSF BsmtFinType1Num    TotRmsAbvGrd      Fireplaces     MSZoningNum 
+       36.11287        35.67696        34.81527        33.44298        32.45456        30.15893 
+BsmtExposureNum GarageFinishNum  Exterior1stNum     OpenPorchSF    BedroomAbvGr    BsmtFullBath 
+       29.43567        28.91079        28.73265        28.23725        28.13562        28.12634 
+  HouseStyleNum        FullBath     BsmtQualNum        HalfBath    HeatingQCNum  Exterior2ndNum 
+       28.04533        27.78607        27.64747        26.50124        25.47819        24.68272 
+  CentralAirNum 
+       21.10996 
+
+Dropped feature:  CentralAirNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"      "GarageArea"     
+[21] "OpenPorchSF"     "MSSubClassNum"   "MSZoningNum"     "NeighborhoodNum" "HouseStyleNum"  
+[26] "Exterior1stNum"  "Exterior2ndNum"  "ExterQualNum"    "BsmtQualNum"     "BsmtExposureNum"
+[31] "BsmtFinType1Num" "HeatingQCNum"    "KitchenQualNum"  "FireplaceQuNum"  "GarageTypeNum"  
+[36] "GarageFinishNum"
+
+Performing cross validation for a set of 36 features.
+
+Testing mtry = 7.
+Error = 0.1342833.
+
+Testing mtry = 8.
+Error = 0.1337402.
+
+Testing mtry = 9.
+Error = 0.1339034.
+
+Testing mtry = 10.
+Error = 0.1336641.
+
+Testing mtry = 11.
+Error = 0.1335071.
+
+Testing mtry = 12.
+Error = 0.1335853.
+
+Testing mtry = 13.
+Error = 0.1338264.
+
+Testing mtry = 14.
+Error = 0.1335537.
+
+Testing mtry = 15.
+Error = 0.1338133.
+
+Testing mtry = 16.
+Error = 0.1339136.
+
+Testing mtry = 17.
+Error = 0.1340115.
+
+Selected mtry:  11.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF      FirstFlrSF     OverallQual      BsmtFinSF1 
+      119.50655        88.82687        86.69121        80.06231        78.40387        72.81006 
+     GarageArea         LotArea     SecondFlrSF   MSSubClassNum     OverallCond  FireplaceQuNum 
+       61.66232        60.83800        59.94049        58.75017        56.59549        46.91680 
+     GarageCars    YearRemodAdd    ExterQualNum       YearBuilt   GarageTypeNum  KitchenQualNum 
+       45.69132        44.33187        40.50946        38.86847        38.50903        38.39819 
+   TotRmsAbvGrd BsmtFinType1Num       BsmtUnfSF     GarageYrBlt      Fireplaces     MSZoningNum 
+       36.67255        35.38093        35.04652        34.81496        32.43092        31.28389 
+  HouseStyleNum  Exterior1stNum     BsmtQualNum BsmtExposureNum    BedroomAbvGr        FullBath 
+       30.19573        30.17465        30.01535        29.23531        29.14358        28.83753 
+   BsmtFullBath GarageFinishNum     OpenPorchSF    HeatingQCNum        HalfBath  Exterior2ndNum 
+       28.42089        28.39708        28.13563        27.62947        25.88553        22.77121 
+
+Dropped feature:  Exterior2ndNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"      "GarageArea"     
+[21] "OpenPorchSF"     "MSSubClassNum"   "MSZoningNum"     "NeighborhoodNum" "HouseStyleNum"  
+[26] "Exterior1stNum"  "ExterQualNum"    "BsmtQualNum"     "BsmtExposureNum" "BsmtFinType1Num"
+[31] "HeatingQCNum"    "KitchenQualNum"  "FireplaceQuNum"  "GarageTypeNum"   "GarageFinishNum"
+
+Performing cross validation for a set of 35 features.
+
+Testing mtry = 6.
+Error = 0.1344918.
+
+Testing mtry = 7.
+Error = 0.133765.
+
+Testing mtry = 8.
+Error = 0.1340692.
+
+Testing mtry = 9.
+Error = 0.1333608.
+
+Testing mtry = 10.
+Error = 0.1334342.
+
+Testing mtry = 11.
+Error = 0.133592.
+
+Testing mtry = 12.
+Error = 0.1330482.
+
+Testing mtry = 13.
+Error = 0.1334963.
+
+Testing mtry = 14.
+Error = 0.1335737.
+
+Testing mtry = 15.
+Error = 0.1335789.
+
+Testing mtry = 16.
+Error = 0.1336442.
+
+Selected mtry:  12.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+      121.49316        94.63288        90.72933        81.70093        79.65724        76.19026 
+        LotArea      GarageArea   MSSubClassNum     OverallCond     SecondFlrSF      GarageCars 
+       63.28459        61.51804        59.81443        58.84831        57.59308        44.81625 
+ FireplaceQuNum    YearRemodAdd    ExterQualNum   GarageTypeNum  KitchenQualNum     GarageYrBlt 
+       44.08027        41.98474        40.59025        40.21215        38.10749        37.81022 
+      YearBuilt       BsmtUnfSF BsmtFinType1Num    TotRmsAbvGrd BsmtExposureNum  Exterior1stNum 
+       37.57737        36.43532        35.43781        34.48437        32.71259        30.48326 
+    BsmtQualNum      Fireplaces    BsmtFullBath    BedroomAbvGr     MSZoningNum   HouseStyleNum 
+       30.17959        30.07513        29.74917        29.26737        28.96427        28.50478 
+       FullBath GarageFinishNum     OpenPorchSF        HalfBath    HeatingQCNum 
+       27.50790        27.36966        27.31032        26.11192        24.17776 
+
+Dropped feature:  HeatingQCNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"      "GarageArea"     
+[21] "OpenPorchSF"     "MSSubClassNum"   "MSZoningNum"     "NeighborhoodNum" "HouseStyleNum"  
+[26] "Exterior1stNum"  "ExterQualNum"    "BsmtQualNum"     "BsmtExposureNum" "BsmtFinType1Num"
+[31] "KitchenQualNum"  "FireplaceQuNum"  "GarageTypeNum"   "GarageFinishNum"
+
+Performing cross validation for a set of 34 features.
+
+Testing mtry = 6.
+Error = 0.1348181.
+
+Testing mtry = 7.
+Error = 0.1342857.
+
+Testing mtry = 8.
+Error = 0.1340636.
+
+Testing mtry = 9.
+Error = 0.1340763.
+
+Testing mtry = 10.
+Error = 0.1340431.
+
+Testing mtry = 11.
+Error = 0.1339106.
+
+Testing mtry = 12.
+Error = 0.1338394.
+
+Testing mtry = 13.
+Error = 0.1341312.
+
+Testing mtry = 14.
+Error = 0.1339708.
+
+Testing mtry = 15.
+Error = 0.1340011.
+
+Testing mtry = 16.
+Error = 0.1340814.
+
+Selected mtry:  12.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+      125.85176        95.31641        89.13137        82.26209        78.76379        75.39119 
+        LotArea     OverallCond     SecondFlrSF      GarageArea   MSSubClassNum  FireplaceQuNum 
+       62.72566        61.45439        61.07626        60.06711        58.51251        45.88765 
+     GarageCars    YearRemodAdd    ExterQualNum       YearBuilt   GarageTypeNum     GarageYrBlt 
+       45.10259        44.47943        40.01009        39.36919        39.36674        37.96867 
+ KitchenQualNum       BsmtUnfSF BsmtFinType1Num    TotRmsAbvGrd BsmtExposureNum      Fireplaces 
+       37.95680        35.19510        34.81036        34.09515        33.88033        31.72969 
+ Exterior1stNum     BsmtQualNum    BsmtFullBath     MSZoningNum        FullBath   HouseStyleNum 
+       31.55280        30.42719        29.59029        29.56552        29.22880        28.85657 
+    OpenPorchSF    BedroomAbvGr GarageFinishNum        HalfBath 
+       28.54413        28.02084        26.74566        26.23313 
+
+Dropped feature:  HalfBath.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "BedroomAbvGr"    "TotRmsAbvGrd"   
+[16] "Fireplaces"      "GarageYrBlt"     "GarageCars"      "GarageArea"      "OpenPorchSF"    
+[21] "MSSubClassNum"   "MSZoningNum"     "NeighborhoodNum" "HouseStyleNum"   "Exterior1stNum" 
+[26] "ExterQualNum"    "BsmtQualNum"     "BsmtExposureNum" "BsmtFinType1Num" "KitchenQualNum" 
+[31] "FireplaceQuNum"  "GarageTypeNum"   "GarageFinishNum"
+
+Performing cross validation for a set of 33 features.
+
+Testing mtry = 6.
+Error = 0.134662.
+
+Testing mtry = 7.
+Error = 0.1342262.
+
+Testing mtry = 8.
+Error = 0.1342574.
+
+Testing mtry = 9.
+Error = 0.134126.
+
+Testing mtry = 10.
+Error = 0.1342612.
+
+Testing mtry = 11.
+Error = 0.1341869.
+
+Testing mtry = 12.
+Error = 0.1338326.
+
+Testing mtry = 13.
+Error = 0.134017.
+
+Testing mtry = 14.
+Error = 0.134272.
+
+Testing mtry = 15.
+Error = 0.1343988.
+
+Testing mtry = 16.
+Error = 0.1343523.
+
+Selected mtry:  12.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+      127.47515        93.01916        90.83503        83.47494        81.16311        76.80395 
+        LotArea      GarageArea   MSSubClassNum     SecondFlrSF     OverallCond      GarageCars 
+       62.86833        61.19593        61.08789        60.93108        60.87806        48.30528 
+ FireplaceQuNum    YearRemodAdd   GarageTypeNum    ExterQualNum       YearBuilt  KitchenQualNum 
+       45.05034        42.92467        40.89060        39.46258        38.66875        38.37081 
+    GarageYrBlt BsmtFinType1Num       BsmtUnfSF    TotRmsAbvGrd  Exterior1stNum BsmtExposureNum 
+       37.47546        36.49597        36.41665        34.05514        32.59475        32.51688 
+    MSZoningNum      Fireplaces     BsmtQualNum    BsmtFullBath   HouseStyleNum    BedroomAbvGr 
+       31.62108        31.49077        30.42105        29.12429        28.88833        28.81278 
+       FullBath GarageFinishNum     OpenPorchSF 
+       28.30343        28.03802        28.02456 
+
+Dropped feature:  OpenPorchSF.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "BedroomAbvGr"    "TotRmsAbvGrd"   
+[16] "Fireplaces"      "GarageYrBlt"     "GarageCars"      "GarageArea"      "MSSubClassNum"  
+[21] "MSZoningNum"     "NeighborhoodNum" "HouseStyleNum"   "Exterior1stNum"  "ExterQualNum"   
+[26] "BsmtQualNum"     "BsmtExposureNum" "BsmtFinType1Num" "KitchenQualNum"  "FireplaceQuNum" 
+[31] "GarageTypeNum"   "GarageFinishNum"
+
+Performing cross validation for a set of 32 features.
+
+Testing mtry = 5.
+Error = 0.1351684.
+
+Testing mtry = 6.
+Error = 0.1347249.
+
+Testing mtry = 7.
+Error = 0.1342452.
+
+Testing mtry = 8.
+Error = 0.1339107.
+
+Testing mtry = 9.
+Error = 0.1338399.
+
+Testing mtry = 10.
+Error = 0.1337298.
+
+Testing mtry = 11.
+Error = 0.1335227.
+
+Testing mtry = 12.
+Error = 0.1336846.
+
+Testing mtry = 13.
+Error = 0.1338909.
+
+Testing mtry = 14.
+Error = 0.1338373.
+
+Testing mtry = 15.
+Error = 0.1338368.
+
+Selected mtry:  11.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+      125.15469        94.36896        88.12524        82.05152        79.80345        76.19401 
+        LotArea     OverallCond      GarageArea     SecondFlrSF   MSSubClassNum  FireplaceQuNum 
+       63.76408        63.01166        62.60024        61.09860        60.47931        46.32192 
+     GarageCars    YearRemodAdd    ExterQualNum   GarageTypeNum       YearBuilt     GarageYrBlt 
+       44.78134        43.38900        41.34824        40.11504        38.97998        38.77254 
+      BsmtUnfSF    TotRmsAbvGrd  KitchenQualNum BsmtFinType1Num    BsmtFullBath      Fireplaces 
+       37.35831        37.20938        37.09549        36.30021        32.59029        32.18309 
+ Exterior1stNum BsmtExposureNum     BsmtQualNum     MSZoningNum        FullBath    BedroomAbvGr 
+       31.93763        31.16462        30.31033        30.22885        29.92289        29.55533 
+  HouseStyleNum GarageFinishNum 
+       29.35917        28.56046 
+
+Dropped feature:  GarageFinishNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "BedroomAbvGr"    "TotRmsAbvGrd"   
+[16] "Fireplaces"      "GarageYrBlt"     "GarageCars"      "GarageArea"      "MSSubClassNum"  
+[21] "MSZoningNum"     "NeighborhoodNum" "HouseStyleNum"   "Exterior1stNum"  "ExterQualNum"   
+[26] "BsmtQualNum"     "BsmtExposureNum" "BsmtFinType1Num" "KitchenQualNum"  "FireplaceQuNum" 
+[31] "GarageTypeNum"  
+
+Performing cross validation for a set of 31 features.
+
+Testing mtry = 5.
+Error = 0.1346665.
+
+Testing mtry = 6.
+Error = 0.1341874.
+
+Testing mtry = 7.
+Error = 0.13395.
+
+Testing mtry = 8.
+Error = 0.1337504.
+
+Testing mtry = 9.
+Error = 0.1334917.
+
+Testing mtry = 10.
+Error = 0.1336501.
+
+Testing mtry = 11.
+Error = 0.1336427.
+
+Testing mtry = 12.
+Error = 0.1336648.
+
+Testing mtry = 13.
+Error = 0.1338837.
+
+Testing mtry = 14.
+Error = 0.1339151.
+
+Testing mtry = 15.
+Error = 0.1339427.
+
+Selected mtry:  9.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF      FirstFlrSF     OverallQual      BsmtFinSF1 
+      119.99034        90.76286        84.06447        78.80740        77.35865        75.39730 
+        LotArea     SecondFlrSF   MSSubClassNum     OverallCond      GarageArea  FireplaceQuNum 
+       64.46417        62.81965        61.67393        61.26140        58.20707        48.03513 
+     GarageCars       YearBuilt    ExterQualNum    YearRemodAdd   GarageTypeNum  KitchenQualNum 
+       44.45237        42.42875        42.06822        41.60489        40.15174        39.56937 
+   TotRmsAbvGrd BsmtFinType1Num     GarageYrBlt       BsmtUnfSF      Fireplaces     MSZoningNum 
+       39.36858        37.86939        36.77030        36.34698        35.90110        33.00854 
+BsmtExposureNum   HouseStyleNum     BsmtQualNum    BsmtFullBath  Exterior1stNum    BedroomAbvGr 
+       32.96391        31.82342        31.75132        31.35103        31.18000        30.91868 
+       FullBath 
+       29.64476 
+
+Dropped feature:  FullBath.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "BedroomAbvGr"    "TotRmsAbvGrd"    "Fireplaces"     
+[16] "GarageYrBlt"     "GarageCars"      "GarageArea"      "MSSubClassNum"   "MSZoningNum"    
+[21] "NeighborhoodNum" "HouseStyleNum"   "Exterior1stNum"  "ExterQualNum"    "BsmtQualNum"    
+[26] "BsmtExposureNum" "BsmtFinType1Num" "KitchenQualNum"  "FireplaceQuNum"  "GarageTypeNum"  
+
+Performing cross validation for a set of 30 features.
+
+Testing mtry = 5.
+Error = 0.1345549.
+
+Testing mtry = 6.
+Error = 0.1339894.
+
+Testing mtry = 7.
+Error = 0.1339073.
+
+Testing mtry = 8.
+Error = 0.1335518.
+
+Testing mtry = 9.
+Error = 0.1336558.
+
+Testing mtry = 10.
+Error = 0.1337064.
+
+Testing mtry = 11.
+Error = 0.1334367.
+
+Testing mtry = 12.
+Error = 0.1335108.
+
+Testing mtry = 13.
+Error = 0.1335412.
+
+Testing mtry = 14.
+Error = 0.1337295.
+
+Testing mtry = 15.
+Error = 0.1339052.
+
+Selected mtry:  11.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+      131.20102        95.60287        90.10676        84.63712        81.40392        76.68821 
+        LotArea      GarageArea     OverallCond   MSSubClassNum     SecondFlrSF      GarageCars 
+       65.44208        63.29442        61.47332        60.55631        60.35186        47.35662 
+ FireplaceQuNum    YearRemodAdd   GarageTypeNum    ExterQualNum       YearBuilt  KitchenQualNum 
+       46.05376        44.60657        41.57288        40.96332        40.34176        39.19326 
+      BsmtUnfSF     GarageYrBlt    TotRmsAbvGrd BsmtFinType1Num     MSZoningNum     BsmtQualNum 
+       37.44301        37.36232        36.07545        35.15064        32.36727        32.17026 
+     Fireplaces BsmtExposureNum  Exterior1stNum    BsmtFullBath   HouseStyleNum    BedroomAbvGr 
+       31.98342        31.84177        31.02129        30.65191        30.38264        29.50161 
+
+Dropped feature:  BedroomAbvGr.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"    
+[16] "GarageCars"      "GarageArea"      "MSSubClassNum"   "MSZoningNum"     "NeighborhoodNum"
+[21] "HouseStyleNum"   "Exterior1stNum"  "ExterQualNum"    "BsmtQualNum"     "BsmtExposureNum"
+[26] "BsmtFinType1Num" "KitchenQualNum"  "FireplaceQuNum"  "GarageTypeNum"  
+
+Performing cross validation for a set of 29 features.
+
+Testing mtry = 4.
+Error = 0.1353136.
+
+Testing mtry = 5.
+Error = 0.1345839.
+
+Testing mtry = 6.
+Error = 0.134071.
+
+Testing mtry = 7.
+Error = 0.1337439.
+
+Testing mtry = 8.
+Error = 0.1335701.
+
+Testing mtry = 9.
+Error = 0.1332799.
+
+Testing mtry = 10.
+Error = 0.1335176.
+
+Testing mtry = 11.
+Error = 0.1334896.
+
+Testing mtry = 12.
+Error = 0.1336175.
+
+Testing mtry = 13.
+Error = 0.1337457.
+
+Testing mtry = 14.
+Error = 0.1340532.
+
+Selected mtry:  9.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF      FirstFlrSF     OverallQual      BsmtFinSF1 
+      124.81345        92.72269        86.04884        81.25182        77.74257        74.65493 
+        LotArea     SecondFlrSF     OverallCond   MSSubClassNum      GarageArea  FireplaceQuNum 
+       66.85683        63.76242        59.68303        58.34017        55.23380        47.12057 
+   YearRemodAdd      GarageCars   GarageTypeNum       YearBuilt    ExterQualNum  KitchenQualNum 
+       44.96781        43.20396        42.37119        41.53866        40.95239        39.89605 
+    GarageYrBlt    TotRmsAbvGrd BsmtFinType1Num      Fireplaces       BsmtUnfSF  Exterior1stNum 
+       39.47909        37.51405        36.63867        34.34806        33.66815        32.12255 
+    BsmtQualNum BsmtExposureNum   HouseStyleNum     MSZoningNum    BsmtFullBath 
+       31.92059        31.90894        31.54368        30.38108        29.30255 
+
+Dropped feature:  BsmtFullBath.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"     
+[16] "GarageArea"      "MSSubClassNum"   "MSZoningNum"     "NeighborhoodNum" "HouseStyleNum"  
+[21] "Exterior1stNum"  "ExterQualNum"    "BsmtQualNum"     "BsmtExposureNum" "BsmtFinType1Num"
+[26] "KitchenQualNum"  "FireplaceQuNum"  "GarageTypeNum"  
+
+Performing cross validation for a set of 28 features.
+
+Testing mtry = 4.
+Error = 0.1355595.
+
+Testing mtry = 5.
+Error = 0.1345293.
+
+Testing mtry = 6.
+Error = 0.1341025.
+
+Testing mtry = 7.
+Error = 0.133886.
+
+Testing mtry = 8.
+Error = 0.1338918.
+
+Testing mtry = 9.
+Error = 0.1335836.
+
+Testing mtry = 10.
+Error = 0.1337951.
+
+Testing mtry = 11.
+Error = 0.1338567.
+
+Testing mtry = 12.
+Error = 0.1342255.
+
+Testing mtry = 13.
+Error = 0.133985.
+
+Testing mtry = 14.
+Error = 0.1345293.
+
+Selected mtry:  9.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF      FirstFlrSF     OverallQual      BsmtFinSF1 
+      128.27971        92.99910        89.55273        82.47785        79.64516        76.76087 
+        LotArea     SecondFlrSF   MSSubClassNum      GarageArea     OverallCond  FireplaceQuNum 
+       62.95726        62.86887        61.12485        59.61347        59.30166        47.86418 
+     GarageCars       YearBuilt    YearRemodAdd    ExterQualNum   GarageTypeNum BsmtFinType1Num 
+       45.53362        42.99826        41.03458        40.95509        40.33179        40.21714 
+    GarageYrBlt  KitchenQualNum    TotRmsAbvGrd       BsmtUnfSF     MSZoningNum      Fireplaces 
+       39.32455        39.12256        37.74432        37.15651        32.88617        32.29352 
+BsmtExposureNum     BsmtQualNum  Exterior1stNum   HouseStyleNum 
+       31.51007        31.41826        31.07682        30.26498 
+
+Dropped feature:  HouseStyleNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"     
+[16] "GarageArea"      "MSSubClassNum"   "MSZoningNum"     "NeighborhoodNum" "Exterior1stNum" 
+[21] "ExterQualNum"    "BsmtQualNum"     "BsmtExposureNum" "BsmtFinType1Num" "KitchenQualNum" 
+[26] "FireplaceQuNum"  "GarageTypeNum"  
+
+Performing cross validation for a set of 27 features.
+
+Testing mtry = 4.
+Error = 0.1350908.
+
+Testing mtry = 5.
+Error = 0.1341312.
+
+Testing mtry = 6.
+Error = 0.1335442.
+
+Testing mtry = 7.
+Error = 0.1336167.
+
+Testing mtry = 8.
+Error = 0.1333725.
+
+Testing mtry = 9.
+Error = 0.1335348.
+
+Testing mtry = 10.
+Error = 0.1333068.
+
+Testing mtry = 11.
+Error = 0.1336765.
+
+Testing mtry = 12.
+Error = 0.1335684.
+
+Testing mtry = 13.
+Error = 0.133738.
+
+Testing mtry = 14.
+Error = 0.1341056.
+
+Selected mtry:  10.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+      131.20760        96.39034        91.94412        83.96557        83.19027        78.75792 
+        LotArea   MSSubClassNum     OverallCond     SecondFlrSF      GarageArea    YearRemodAdd 
+       64.62839        63.19804        62.98162        62.71396        56.90003        47.18672 
+     GarageCars  FireplaceQuNum   GarageTypeNum    ExterQualNum     GarageYrBlt       YearBuilt 
+       46.47987        46.19088        41.66223        41.12760        40.98284        39.48182 
+ KitchenQualNum BsmtFinType1Num       BsmtUnfSF    TotRmsAbvGrd      Fireplaces BsmtExposureNum 
+       38.62008        38.36260        37.09830        36.49590        34.59952        33.31065 
+    BsmtQualNum  Exterior1stNum     MSZoningNum 
+       33.29195        33.17505        31.64080 
+
+Dropped feature:  MSZoningNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"     
+[16] "GarageArea"      "MSSubClassNum"   "NeighborhoodNum" "Exterior1stNum"  "ExterQualNum"   
+[21] "BsmtQualNum"     "BsmtExposureNum" "BsmtFinType1Num" "KitchenQualNum"  "FireplaceQuNum" 
+[26] "GarageTypeNum"  
+
+Performing cross validation for a set of 26 features.
+
+Testing mtry = 3.
+Error = 0.1369536.
+
+Testing mtry = 4.
+Error = 0.1357524.
+
+Testing mtry = 5.
+Error = 0.1350107.
+
+Testing mtry = 6.
+Error = 0.1343323.
+
+Testing mtry = 7.
+Error = 0.1342354.
+
+Testing mtry = 8.
+Error = 0.1342775.
+
+Testing mtry = 9.
+Error = 0.1342098.
+
+Testing mtry = 10.
+Error = 0.1339882.
+
+Testing mtry = 11.
+Error = 0.1347794.
+
+Testing mtry = 12.
+Error = 0.1347753.
+
+Testing mtry = 13.
+Error = 0.1344996.
+
+Selected mtry:  10.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+      133.40947        99.28271        90.40120        86.54856        83.38953        81.13983 
+        LotArea     OverallCond   MSSubClassNum     SecondFlrSF      GarageArea  FireplaceQuNum 
+       66.64493        65.40807        65.17807        63.25942        60.76831        46.83460 
+     GarageCars    YearRemodAdd   GarageTypeNum    ExterQualNum       YearBuilt       BsmtUnfSF 
+       46.51711        42.67386        41.55072        40.63271        40.25584        39.76538 
+ KitchenQualNum BsmtFinType1Num     GarageYrBlt    TotRmsAbvGrd BsmtExposureNum  Exterior1stNum 
+       38.57464        37.52760        37.06506        35.31642        33.54691        32.44360 
+    BsmtQualNum      Fireplaces 
+       32.30482        32.14658 
+
+Dropped feature:  Fireplaces.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "TotRmsAbvGrd"    "GarageYrBlt"     "GarageCars"      "GarageArea"     
+[16] "MSSubClassNum"   "NeighborhoodNum" "Exterior1stNum"  "ExterQualNum"    "BsmtQualNum"    
+[21] "BsmtExposureNum" "BsmtFinType1Num" "KitchenQualNum"  "FireplaceQuNum"  "GarageTypeNum"  
+
+Performing cross validation for a set of 25 features.
+
+Testing mtry = 3.
+Error = 0.1372615.
+
+Testing mtry = 4.
+Error = 0.1356988.
+
+Testing mtry = 5.
+Error = 0.1350533.
+
+Testing mtry = 6.
+Error = 0.1346871.
+
+Testing mtry = 7.
+Error = 0.1343169.
+
+Testing mtry = 8.
+Error = 0.1344056.
+
+Testing mtry = 9.
+Error = 0.1344053.
+
+Testing mtry = 10.
+Error = 0.1341761.
+
+Testing mtry = 11.
+Error = 0.13458.
+
+Testing mtry = 12.
+Error = 0.1345812.
+
+Testing mtry = 13.
+Error = 0.1351425.
+
+Selected mtry:  10.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      FirstFlrSF      BsmtFinSF1 
+      136.84555        99.05778        90.50819        89.64468        82.25151        78.50858 
+        LotArea   MSSubClassNum     OverallCond     SecondFlrSF      GarageArea  FireplaceQuNum 
+       67.63346        65.53148        64.13304        62.78560        56.34605        51.29557 
+     GarageCars    YearRemodAdd   GarageTypeNum    ExterQualNum       YearBuilt  KitchenQualNum 
+       45.71067        44.72873        42.85097        41.31534        40.69063        39.74279 
+BsmtFinType1Num       BsmtUnfSF     GarageYrBlt BsmtExposureNum    TotRmsAbvGrd  Exterior1stNum 
+       39.17092        38.28228        37.29754        36.30101        35.91004        32.79687 
+    BsmtQualNum 
+       30.81416 
+
+Dropped feature:  BsmtQualNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "TotRmsAbvGrd"    "GarageYrBlt"     "GarageCars"      "GarageArea"     
+[16] "MSSubClassNum"   "NeighborhoodNum" "Exterior1stNum"  "ExterQualNum"    "BsmtExposureNum"
+[21] "BsmtFinType1Num" "KitchenQualNum"  "FireplaceQuNum"  "GarageTypeNum"  
+
+Performing cross validation for a set of 24 features.
+
+Testing mtry = 3.
+Error = 0.1366403.
+
+Testing mtry = 4.
+Error = 0.135375.
+
+Testing mtry = 5.
+Error = 0.1350033.
+
+Testing mtry = 6.
+Error = 0.1340653.
+
+Testing mtry = 7.
+Error = 0.13426.
+
+Testing mtry = 8.
+Error = 0.1342385.
+
+Testing mtry = 9.
+Error = 0.1342204.
+
+Testing mtry = 10.
+Error = 0.1343878.
+
+Testing mtry = 11.
+Error = 0.1344886.
+
+Testing mtry = 12.
+Error = 0.1346481.
+
+Testing mtry = 13.
+Error = 0.1348286.
+
+Selected mtry:  6.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF      FirstFlrSF      BsmtFinSF1     OverallQual 
+      114.26644        92.23236        82.13825        81.39099        77.59518        76.01497 
+    SecondFlrSF   MSSubClassNum         LotArea     OverallCond  FireplaceQuNum      GarageArea 
+       67.10065        66.06748        64.60458        63.64720        57.38322        55.51664 
+      YearBuilt    YearRemodAdd    ExterQualNum    TotRmsAbvGrd  KitchenQualNum      GarageCars 
+       45.04265        45.01286        43.25418        43.24826        41.10447        41.02705 
+  GarageTypeNum BsmtFinType1Num     GarageYrBlt       BsmtUnfSF BsmtExposureNum  Exterior1stNum 
+       40.71154        40.21658        39.55088        37.25270        35.77428        32.68449 
+
+Dropped feature:  Exterior1stNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "TotRmsAbvGrd"    "GarageYrBlt"     "GarageCars"      "GarageArea"     
+[16] "MSSubClassNum"   "NeighborhoodNum" "ExterQualNum"    "BsmtExposureNum" "BsmtFinType1Num"
+[21] "KitchenQualNum"  "FireplaceQuNum"  "GarageTypeNum"  
+
+Performing cross validation for a set of 23 features.
+
+Testing mtry = 2.
+Error = 0.1385351.
+
+Testing mtry = 3.
+Error = 0.1359786.
+
+Testing mtry = 4.
+Error = 0.1348133.
+
+Testing mtry = 5.
+Error = 0.1346008.
+
+Testing mtry = 6.
+Error = 0.1338769.
+
+Testing mtry = 7.
+Error = 0.1340895.
+
+Testing mtry = 8.
+Error = 0.1339896.
+
+Testing mtry = 9.
+Error = 0.1340553.
+
+Testing mtry = 10.
+Error = 0.1339924.
+
+Testing mtry = 11.
+Error = 0.1343138.
+
+Testing mtry = 12.
+Error = 0.1345505.
+
+Selected mtry:  6.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF      FirstFlrSF      BsmtFinSF1     OverallQual 
+      116.57942        92.58753        84.04671        82.78583        78.00393        74.66653 
+  MSSubClassNum     SecondFlrSF         LotArea     OverallCond      GarageArea  FireplaceQuNum 
+       65.20672        64.99430        64.80153        63.06186        62.04569        57.50311 
+   YearRemodAdd       YearBuilt    ExterQualNum  KitchenQualNum    TotRmsAbvGrd      GarageCars 
+       47.11290        46.12360        44.16716        43.15887        42.99264        42.76279 
+      BsmtUnfSF     GarageYrBlt   GarageTypeNum BsmtFinType1Num BsmtExposureNum 
+       41.31089        41.00041        40.96325        39.90507        34.07663 
+
+Dropped feature:  BsmtExposureNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "TotRmsAbvGrd"    "GarageYrBlt"     "GarageCars"      "GarageArea"     
+[16] "MSSubClassNum"   "NeighborhoodNum" "ExterQualNum"    "BsmtFinType1Num" "KitchenQualNum" 
+[21] "FireplaceQuNum"  "GarageTypeNum"  
+
+Performing cross validation for a set of 22 features.
+
+Testing mtry = 2.
+Error = 0.1383963.
+
+Testing mtry = 3.
+Error = 0.1363996.
+
+Testing mtry = 4.
+Error = 0.1349955.
+
+Testing mtry = 5.
+Error = 0.1346952.
+
+Testing mtry = 6.
+Error = 0.1343086.
+
+Testing mtry = 7.
+Error = 0.1343274.
+
+Testing mtry = 8.
+Error = 0.1343357.
+
+Testing mtry = 9.
+Error = 0.1345437.
+
+Testing mtry = 10.
+Error = 0.1345611.
+
+Testing mtry = 11.
+Error = 0.1347925.
+
+Testing mtry = 12.
+Error = 0.1351927.
+
+Selected mtry:  6.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF      FirstFlrSF      BsmtFinSF1     OverallQual 
+      119.77626        95.30243        87.52613        84.31492        81.13717        76.65215 
+        LotArea   MSSubClassNum     SecondFlrSF     OverallCond      GarageArea  FireplaceQuNum 
+       67.81853        67.27261        65.02401        64.01443        58.15280        57.15821 
+   YearRemodAdd       YearBuilt    ExterQualNum    TotRmsAbvGrd  KitchenQualNum BsmtFinType1Num 
+       47.78764        45.52365        44.78182        43.76282        43.72388        43.63838 
+     GarageCars       BsmtUnfSF   GarageTypeNum     GarageYrBlt 
+       43.34745        42.08839        41.87444        41.43479 
+
+Dropped feature:  GarageYrBlt.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "TotRmsAbvGrd"    "GarageCars"      "GarageArea"      "MSSubClassNum"  
+[16] "NeighborhoodNum" "ExterQualNum"    "BsmtFinType1Num" "KitchenQualNum"  "FireplaceQuNum" 
+[21] "GarageTypeNum"  
+
+Performing cross validation for a set of 21 features.
+
+Testing mtry = 2.
+Error = 0.1375163.
+
+Testing mtry = 3.
+Error = 0.1358198.
+
+Testing mtry = 4.
+Error = 0.1351486.
+
+Testing mtry = 5.
+Error = 0.1342551.
+
+Testing mtry = 6.
+Error = 0.1339117.
+
+Testing mtry = 7.
+Error = 0.1342325.
+
+Testing mtry = 8.
+Error = 0.1341266.
+
+Testing mtry = 9.
+Error = 0.1341061.
+
+Testing mtry = 10.
+Error = 0.1345199.
+
+Testing mtry = 11.
+Error = 0.1346771.
+
+Testing mtry = 12.
+Error = 0.1351065.
+
+Selected mtry:  6.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF      BsmtFinSF1      FirstFlrSF     OverallQual 
+      124.21190        95.39708        86.51752        84.21032        82.49068        79.26946 
+    SecondFlrSF         LotArea   MSSubClassNum     OverallCond      GarageArea  FireplaceQuNum 
+       67.80957        66.96130        66.85546        66.73137        63.36274        56.88103 
+   YearRemodAdd       YearBuilt    ExterQualNum    TotRmsAbvGrd  KitchenQualNum      GarageCars 
+       51.51103        48.47904        45.63809        43.77024        43.62941        43.53747 
+      BsmtUnfSF BsmtFinType1Num   GarageTypeNum 
+       42.99739        42.10420        40.69804 
+
+Dropped feature:  GarageTypeNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "TotRmsAbvGrd"    "GarageCars"      "GarageArea"      "MSSubClassNum"  
+[16] "NeighborhoodNum" "ExterQualNum"    "BsmtFinType1Num" "KitchenQualNum"  "FireplaceQuNum" 
+
+Performing cross validation for a set of 20 features.
+
+Testing mtry = 2.
+Error = 0.1372806.
+
+Testing mtry = 3.
+Error = 0.1353266.
+
+Testing mtry = 4.
+Error = 0.1343607.
+
+Testing mtry = 5.
+Error = 0.1343006.
+
+Testing mtry = 6.
+Error = 0.1340315.
+
+Testing mtry = 7.
+Error = 0.133902.
+
+Testing mtry = 8.
+Error = 0.1341061.
+
+Testing mtry = 9.
+Error = 0.1343164.
+
+Testing mtry = 10.
+Error = 0.134445.
+
+Testing mtry = 11.
+Error = 0.134801.
+
+Selected mtry:  7.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF      BsmtFinSF1      FirstFlrSF     OverallQual 
+      124.76657       102.33300        91.49767        88.91981        86.01538        84.73174 
+    OverallCond   MSSubClassNum         LotArea     SecondFlrSF      GarageArea  FireplaceQuNum 
+       70.27437        69.92896        67.99592        66.05958        59.27506        57.62814 
+   YearRemodAdd       YearBuilt      GarageCars       BsmtUnfSF BsmtFinType1Num    ExterQualNum 
+       51.75127        47.91503        46.55158        44.56255        44.23379        44.08390 
+ KitchenQualNum    TotRmsAbvGrd 
+       43.00036        39.00329 
+
+Dropped feature:  TotRmsAbvGrd.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "GarageCars"      "GarageArea"      "MSSubClassNum"   "NeighborhoodNum"
+[16] "ExterQualNum"    "BsmtFinType1Num" "KitchenQualNum"  "FireplaceQuNum" 
+
+Performing cross validation for a set of 19 features.
+
+Testing mtry = 2.
+Error = 0.1368323.
+
+Testing mtry = 3.
+Error = 0.134762.
+
+Testing mtry = 4.
+Error = 0.1341715.
+
+Testing mtry = 5.
+Error = 0.1340252.
+
+Testing mtry = 6.
+Error = 0.1340954.
+
+Testing mtry = 7.
+Error = 0.1338953.
+
+Testing mtry = 8.
+Error = 0.1340432.
+
+Testing mtry = 9.
+Error = 0.1343876.
+
+Testing mtry = 10.
+Error = 0.134328.
+
+Testing mtry = 11.
+Error = 0.1346666.
+
+Selected mtry:  7.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      BsmtFinSF1      FirstFlrSF 
+      130.84462       104.01496        92.09188        87.86763        86.90035        84.09875 
+        LotArea   MSSubClassNum     OverallCond     SecondFlrSF      GarageArea  FireplaceQuNum 
+       70.83730        69.59337        69.46099        65.48833        59.61779        57.57270 
+   YearRemodAdd       YearBuilt      GarageCars       BsmtUnfSF  KitchenQualNum    ExterQualNum 
+       51.53377        50.10182        46.59376        44.97891        44.60062        43.94796 
+BsmtFinType1Num 
+       43.32111 
+
+Dropped feature:  BsmtFinType1Num.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "GarageCars"      "GarageArea"      "MSSubClassNum"   "NeighborhoodNum"
+[16] "ExterQualNum"    "KitchenQualNum"  "FireplaceQuNum" 
+
+Performing cross validation for a set of 18 features.
+
+Testing mtry = 2.
+Error = 0.1365016.
+
+Testing mtry = 3.
+Error = 0.1345784.
+
+Testing mtry = 4.
+Error = 0.1341028.
+
+Testing mtry = 5.
+Error = 0.1337108.
+
+Testing mtry = 6.
+Error = 0.1336552.
+
+Testing mtry = 7.
+Error = 0.1338142.
+
+Testing mtry = 8.
+Error = 0.1340269.
+
+Testing mtry = 9.
+Error = 0.1343487.
+
+Testing mtry = 10.
+Error = 0.1346243.
+
+Testing mtry = 11.
+Error = 0.1351064.
+
+Selected mtry:  6.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF      FirstFlrSF      BsmtFinSF1     OverallQual 
+      132.42805       100.02826        92.58930        87.56007        86.31118        85.91404 
+  MSSubClassNum     SecondFlrSF         LotArea     OverallCond      GarageArea  FireplaceQuNum 
+       74.51927        72.45464        71.34850        69.63616        62.00057        58.74666 
+   YearRemodAdd       YearBuilt    ExterQualNum      GarageCars       BsmtUnfSF  KitchenQualNum 
+       53.99880        52.01723        45.00721        43.76948        43.02435        42.44754 
+
+Dropped feature:  KitchenQualNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "GarageCars"      "GarageArea"      "MSSubClassNum"   "NeighborhoodNum"
+[16] "ExterQualNum"    "FireplaceQuNum" 
+
+Performing cross validation for a set of 17 features.
+
+Testing mtry = 2.
+Error = 0.1361101.
+
+Testing mtry = 3.
+Error = 0.1348645.
+
+Testing mtry = 4.
+Error = 0.1339397.
+
+Testing mtry = 5.
+Error = 0.1337583.
+
+Testing mtry = 6.
+Error = 0.1337791.
+
+Testing mtry = 7.
+Error = 0.1341777.
+
+Testing mtry = 8.
+Error = 0.1346513.
+
+Testing mtry = 9.
+Error = 0.1348529.
+
+Testing mtry = 10.
+Error = 0.1349596.
+
+Selected mtry:  5.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum      BsmtFinSF1     TotalBsmtSF     OverallQual      FirstFlrSF 
+      116.90955       101.03526        91.21479        85.98470        85.52814        84.10057 
+  MSSubClassNum     OverallCond         LotArea     SecondFlrSF  FireplaceQuNum      GarageArea 
+       74.35822        72.07364        69.23909        67.80481        62.27533        59.04358 
+   YearRemodAdd       YearBuilt    ExterQualNum       BsmtUnfSF      GarageCars 
+       55.40458        53.82192        49.63857        45.88617        43.71401 
+
+Dropped feature:  GarageCars.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "GarageArea"      "MSSubClassNum"   "NeighborhoodNum" "ExterQualNum"   
+[16] "FireplaceQuNum" 
+
+Performing cross validation for a set of 16 features.
+
+Testing mtry = 2.
+Error = 0.1353415.
+
+Testing mtry = 3.
+Error = 0.1340415.
+
+Testing mtry = 4.
+Error = 0.133858.
+
+Testing mtry = 5.
+Error = 0.1336917.
+
+Testing mtry = 6.
+Error = 0.1336695.
+
+Testing mtry = 7.
+Error = 0.1341609.
+
+Testing mtry = 8.
+Error = 0.1344372.
+
+Testing mtry = 9.
+Error = 0.1345759.
+
+Testing mtry = 10.
+Error = 0.1354315.
+
+Selected mtry:  6.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     TotalBsmtSF     OverallQual      BsmtFinSF1      FirstFlrSF 
+      131.86188       106.50887        93.33752        92.90161        90.34844        85.11966 
+  MSSubClassNum     OverallCond      GarageArea         LotArea     SecondFlrSF  FireplaceQuNum 
+       77.43542        74.65737        71.87541        70.55228        66.91836        60.36381 
+   YearRemodAdd       YearBuilt    ExterQualNum       BsmtUnfSF 
+       57.37536        53.26438        48.08011        46.39048 
+
+Dropped feature:  BsmtUnfSF.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"     "GrLivArea"      
+[11] "GarageArea"      "MSSubClassNum"   "NeighborhoodNum" "ExterQualNum"    "FireplaceQuNum" 
+
+Performing cross validation for a set of 15 features.
+
+Testing mtry = 2.
+Error = 0.1349572.
+
+Testing mtry = 3.
+Error = 0.1335144.
+
+Testing mtry = 4.
+Error = 0.1333226.
+
+Testing mtry = 5.
+Error = 0.1334672.
+
+Testing mtry = 6.
+Error = 0.1335451.
+
+Testing mtry = 7.
+Error = 0.1337969.
+
+Testing mtry = 8.
+Error = 0.1341262.
+
+Testing mtry = 9.
+Error = 0.1347579.
+
+Testing mtry = 10.
+Error = 0.1352999.
+
+Selected mtry:  4.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum      BsmtFinSF1     TotalBsmtSF     OverallQual      FirstFlrSF 
+      116.50886        99.91870        93.08961        85.00006        84.14735        82.21444 
+  MSSubClassNum         LotArea     OverallCond     SecondFlrSF      GarageArea  FireplaceQuNum 
+       77.68250        73.90198        73.34510        68.39702        68.31592        65.85093 
+   YearRemodAdd       YearBuilt    ExterQualNum 
+       58.94043        58.03708        51.51436 
+
+Dropped feature:  ExterQualNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"     "GrLivArea"      
+[11] "GarageArea"      "MSSubClassNum"   "NeighborhoodNum" "FireplaceQuNum" 
+
+Performing cross validation for a set of 14 features.
+
+Testing mtry = 2.
+Error = 0.1342755.
+
+Testing mtry = 3.
+Error = 0.1332308.
+
+Testing mtry = 4.
+Error = 0.1327722.
+
+Testing mtry = 5.
+Error = 0.1329665.
+
+Testing mtry = 6.
+Error = 0.1331988.
+
+Testing mtry = 7.
+Error = 0.1336784.
+
+Testing mtry = 8.
+Error = 0.1338644.
+
+Testing mtry = 9.
+Error = 0.1345802.
+
+Selected mtry:  4.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum      BsmtFinSF1     OverallQual     TotalBsmtSF      FirstFlrSF 
+      113.41300       104.46010        93.75115        92.00387        83.53614        82.74658 
+    OverallCond   MSSubClassNum         LotArea     SecondFlrSF  FireplaceQuNum       YearBuilt 
+       76.40344        76.34835        72.99868        71.29942        68.28198        64.65806 
+     GarageArea    YearRemodAdd 
+       64.42566        63.68169 
+
+Dropped feature:  YearRemodAdd.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "BsmtFinSF1"     
+ [6] "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"     "GrLivArea"       "GarageArea"     
+[11] "MSSubClassNum"   "NeighborhoodNum" "FireplaceQuNum" 
+
+Performing cross validation for a set of 13 features.
+
+Testing mtry = 2.
+Error = 0.1356645.
+
+Testing mtry = 3.
+Error = 0.1348289.
+
+Testing mtry = 4.
+Error = 0.1344961.
+
+Testing mtry = 5.
+Error = 0.1344358.
+
+Testing mtry = 6.
+Error = 0.1349337.
+
+Testing mtry = 7.
+Error = 0.1353044.
+
+Testing mtry = 8.
+Error = 0.1359464.
+
+Testing mtry = 9.
+Error = 0.1364161.
+
+Selected mtry:  5.
+
+Importance vector:
+
+      GrLivArea NeighborhoodNum     OverallQual      BsmtFinSF1     TotalBsmtSF     OverallCond 
+      125.03280       114.29872       105.79874        99.79767        93.47182        88.43139 
+     FirstFlrSF   MSSubClassNum         LotArea      GarageArea     SecondFlrSF       YearBuilt 
+       83.69897        82.79892        71.71331        70.60854        68.26691        67.57068 
+ FireplaceQuNum 
+       62.94261 
+
+Dropped feature:  FireplaceQuNum.
+
+Remaining features:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "BsmtFinSF1"     
+ [6] "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"     "GrLivArea"       "GarageArea"     
+[11] "MSSubClassNum"   "NeighborhoodNum"
+
+After 65 iterations, the feature set with the lowest root-mean-square logarithmic error
+using out-of-bag samples for prediction is the following:
+
+ [1] "LotArea"         "OverallQual"     "OverallCond"     "YearBuilt"       "YearRemodAdd"   
+ [6] "BsmtFinSF1"      "BsmtUnfSF"       "TotalBsmtSF"     "FirstFlrSF"      "SecondFlrSF"    
+[11] "GrLivArea"       "BsmtFullBath"    "FullBath"        "HalfBath"        "BedroomAbvGr"   
+[16] "TotRmsAbvGrd"    "Fireplaces"      "GarageYrBlt"     "GarageCars"      "GarageArea"     
+[21] "OpenPorchSF"     "MSSubClassNum"   "MSZoningNum"     "NeighborhoodNum" "HouseStyleNum"  
+[26] "Exterior1stNum"  "Exterior2ndNum"  "ExterQualNum"    "BsmtQualNum"     "BsmtCondNum"    
+[31] "BsmtExposureNum" "BsmtFinType1Num" "HeatingQCNum"    "CentralAirNum"   "KitchenQualNum" 
+[36] "FireplaceQuNum"  "GarageTypeNum"   "GarageFinishNum"
